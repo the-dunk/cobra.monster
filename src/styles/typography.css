@@ -1,0 +1,46 @@
+@import "tailwindcss";
+:root {
+  --header-typeface: "Roboto-VariableFont_wdth,wght";
+
+  --link-color: #eab308;
+}
+.prose {
+  --tw-prose-bullets: theme(--color-yellow);
+  --tw-prose-counters: theme(--color-yellow);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--header-typeface, sans-serif);
+}
+
+.blogProse {
+  /* --tw-prose-body: theme(--color-text-main);
+  --tw-prose-headings: theme(--color-text-main);
+  --tw-prose-lead: theme(--color-text-main);
+  --tw-prose-links: var(--link-color);
+  --tw-prose-bold: theme(--color-text-main);
+  --tw-prose-counters: theme(--color-text-main);
+ 
+  --tw-prose-hr: var(colors.surface[400]);
+  --tw-prose-quotes: theme(--color-text-main);
+  --tw-prose-quote-borders: var(colors.accent-red);
+  --tw-prose-captions: theme(--color-text-main);
+  --tw-prose-code: var(colors.surface[50]);
+  --tw-prose-pre-code: var(colors.surface[50]);
+  --tw-prose-pre-bg: var(colors.surface[600]);
+  --tw-prose-th-borders: var(colors.surface[400]);
+  --tw-prose-td-borders: theme(--color-text-main); */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #cbd5e1;
+  }
+}

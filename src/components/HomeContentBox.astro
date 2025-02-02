@@ -1,0 +1,10 @@
+---
+interface Props {
+  columns?: string[];
+}
+const { columns } = Astro.props;
+---
+
+<div class:list={["bg-boxPrimary text-white border-4 border-yellow rounded-lg p-5 mx-5", columns]}>
+  <slot />
+</div>

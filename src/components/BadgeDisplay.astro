@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+  collection: "critterBadges" | "standardBadges";
+}
+
+const { collection } = Astro.props;
+
+const btnStyle = "transition duration-300 hover:scale-[1.5] cursor-pointer";
+
+const badgesCollection = await getCollection(collection);
+const badges = badgesCollection.sort((a, b) => a.id.localeCompare(b.id));
+---
+
+<div class="flex flex-wrap gap-2 justify-center">
+  {
+    badges.map((badge) => {
+      return badge.data.url ? (
+        <a href={badge.data.url} class={btnStyle}>
+          <img src={badge.data.image} alt={badge.data.alt} width="88" height="31" style="image-rendering:pixelated;" title={badge.data.alt} />
+        </a>
+      ) : (
+        <img src={badge.data.image} alt={badge.data.alt} width="88" height="31" style="image-rendering:pixelated;" title={badge.data.alt} />
+      );
+    })
+  }
+</div>
+
+<style>
+  h3 {
+    font-family: "Prospekt Regular", sans-serif;
+  }
+</style>

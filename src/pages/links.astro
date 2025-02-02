@@ -1,0 +1,95 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TopNav from "../components/TopNav.astro";
+import HomeSection from "../components/HomeSection.astro";
+import HomeContentBox from "../components/HomeContentBox.astro";
+import BadgeDisplay from "../components/BadgeDisplay.astro";
+import { Image } from "astro:assets";
+import pixelArkaArgent from "../assets/argent/pixelArgent_Arka.png";
+import PageHeader from "../components/PageHeader.astro";
+import TextDeco from "../components/TextDeco.astro";
+
+const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 before:content-['CHISTAR']";
+---
+
+<!-- TODO: Statue Argent in the middle? -->
+<Layout>
+  <TopNav />
+  <PageHeader leftRight="left">Tasty Links Doot </PageHeader>
+  <HomeSection darkBg={false}>
+    <HomeContentBox columns={["col-start-2", "col-span-10"]}>
+      <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Socials</h2>
+      <div class="flex divide-x-2 divide-stone-200">
+        <div class="flex gap-2 justify-between flex-wrap px-2">
+          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+        </div>
+        <div class="flex gap-2 justify-between flex-wrap px-2">
+          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+        </div>
+      </div>
+    </HomeContentBox>
+  </HomeSection>
+  <HomeSection darkBg={false} border={[]}>
+    <HomeContentBox columns={["col-start-2", "col-span-7"]}>
+      <div class="flex flex-col text-slate-200">
+        <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Cool Folks</h2>
+        <p>Internet creatures with very cool personal sites! Eternally grateful to them and others for inspiration in making my own UwU</p>
+        <div class="content-center my-10">
+          <BadgeDisplay collection="critterBadges" />
+        </div>
+        <div class="border-t-2 border-slate-200 pt-3">
+          <p>
+            If you've linked me on your site, feel free to shoot me an email at <a class="text-yellow hover:cursor-pointer" href="mailto:regal@cobra.monster"
+              >regal@cobra.monster</a
+            > with your button and site so I can link back!
+          </p>
+        </div>
+      </div>
+    </HomeContentBox>
+  </HomeSection>
+  <HomeSection darkBg={false} border={[]}>
+    <div class="aspect-square col-span-5 col-start-2">
+      <Image src={pixelArkaArgent} alt="Arka Argent" class="drop-shadow-[-15px_-5px_0px_rgba(0,0,0,0.5)] animate-idleBreathe" />
+    </div>
+    <HomeContentBox columns={["col-start-7 col-span-5 self-center"]}>
+      <div class="flex flex-col text-slate-200">
+        <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Neat Buttons</h2>
+        <div class="content-center mb-5">
+          <BadgeDisplay collection="standardBadges" />
+        </div>
+        <div class="border-t-2 border-slate-200 pt-3">
+          <p>If I find a neat button I just plop it here. Some of them are links!</p>
+          <p>A few button repositories I enjoyed looking through:</p>
+          <ul class="flex justify-around">
+            <li class={listDecoStyle}><TextDeco url="https://hellnet.work/8831/"> <span class="listText">HellNet</span></TextDeco></li>
+            <li class={listDecoStyle}>
+              <TextDeco url="https://yesterweb.org/graphics/buttons"><span class="listText">Yesterweb</span></TextDeco>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </HomeContentBox>
+  </HomeSection>
+</Layout>
+
+<style>
+  h1,
+  h2 {
+    font-family: "Prospekt Regular", sans-serif;
+  }
+  .listText {
+    font-family: "Roboto-VariableFont_wdth,wght", sans-serif;
+    font-weight: 300;
+    font-optical-sizing: auto;
+    font-stretch: extra-expanded;
+    font-variant-ligatures: normal;
+  }
+</style>

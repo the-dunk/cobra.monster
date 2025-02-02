@@ -1,11 +1,142 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import "../styles/global.css";
+import { getCollection } from "astro:content";
+import PostList from "../components/PostList.astro";
+const blogPosts = await getCollection("posts");
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import pushupArgent from "../assets/argent/pushupArgent(transparent)_Elek.gif";
+import TopNav from "../components/TopNav.astro";
+import Hero from "../components/Hero.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import HomeSection from "../components/HomeSection.astro";
+import LinkButton from "../components/LinkButton.astro";
+import HomeContentBox from "../components/HomeContentBox.astro";
+import BadgeDisplay from "../components/BadgeDisplay.astro";
+import pixelArkaArgent from "../assets/argent/pixelArgent_Arka.png";
+import giornoArgent from "../assets/argent/giornoArgent.png";
+import TextDeco from "../components/TextDeco.astro";
+import coffeePotArgent from "../assets/argent/coffeePotArgent.png";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const allPosts = blogPosts.sort((a, b) => {
+  return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf();
+});
 ---
 
-<Layout>
-	<Welcome />
+<Layout homePage={true}>
+  <SiteHeader homePage={true} />
+  <div class="text-center mt-3 mb-4">
+    <span id="monsterTxt" class="Qt text-white text-4xl md:text-6xl italic tracking-wide">
+      The Crisis of Capitalism unearths a MONSTER . . .
+      <!-- THE CRISIS OF CAPITALISM UNEARTHS A MONSTER -->
+    </span><span class="Qt text-white text-4xl tracking-wide italic">uwu</span>
+  </div>
+  <Hero />
+  <HomeSection darkBg={true}>
+    <HomeContentBox columns={["col-start-1", "col-span-12", "md:col-span-8", "z-10"]}>
+      <PostList posts={allPosts} postLimit={3} />
+      <div class="ml-16">
+        <LinkButton to={"/blog"} button={true}> All Blog Posts →︎ </LinkButton>
+      </div>
+    </HomeContentBox>
+    <!-- <Image src={coffeePotArgent} alt="coffee pot Argent" class="scale-x-[-1] md:min-w-[500px] relative left-[-120%] z-0" /> -->
+  </HomeSection>
+  <HomeSection darkBg={false} border={["border-t-4"]}>
+    <HomeContentBox columns={["md:col-start-2", "md:col-span-10", "col-start-1", "col-span-12"]}>
+      <div>
+        <div class="grid grid-cols-2 gap-2">
+          <div class="text-2xl font-light">
+            <h2 class="text-7xl mb-10 underline decoration-redLight">About Regal</h2>
+            <p>
+              I'm a Chicago-based frontend software dev who spends most of his free time not doing software dev. I love my city and interacting with it and my
+              neighbors via hobbies and <span class="line-through">radical</span> progressive politics.
+            </p>
+            <br />
+            <p>
+              I'm into a lot of things, including <TextDeco url="/">Fancy Coffee</TextDeco>, <TextDeco url="/">Weightlifting & Bodybuilding</TextDeco>,
+              <TextDeco>Urbanism</TextDeco> & <TextDeco>Biking</TextDeco>, <TextDeco>Drawing</TextDeco>, Building <TextDeco>Mechanical Keyboards</TextDeco>, and <TextDeco
+                >Marxist Theory</TextDeco
+              >.
+            </p>
+            <br />
+            <p>
+              More than anything, I like talking to folks and making new friends. So feel free to say hi on one of the <TextDeco url="/links"
+                >various socials</TextDeco
+              >!
+            </p>
+            <br />
+            <p>
+              <LinkButton to={"/about"} button={true}> More about Regal →︎ </LinkButton>
+            </p>
+          </div>
+          <div class="place-content-center">
+            <Image src={giornoArgent} alt="Giorno Argent" class="rounded-lg" />
+          </div>
+        </div>
+      </div>
+    </HomeContentBox>
+  </HomeSection>
+  <!-- <HomeSection darkBg={true}>
+    <div class="flex flex-col col-start-2 col-span-3 justify-center">
+      <div id="externalSocials" class="flex flex-wrap gap-2">
+        <a href="/" class="rounded-lg border-2 border-yellow p-2 text-white">Mastodon</a>
+        <a href="/" class="rounded-lg border-2 border-yellow p-2 text-white">Mastodon</a>
+        <a href="/" class="rounded-lg border-2 border-yellow p-2 text-white">Mastodon</a>
+        <a href="/" class="rounded-lg border-2 border-yellow p-2 text-white">Mastodon</a>
+        <a href="/" class="rounded-lg border-2 border-yellow p-2 text-white">Mastodon</a>
+        <a href="/" class="rounded-lg border-2 border-yellow p-2 text-white">Mastodon</a>
+      </div>
+    </div>
+    <HomeContentBox columns={["col-start-5", "col-span-8"]}>
+      <h2 class="text-center text-6xl">Site Map</h2>
+      <div class="grid grid-cols-3 justify-items-center">
+        <div class="flex flex-col">
+          <h3>Who is Regal?</h3>
+          <ul>
+            <li>About</li>
+            <li>Argent (fursona)</li>
+            <li>Whats with the communism</li>
+          </ul>
+        </div>
+        <div class="flex flex-col">Random</div>
+        <div class="flex flex-col">
+          <h3>Neat Stuff</h3>
+          <ul>
+            <li>
+              <a href="https://www.logicalincrements.com/">Logical Increments (pc building)</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </HomeContentBox>
+  </HomeSection> -->
+  <!-- <HomeSection darkBg={true}>
+    <HomeContentBox columns={["col-span-4 self-center"]}>
+      <div class="flex flex-col items-center justify-center">
+        <h3 class="text-5xl text-center mb-2 underline decoration-2 decoration-redLight">Neat Buttons</h3>
+        <BadgeDisplay collection={"standardBadges"} />
+      </div>
+    </HomeContentBox>
+    <div class="flex justify-center col-span-4 aspect-square self-center">
+      <Image src={pixelArkaArgent} alt="Arka Argent" class="drop-shadow-[-15px_-5px_0px_rgba(0,0,0,0.5)] animate-idleBreathe" />
+    </div>
+    <HomeContentBox columns={["col-span-4 self-center"]}>
+      <div class="flex flex-col items-center justify-center">
+        <h3 class="text-5xl text-center mb-2 underline decoration-2 decoration-redLight">Cool Comrades</h3>
+        <BadgeDisplay collection={"critterBadges"} />
+      </div>
+    </HomeContentBox>
+  </HomeSection> -->
 </Layout>
+
+<!-- <Image src={pushupArgent} alt="pushup Argent" /> -->
+
+<style>
+  h2,
+  h3 {
+    font-family: "Prospekt Regular", sans-serif;
+  }
+  .Qt {
+    font-family: "MarsAttack", script;
+  }
+</style>

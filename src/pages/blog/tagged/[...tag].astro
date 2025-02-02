@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import PostList from "../../../components/PostList.astro";
+
+export async function getStaticPaths() {
+  const tagEntries = await getCollection("tags");
+
+  return tagEntries.map((entry) => ({
+    params: { tag: entry.id },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+
+const allTaggedPosts = (await getCollection("posts", ({ data }) => data.tags?.map((tag) => tag.id).includes(entry.id))).sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+);
+---
+
+<PostList tag={entry.id} posts={allTaggedPosts} />

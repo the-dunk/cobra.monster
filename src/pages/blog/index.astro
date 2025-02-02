@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import PostList from "../../components/PostList.astro";
+const blogEntries = await getCollection("posts");
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+
+const allPosts = blogEntries.sort((a, b) => {
+  return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf();
+});
+---
+
+<Layout>
+  <SiteHeader />
+  <PostList posts={allPosts} />
+</Layout>

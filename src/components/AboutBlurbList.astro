@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  blurbs: Array<CollectionEntry<"aboutBlurbs">>;
+}
+const { blurbs } = Astro.props;
+---
+
+<ul class="grid grid-cols-2 gap-5">
+  {
+    blurbs.map((blurb) => {
+      return (
+        <li class="mb-2 p-5 bg-boxPrimary border-yellow border-2 rounded-md text-white flex">
+          <div>
+            <span class="text-4xl border-r-2 border-white pr-2">{blurb.data.emoji}</span>
+          </div>
+          <div class="ml-2">
+            <h2 class="mb-2">
+              <a
+                class="text-3xl hover:underline decoration-amber-400 decoration-2 cursor-pointer text-amber-300 visited:text-amber-600 visited:decoration-amber-600 font-medium"
+                href={`/about/${blurb.slug}`}
+              >
+                {blurb.data.title}
+              </a>
+            </h2>
+            <p>{blurb.data.subtitle}</p>
+          </div>
+        </li>
+      );
+    })
+  }
+</ul>

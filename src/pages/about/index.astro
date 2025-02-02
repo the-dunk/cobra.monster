@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import HomeSection from "../../components/HomeSection.astro";
+import TopNav from "../../components/TopNav.astro";
+import Layout from "../../layouts/Layout.astro";
+import vaporwaveArgent from "../../assets/argent/vaporwaveArgent.png";
+import { getCollection } from "astro:content";
+import AboutBlurbList from "../../components/AboutBlurbList.astro";
+import PageHeader from "../../components/PageHeader.astro";
+
+const blurbEntries = await getCollection("aboutBlurbs");
+const blurbs = blurbEntries.sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<Layout>
+  <TopNav />
+  <PageHeader leftRight="left">About Regal</PageHeader>
+  <HomeSection darkBg={false} border={[]}>
+    <div id="outerAboutBox" class="grid grid-cols-4 col-start-2 col-span-10 gap-5">
+      <Image src={vaporwaveArgent} alt="Vaporwave Argent" loading="eager" class="rounded-md" />
+      <div class="col-span-3">
+        <!-- <h1 class="text-8xl mb-5 underline decoration-4 decoration-redLight text-white">About Regal</h1> -->
+        <AboutBlurbList blurbs={blurbs} />
+        <!-- <ul class="grid grid-cols-2 gap-5">
+          {
+            blurbs.data.map(() => (
+              <li>
+                <h2>{blurb.data.title}</h2>
+              </li>
+            ))
+          }
+          <li class="mb-2 *:text-2xl p-5 bg-boxPrimary border-yellow border-2 rounded-md text-white">
+            <h2>Coffee Snob (affectionate)</h2><p class="text-slate-200 text-lg">Test Text</p>
+          </li>
+          <li class="mb-2 *:text-2xl p-5 bg-boxPrimary border-yellow border-2 rounded-md text-white">
+            <h2>Weightlifter</h2><p class="text-slate-200 text-lg">Test Text</p>
+          </li>
+          <li class="mb-2 *:text-2xl p-5 bg-boxPrimary border-yellow border-2 rounded-md text-white">
+            <h2>Communist</h2><p class="text-slate-200 text-lg">Test Text</p>
+          </li>
+          <li class="mb-2 *:text-2xl p-5 bg-boxPrimary border-yellow border-2 rounded-md text-white">
+            <h2>Mechanical Keyboards</h2><p class="text-slate-200 text-lg">Test Text</p>
+          </li>
+        </ul> -->
+      </div>
+    </div>
+    <!-- <HomeContentBox columns={["col-start-2", "col-span-10"]}>
+      <div class="grid-cols-2 grid grid-rows-4 gap-5">
+        <div id="fursonaBox" class="col-start-1 row-start-1 row-span-2"></div>
+        <div class="p-2 rounded-xl border-2 border-white">This is an example of a blurb box:tm:</div>
+        <div class="p-2 rounded-xl border-2 border-white">This is an example of a blurb box:tm:</div>
+        <div class="p-2 rounded-xl border-2 border-white">This is an example of a blurb box:tm:</div>
+        <div class="p-2 rounded-xl border-2 border-white">This is an example of a blurb box:tm:</div>
+        <div class="p-2 rounded-xl border-2 border-white">This is an example of a blurb box:tm:</div>
+      </div>
+    </HomeContentBox> -->
+  </HomeSection>
+</Layout>
+
+<style>
+  h1 {
+    font-family: "Prospekt Regular", sans-serif;
+  }
+</style>

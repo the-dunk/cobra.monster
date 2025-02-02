@@ -1,0 +1,13 @@
+---
+interface Props {
+  to: string;
+  button: boolean;
+}
+
+const { to, button } = Astro.props;
+const linkStyling = button
+  ? ["border-yellow", "hover:bg-yellow", "rounded-md", "border-2", "hover:text-black "]
+  : ["underline", "decoration-yellow", "decoration-2", "hover:text-blue-500"];
+---
+
+<a class:list={["font-medium text-lg p-2 flex flex-col w-max cursor-pointer ", linkStyling]} href={to}><slot /></a>

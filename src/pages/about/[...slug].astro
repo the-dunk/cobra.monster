@@ -1,0 +1,30 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import TopNav from "../../components/TopNav.astro";
+
+const { blurb } = Astro.props;
+
+export const getStaticPaths = (async () => {
+  const blurbs = await getCollection("aboutBlurbs");
+  return blurbs.map((blurb) => ({
+    params: { slug: blurb.slug },
+    props: { blurb },
+  }));
+}) satisfies GetStaticPaths;
+
+const { Content } = await blurb.render();
+/**
+ * Content = everything in the MDX file outside of the ---
+ *
+ * the blurb is everything else in the --- of the MDX file
+ */
+---
+
+<Layout>
+  <TopNav />
+  <div class="prose">
+    <Content />
+  </div>
+</Layout>

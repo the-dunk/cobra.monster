@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import ChiStar from "./ChiStar.astro";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const {
+  post: {
+    slug,
+    data: { title, subtitle, image, date, description },
+  },
+} = Astro.props;
+/**
+ * UI Element for displaying a preview of a blog post
+ */
+---
+
+<div class="flex flex-col">
+  <div class="flex">
+    <div id="dateSquareContainer" class="flex flex-col text-center px-2 text-slate-200 mr-2 h-max rounded-sm text-sm font-bold mt-1">
+      <span>{date.toLocaleDateString("en-US", { day: "numeric" })}</span>
+      <span>{date.toLocaleDateString("en-US", { month: "short" })}</span>
+    </div>
+    <div id="blogSummaryContainer" class="border-l-2 border-slate-200">
+      <div class="ml-4">
+        <a class="w-max cursor-pointer" href=`/blog/${slug}`>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl underline decoration-yellow mb-2 font-medium">{title}</h2></a
+        >
+        <h3 class="text-xl text-slate-200">{subtitle}</h3>
+        <!-- <time class="text-gray-400" datetime={date.toISOString()}>
+        {date.toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}
+      </time> -->
+
+        <div class="text-slate-200">
+          {description && <p>{description.substring(0, 200)}</p>}
+        </div>
+      </div>
+    </div>
+  </div>
+  {
+    // <div class="flex justify-around w-full text-xl mt-5">
+    //   <ChiStar red={true} />
+    //   <ChiStar red={true} />
+    //   <ChiStar red={true} />
+    //   <ChiStar red={true} />
+    // </div>
+  }
+</div>

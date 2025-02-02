@@ -1,0 +1,43 @@
+---
+import taliArgent from "../assets/argent/squareArgent.png";
+import taliArgentTransparent from "../assets/argent/argentSquare_Transparent.png";
+import { Image } from "astro:assets";
+
+interface Props {
+  homePage?: boolean;
+}
+
+const { homePage = false } = Astro.props;
+
+const argentProps = "w-[27%] min-w-52 max-w-64 md:w-[23%] xl:w-[20%] absolute top-[-10px] left-[5%] xl:left-[15%] animate-wiggle motion-reduce:transition-none";
+
+const chromeAnim = `bg-linear-45 from-yellow-600 via-yellow-200 via-50% to-yellow-600 bg-size-100 ${homePage ? "animate-chrome" : ""} bg-[length:200%_100%] motion-reduce:transition-none`;
+const starMd = '<span class="xl:text-9xl lg:text-8xl md:text-7xl sm:text-6xl text-5xl">★</span>';
+const starXs = '<span class="text-5xl">★</span>';
+---
+
+<div id="top" class=`grid grid-cols-1 justify-items-center h-full gap-5  ${homePage ? "mx-5" : "mb-10 "}`>
+  <div class="place-items-center md:mx-16 mt-[100px] z-5">
+    {homePage && <Image loading="eager" src={taliArgentTransparent} alt="Square Argent" class:list={["z-5", argentProps]} />}
+    <div class=`rounded-xl z-2 relative flex shadow-xl shadow-yellow-400/30 ${chromeAnim}`>
+      <div class="rounded-xl max-sm:rounded-md bg-boxPrimary z-1 text-center m-2 w-full xl:text-8xl lg:text-7xl sm:text-5xl text-4xl">
+        <!-- Xtra Smol Header -->
+        <div class=`xs:hidden bg-clip-text ${chromeAnim} text-transparent flex place-content-evenly -mt-2`>
+          <h1 class="self-center ml-2 text-5xl">☭</h1>
+          <h1 class="mt-2"><span>COBRA<Fragment set:html={starXs} /> <Fragment set:html={starXs} />MONSTER</span></h1>
+          <h1 class="self-center mr-2 text-5xl">☭</h1>
+        </div>
+        <!-- Lorge Header -->
+        <div class=`hidden bg-clip-text ${chromeAnim} text-transparent xs:flex place-content-evenly`>
+          <h1 class="xl:-mt-6 lg:-mt-4 md:-mt-4 -mt-2"><span>☭COBRA<Fragment set:html={starMd} />MONSTER☭</span></h1>
+        </div>
+      </div>
+    </div>
+    {homePage && <Image loading="eager" src={taliArgent} alt="Square Argent" class:list={["z-0", argentProps]} />}
+  </div>
+</div>
+<style>
+  h1 {
+    font-family: "Gore Regular", sans-serif;
+  }
+</style>

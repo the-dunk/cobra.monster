@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+import LinkButton from "./LinkButton.astro";
+import pushupArgent from "../assets/argent/pushupArgent(transparent)_Elek.gif";
+import argentAss from "../assets/argent/argentAss.png";
+import BadgeDisplay from "./BadgeDisplay.astro";
+const navLinkStyle = ["underline", "decoration-yellow", "decoration-2", "hover:text-amber-500 text-lg"];
+
+interface Props {
+  homePage?: boolean;
+}
+
+const { homePage } = Astro.props;
+---
+
+<!-- NOTE: Height of footer must be offset by padding-bottom in Layout -->
+<footer class:list={["bg-redDark border-redLight w-full text-stone-200 absolute  border-t-8", `${homePage ? "min-h-[225px]" : "min-h-[75px]"}`]}>
+  {
+    homePage && (
+      <div class="grid grid-cols-2 gap-2 m-5 pb-5 border-b-2 border-dashed border-yellow">
+        <div class="flex flex-col justify-center items-center gap-2">
+          <a href="/" class:list={navLinkStyle}>
+            <h2 class="text-2xl font-bold">Furry Fitness Webring</h2>
+          </a>
+          <ul class="flex justify-center gap-10">
+            <li>
+              <a href="/" class:list={navLinkStyle}>
+                ←︎ Previous
+              </a>
+            </li>
+            <li>
+              <a href="/" class:list={navLinkStyle}>
+                Next →︎
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <BadgeDisplay collection="standardBadges" />
+        </div>
+      </div>
+    )
+  }
+  <div class="grid grid-cols-5 p-5">
+    <div>
+      <LinkButton to="/#top" button={false}>⇧ Back To Top</LinkButton>
+    </div>
+    <div class="col-span-3">
+      <nav class="flex">
+        <div id="linkBox" class="flex justify-between w-full">
+          <div class="flex flex-col">
+            <h2 class="text-2xl font-bold">Socials</h2>
+            <ul>
+              <li>
+                <a class:list={navLinkStyle} href="https://bsky.app/profile/coffee.cobra.monster"> Bluesky </a>
+              </li>
+              <li>
+                <a class:list={navLinkStyle} href="https://yiff.life/deck/@regal"> Fediverse </a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col">
+            <h2 class="text-2xl font-bold">Stuff</h2>
+            <ul>
+              <li>
+                <a href="/about" class:list={navLinkStyle}> About Me </a>
+              </li>
+              <li>
+                <a href="/links" class:list={navLinkStyle}> Links </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold">Furry Fitness Webring</h2>
+            <ul>
+              <li>
+                <a href="/" class:list={navLinkStyle}> ←︎ Previous </a>
+              </li>
+              <li>
+                <a href="/" class:list={navLinkStyle}> →︎ Next </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="flex justify-self-center max-w-[100px] hover:animate-assJiggle">
+      <Image class="drop-shadow-lg" src={argentAss} alt="woohooehehee" />
+    </div>
+  </div>
+</footer>

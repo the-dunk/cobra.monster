@@ -1,0 +1,14 @@
+---
+interface Props {
+  url?: string;
+}
+
+const { url } = Astro.props;
+---
+
+<span class="text-nowrap"
+  ><a
+    class="hover:underline decoration-amber-400 decoration-2 cursor-pointer text-amber-300 visited:text-amber-600 visited:decoration-amber-600 font-extralight"
+    href={url}><slot /></a
+  ></span
+>

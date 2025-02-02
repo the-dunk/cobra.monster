@@ -1,0 +1,162 @@
+@import "tailwindcss";
+@import "./typography.css";
+@plugin "@tailwindcss/typography";
+
+:root {
+  .chistar {
+    font-family: "BigShouldersText-VariableFont_Wght", sans-serif;
+    font-variant-ligatures: discretionary-ligatures;
+  }
+}
+
+/* Tailwind Overload */
+@theme {
+  /* Colors */
+  --color-boxPrimary: #172554;
+  --color-redLight: #dc2626;
+  --color-redDark: #7c0404;
+  --color-redDarkest: #450a0a;
+  --color-yellow: #eab308;
+  --color-text-main: #cbd5e1;
+  /* Animations */
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+  --animate-chrome: shine 2s ease-in-out infinite;
+  --animate-idleBreathe: breathe 2s ease infinite;
+  --animate-assJiggle: assWiggle 0.3s ease-in-out infinite;
+  /* Breakpoints */
+  --breakpoint-xs: 545px;
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(3deg);
+    }
+    50% {
+      transform: rotate(-3deg);
+    }
+  }
+  @keyframes assWiggle {
+    0%,
+    100% {
+      transform: rotate(7deg);
+    }
+    50% {
+      transform: rotate(-7deg);
+    }
+  }
+  @keyframes shine {
+    0% {
+      background-position: 200% 0%;
+    }
+    100% {
+      background-position: -200% 0%;
+    }
+  }
+  @keyframes breathe {
+    0%,
+    100% {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(1.025) translateY(-5px);
+    }
+  }
+}
+
+@font-face {
+  font-family: "Gore Regular";
+  src: url("/fonts/Gore Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Prospekt Regular";
+  src: url("/fonts/Prospekt Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MarsAttack";
+  src: url("/fonts/MarsAttack.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BigShouldersText-VariableFont_Wght";
+  src: url("/fonts/BigShoulders.ttf") format("truetype supports variations"), url("/fonts/BigShoulders.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto-VariableFont_wdth,wght";
+  src: url("/fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype supports variations"),
+    url("/fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BigShouldersText-VariableFont_Wght";
+  src: url("/fonts/BigShoulders.ttf") format("truetype supports variations"), url("/fonts/BigShoulders.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Snake Chan";
+  src: url("/fonts/Snake Chan.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Tech Headlines";
+  src: url("/fonts/Tech Headlines.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Digital Dot Roadsign";
+  src: url("/fonts/Digital Dot Roadsign.otf") format("opentype");
+}
+
+html,
+body {
+  margin: 0;
+}
+
+html {
+  /* font-family: "Roboto-VariableFont_wdth,wght", sans-serif;
+  font-weight: 300;
+  font-optical-sizing: auto;
+  font-stretch: extra-expanded; */
+  background-color: #450a0a;
+  scrollbar-color: #eab308 #000;
+}
+.stripedBg {
+  background: repeating-linear-gradient(45deg, #450a0a, #450a0a 70px, #340606 70px, #340606 140px);
+}
+
+.blogBg {
+  background-color: #340606;
+}
+@media screen and (min-width: 768px) {
+  .gradientBg {
+    background-image: repeating-conic-gradient(at 100% 100%, #b50000 0deg 5deg, #7c0404 5deg 10deg);
+    position: relative;
+    background-size: cover;
+    -webkit-background-origin: border;
+    z-index: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .gradientBg {
+    background-image: repeating-conic-gradient(at 100% 50%, #b50000 0deg 5deg, #7c0404 5deg 10deg);
+    position: relative;
+    background-size: cover;
+    -webkit-background-origin: border;
+    z-index: 0;
+  }
+}

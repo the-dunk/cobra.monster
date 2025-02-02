@@ -1,22 +1,41 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  homePage?: boolean;
+  blog?: boolean;
+}
+
+const { homePage, blog } = Astro.props;
+
+const bgSettings = () => {
+  if (homePage) {
+    return "gradientBg pb-[275px]";
+  }
+  if (blog) {
+    return "blogBg pb-[152px]";
+  }
+  return "stripedBg pb-[152px]";
+};
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>COBRA.MONSTER</title>
+    <ClientRouter />
+  </head>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+  <body>
+    <div class:list={["justify-center min-h-[100vh]", bgSettings()]}>
+      <slot />
+      <Footer homePage={homePage} />
+    </div>
+  </body>
+</html>
