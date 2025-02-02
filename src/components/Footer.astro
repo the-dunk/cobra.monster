@@ -1,10 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import LinkButton from "./LinkButton.astro";
-import pushupArgent from "../assets/argent/pushupArgent(transparent)_Elek.gif";
 import argentAss from "../assets/argent/argentAss.png";
 import BadgeDisplay from "./BadgeDisplay.astro";
-const navLinkStyle = ["underline", "decoration-yellow", "decoration-2", "hover:text-amber-500 text-lg"];
+import SocialsList from "./SocialsList.astro";
 
 interface Props {
   homePage?: boolean;
@@ -19,19 +18,19 @@ const { homePage } = Astro.props;
     homePage && (
       <div class="grid grid-cols-2 gap-2 m-5 pb-5 border-b-2 border-dashed border-yellow">
         <div class="flex flex-col justify-center items-center gap-2">
-          <a href="/" class:list={navLinkStyle}>
+          <LinkButton button={false} to="/">
             <h2 class="text-2xl font-bold">Furry Fitness Webring</h2>
-          </a>
+          </LinkButton>
           <ul class="flex justify-center gap-10">
             <li>
-              <a href="/" class:list={navLinkStyle}>
+              <LinkButton button={false} to="/">
                 ←︎ Previous
-              </a>
+              </LinkButton>
             </li>
             <li>
-              <a href="/" class:list={navLinkStyle}>
+              <LinkButton button={false} to="/">
                 Next →︎
-              </a>
+              </LinkButton>
             </li>
           </ul>
         </div>
@@ -50,23 +49,16 @@ const { homePage } = Astro.props;
         <div id="linkBox" class="flex justify-between w-full">
           <div class="flex flex-col">
             <h2 class="text-2xl font-bold">Socials</h2>
-            <ul>
-              <li>
-                <a class:list={navLinkStyle} href="https://bsky.app/profile/coffee.cobra.monster"> Bluesky </a>
-              </li>
-              <li>
-                <a class:list={navLinkStyle} href="https://yiff.life/deck/@regal"> Fediverse </a>
-              </li>
-            </ul>
+            <SocialsList logos={false} />
           </div>
           <div class="flex flex-col">
             <h2 class="text-2xl font-bold">Stuff</h2>
             <ul>
               <li>
-                <a href="/about" class:list={navLinkStyle}> About Me </a>
+                <LinkButton button={false} to="/about"> About Me </LinkButton>
               </li>
               <li>
-                <a href="/links" class:list={navLinkStyle}> Links </a>
+                <LinkButton button={false} to="/links"> Links </LinkButton>
               </li>
             </ul>
           </div>
@@ -74,17 +66,17 @@ const { homePage } = Astro.props;
             <h2 class="text-2xl font-bold">Furry Fitness Webring</h2>
             <ul>
               <li>
-                <a href="/" class:list={navLinkStyle}> ←︎ Previous </a>
+                <LinkButton button={false} to="/"> ←︎ Previous </LinkButton>
               </li>
               <li>
-                <a href="/" class:list={navLinkStyle}> →︎ Next </a>
+                <LinkButton button={false} to="/"> →︎ Next </LinkButton>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
-    <div class="flex justify-self-center max-w-[100px] hover:animate-assJiggle">
+    <div class="flex justify-self-center aspect-square max-w-[100px] hover:animate-assJiggle">
       <Image class="drop-shadow-lg" src={argentAss} alt="woohooehehee" />
     </div>
   </div>

@@ -1,0 +1,42 @@
+---
+// Images
+import { Image } from "astro:assets";
+import bluesky from "../assets/logos/bluesky.svg";
+import furaffinity from "../assets/logos/furaffinity.svg";
+import mastodon from "../assets/logos/mastodon.svg";
+import LinkButton from "./LinkButton.astro";
+
+interface Props {
+  logos?: boolean;
+}
+
+type Socials = {
+  id: string;
+  details: string;
+  logo: ImageMetadata;
+  url: string;
+};
+const socialsList: Socials[] = [
+  {
+    id: "bluesky",
+    details: "@coffee.cobra.monster",
+    logo: bluesky,
+    url: "https://bsky.app/profile/coffee.cobra.monster",
+  },
+  { id: "furaffinity", details: "user/RegalRegex", logo: furaffinity, url: "https://www.furaffinity.net/user/regalregex" },
+  { id: "mastodon", details: "@Regal@Yiff.Life", logo: mastodon, url: "https://yiff.life/@regal" },
+];
+
+const { logos = true } = Astro.props;
+---
+
+{
+  socialsList.map((social) => (
+    <LinkButton to={social.url} button={false}>
+      <div class="flex items-center">
+        {logos && <Image class=" p-1 max-w-10 aspect-square" src={social.logo} alt={social.id} />}
+        <div class="capitalize">{social.id}</div>
+      </div>
+    </LinkButton>
+  ))
+}

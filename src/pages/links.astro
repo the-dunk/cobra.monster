@@ -8,6 +8,7 @@ import { Image } from "astro:assets";
 import pixelArkaArgent from "../assets/argent/pixelArgent_Arka.png";
 import PageHeader from "../components/PageHeader.astro";
 import TextDeco from "../components/TextDeco.astro";
+import SocialsList from "../components/SocialsList.astro";
 
 const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 before:content-['CHISTAR']";
 ---
@@ -18,21 +19,12 @@ const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 befor
   <PageHeader leftRight="left">Tasty Links Doot </PageHeader>
   <HomeSection darkBg={false}>
     <HomeContentBox columns={["col-start-2", "col-span-10"]}>
-      <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Socials</h2>
-      <div class="flex divide-x-2 divide-stone-200">
-        <div class="flex gap-2 justify-between flex-wrap px-2">
-          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
-          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
-          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
-          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
-          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
-        </div>
-        <div class="flex gap-2 justify-between flex-wrap px-2">
-          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
-          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
-          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
-          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
-          <div class="rounded-lg border-2 border-slate-200 p-4 bg-black/20 flex place-items-center">Mastodon</div>
+      <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Regal Elsewhere</h2>
+      <div class="flex">
+        <div class="flex flex-col items-center">
+          <div class="flex gap-2 justify-between flex-wrap px-2">
+            <SocialsList />
+          </div>
         </div>
       </div>
     </HomeContentBox>
@@ -91,5 +83,8 @@ const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 befor
     font-optical-sizing: auto;
     font-stretch: extra-expanded;
     font-variant-ligatures: normal;
+  }
+  .svgColor {
+    /* filter: invert(58%) sepia(86%) saturate(503%) hue-rotate(8deg) brightness(104%) contrast(94%); */
   }
 </style>

@@ -25,6 +25,8 @@
   --animate-assJiggle: assWiggle 0.3s ease-in-out infinite;
   /* Breakpoints */
   --breakpoint-xs: 545px;
+  /* Fonts */
+  --font-prospekt: Prospekt Regular;
 
   @keyframes wiggle {
     0%,
