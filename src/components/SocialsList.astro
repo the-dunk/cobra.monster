@@ -2,7 +2,7 @@
 // Images
 import { Image } from "astro:assets";
 import bluesky from "../assets/logos/bluesky.svg";
-import furaffinity from "../assets/logos/furaffinity.svg";
+import furaffinity from "../assets/logos/furaffinity.png";
 import mastodon from "../assets/logos/mastodon.svg";
 import LinkButton from "./LinkButton.astro";
 
@@ -34,7 +34,7 @@ const { logos = true } = Astro.props;
   socialsList.map((social) => (
     <LinkButton to={social.url} button={false}>
       <div class="flex items-center">
-        {logos && <Image class=" p-1 max-w-10 aspect-square" src={social.logo} alt={social.id} />}
+        {logos && <Image class=" p-1 max-w-10 " src={social.logo} alt={social.id} />}
         <div class="capitalize">{social.id}</div>
       </div>
     </LinkButton>

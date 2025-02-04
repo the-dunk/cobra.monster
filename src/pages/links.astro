@@ -18,13 +18,15 @@ const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 befor
   <TopNav />
   <PageHeader leftRight="left">Tasty Links Doot </PageHeader>
   <HomeSection darkBg={false}>
-    <HomeContentBox columns={["col-start-2", "col-span-10"]}>
-      <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Regal Elsewhere</h2>
-      <div class="flex">
-        <div class="flex flex-col items-center">
-          <div class="flex gap-2 justify-between flex-wrap px-2">
-            <SocialsList />
-          </div>
+    <HomeContentBox columns={["col-start-4", "col-span-8"]}>
+      <div class="flex items-center justify-between">
+        <h3 class="text-4xl">Socials</h3>
+        <div class="border-l-2 border-slate-200 ml-2 pl-2">
+          <SocialsList />
+        </div>
+        <h3 class="text-4xl">Socials</h3>
+        <div class="border-l-2 border-slate-200 ml-2 pl-2">
+          <SocialsList />
         </div>
       </div>
     </HomeContentBox>
