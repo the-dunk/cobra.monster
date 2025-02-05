@@ -5,34 +5,49 @@ import HomeSection from "../components/HomeSection.astro";
 import HomeContentBox from "../components/HomeContentBox.astro";
 import BadgeDisplay from "../components/BadgeDisplay.astro";
 import { Image } from "astro:assets";
-import pixelArkaArgent from "../assets/argent/pixelArgent_Arka.png";
+import ArgentRelax from "../assets/argent/ArgentRest_Luzzy.jpg";
 import PageHeader from "../components/PageHeader.astro";
 import TextDeco from "../components/TextDeco.astro";
 import SocialsList from "../components/SocialsList.astro";
+import ChiStar from "../components/ChiStar.astro";
 
 const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 before:content-['CHISTAR']";
 ---
 
-<!-- TODO: Statue Argent in the middle? -->
 <Layout>
   <TopNav />
-  <PageHeader leftRight="left">Tasty Links Doot </PageHeader>
-  <HomeSection darkBg={false}>
-    <HomeContentBox columns={["col-start-4", "col-span-8"]}>
-      <div class="flex items-center justify-between">
-        <h3 class="text-4xl">Socials</h3>
-        <div class="border-l-2 border-slate-200 ml-2 pl-2">
-          <SocialsList />
+  <PageHeader leftRight="left">Tasty Links</PageHeader>
+  <HomeSection darkBg={false} border={[]}>
+    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 col-start-2 col-span-10"]}>
+      <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">More Regal</h2>
+      <div class="py-8 flex flex-col sm:grid grid-cols-1 lg:grid-cols-2 gap-5 text-slate-200">
+        <div class="xs:flex-row flex-col flex items-center gap-2">
+          <h3 class="text-4xl">Socials</h3>
+          <div class="xs:border-l-2 border-t-2 lg:border-t-0 xs:pt-0 pt-2 border-yellow pl-1">
+            <SocialsList siteGroup="socials" />
+          </div>
         </div>
-        <h3 class="text-4xl">Socials</h3>
-        <div class="border-l-2 border-slate-200 ml-2 pl-2">
-          <SocialsList />
+        <div class="xs:flex-row flex-col flex gap-2 xs:justify-self-end items-center">
+          <div class="xs:border-r-2 border-t-2 xs:border-t-0 lg:border-t-0 border-yellow xs:pr-2 xs:pt-0 pt-2 xs:order-1 order-2">
+            <SocialsList siteGroup="galleries" />
+          </div>
+          <h3 class="text-4xl text-center xs:order-2 order-1">Art Galleries</h3>
+        </div>
+        <div class="xs:flex-row flex-col flex items-center gap-2 lg:col-span-2 lg:justify-self-center">
+          <h3 class="text-4xl">Contact</h3>
+          <div class="xs:border-l-2 xs:border-t-0 xs:border-b-2 border-t-2 lg:border-b-0 xs:pt-0 pt-2 border-yellow pl-1">
+            <SocialsList siteGroup="contact" />
+          </div>
         </div>
       </div>
+      <div class="flex justify-center">
+        <Image class="lg:max-w-[70%] rounded-md" src={ArgentRelax} alt="Argent Chill" />
+      </div>
     </HomeContentBox>
-  </HomeSection>
-  <HomeSection darkBg={false} border={[]}>
-    <HomeContentBox columns={["col-start-2", "col-span-7"]}>
+    <div class="col-start-2 col-span-10 flex justify-around text-6xl py-8">
+      {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
+    </div>
+    <HomeContentBox columns={["lg:col-start-2 col-start-2 lg:col-span-4 col-span-10"]}>
       <div class="flex flex-col text-slate-200">
         <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Cool Folks</h2>
         <p>Internet creatures with very cool personal sites! Eternally grateful to them and others for inspiration in making my own UwU</p>
@@ -41,15 +56,35 @@ const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 befor
         </div>
         <div class="border-t-2 border-slate-200 pt-3">
           <p>
-            If you've linked me on your site, feel free to shoot me an email at <a class="text-yellow hover:cursor-pointer" href="mailto:regal@cobra.monster"
-              >regal@cobra.monster</a
-            > with your button and site so I can link back!
+            If you' ve linked me on your site, feel free to shoot me an email at
+            <a class="text-yellow hover:cursor-pointer" href="mailto:regal@cobra.monster">regal@cobra.monster</a> with your button and site so I can link back!
           </p>
         </div>
       </div>
     </HomeContentBox>
+    <div class="col-start-2 col-span-10 flex lg:hidden justify-around text-6xl py-8">
+      {[...Array(5)].map(() => <ChiStar color="text-yellow" />)}
+    </div>
+    <HomeContentBox columns={["lg:col-start-8 lg:col-span-4 col-start-2 col-span-10"]}>
+      <div class="flex flex-col text-slate-200 items-center">
+        <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Neat Buttons</h2>
+        <div class="content-center mb-5">
+          <BadgeDisplay collection="standardBadges" />
+        </div>
+        <div class="border-t-2 border-slate-200 pt-3">
+          <p>If I find a neat button I just plop it here. Some of them are links!</p>
+          <p>A few button repositories I enjoyed looking through:</p>
+          <ul class="flex justify-around">
+            <li class={listDecoStyle}><TextDeco url="https://hellnet.work/8831/"> <span class="listText">HellNet</span></TextDeco></li>
+            <li class={listDecoStyle}>
+              <TextDeco url="https://yesterweb.org/graphics/buttons"><span class="listText">Yesterweb</span></TextDeco>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </HomeContentBox>
   </HomeSection>
-  <HomeSection darkBg={false} border={[]}>
+  <!-- <HomeSection darkBg={false} border={[]}>
     <div class="aspect-square col-span-5 col-start-2">
       <Image src={pixelArkaArgent} alt="Arka Argent" class="drop-shadow-[-15px_-5px_0px_rgba(0,0,0,0.5)] animate-idleBreathe" />
     </div>
@@ -71,22 +106,23 @@ const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 befor
         </div>
       </div>
     </HomeContentBox>
-  </HomeSection>
-</Layout>
+  </HomeSection> -->
 
-<style>
-  h1,
-  h2 {
-    font-family: "Prospekt Regular", sans-serif;
-  }
-  .listText {
-    font-family: "Roboto-VariableFont_wdth,wght", sans-serif;
-    font-weight: 300;
-    font-optical-sizing: auto;
-    font-stretch: extra-expanded;
-    font-variant-ligatures: normal;
-  }
-  .svgColor {
-    /* filter: invert(58%) sepia(86%) saturate(503%) hue-rotate(8deg) brightness(104%) contrast(94%); */
-  }
-</style>
+  <style>
+    h1,
+    h2 {
+      font-family: "Prospekt Regular", sans-serif;
+      color: white;
+    }
+    .listText {
+      font-family: "Roboto-VariableFont_wdth,wght", sans-serif;
+      font-weight: 300;
+      font-optical-sizing: auto;
+      font-stretch: extra-expanded;
+      font-variant-ligatures: normal;
+    }
+    .svgColor {
+      /* filter: invert(58%) sepia(86%) saturate(503%) hue-rotate(8deg) brightness(104%) contrast(94%); */
+    }
+  </style>
+</Layout>

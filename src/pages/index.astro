@@ -17,6 +17,7 @@ import pixelArkaArgent from "../assets/argent/pixelArgent_Arka.png";
 import giornoArgent from "../assets/argent/giornoArgent.png";
 import TextDeco from "../components/TextDeco.astro";
 import coffeePotArgent from "../assets/argent/coffeePotArgent.png";
+import grommitArgent from "../assets/argent/GrommitMugArgent.jpg";
 
 const allPosts = blogPosts.sort((a, b) => {
   return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf();
@@ -33,20 +34,23 @@ const allPosts = blogPosts.sort((a, b) => {
   </div>
   <Hero />
   <HomeSection darkBg={true}>
-    <HomeContentBox columns={["col-start-1", "col-span-12", "md:col-span-8", "z-10"]}>
+    <HomeContentBox columns={["col-start-1", "col-span-12", "lg:col-span-8", "z-10"]}>
       <PostList posts={allPosts} postLimit={3} />
       <div class="ml-16">
         <LinkButton to={"/blog"} button={true}> All Blog Posts →︎ </LinkButton>
       </div>
     </HomeContentBox>
+    <div class="lg:flex w-full pr-5 col-span-4 aspect-square self-center place-items-center hidden">
+      <Image class="rounded-lg" src={grommitArgent} alt="Grommit Argent" />
+    </div>
     <!-- <Image src={coffeePotArgent} alt="coffee pot Argent" class="scale-x-[-1] md:min-w-[500px] relative left-[-120%] z-0" /> -->
   </HomeSection>
   <HomeSection darkBg={false} border={["border-t-4"]}>
     <HomeContentBox columns={["md:col-start-2", "md:col-span-10", "col-start-1", "col-span-12"]}>
       <div>
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div class="text-2xl font-light">
-            <h2 class="text-7xl mb-10 underline decoration-redLight">About Regal</h2>
+            <h2 class="text-7xl mb-10 underline decoration-redLight text-center md:text-left">About Regal</h2>
             <p>
               I'm a Chicago-based frontend software dev who spends most of his free time not doing software dev. I love my city and interacting with it and my
               neighbors via hobbies and <span class="line-through">radical</span> progressive politics.
@@ -65,9 +69,9 @@ const allPosts = blogPosts.sort((a, b) => {
               >!
             </p>
             <br />
-            <p>
+            <div class="mb-4">
               <LinkButton to={"/about"} button={true}> More about Regal →︎ </LinkButton>
-            </p>
+            </div>
           </div>
           <div class="place-content-center">
             <Image src={giornoArgent} alt="Giorno Argent" class="rounded-lg" />

@@ -1,42 +1,105 @@
 ---
-// Images
 import { Image } from "astro:assets";
+// Images
 import bluesky from "../assets/logos/bluesky.svg";
 import furaffinity from "../assets/logos/furaffinity.png";
 import mastodon from "../assets/logos/mastodon.svg";
+import artfight from "../assets/logos/artfight.svg";
+import itaku from "../assets/logos/itaku.svg";
+import discord from "../assets/logos/discord.svg";
+import telegram from "../assets/logos/telegram.svg";
+import email from "../assets/logos/email.svg";
+
 import LinkButton from "./LinkButton.astro";
 
-interface Props {
-  logos?: boolean;
-}
-
-type Socials = {
+type Sites = {
   id: string;
   details: string;
   logo: ImageMetadata;
   url: string;
 };
-const socialsList: Socials[] = [
+const socialsList: Sites[] = [
   {
     id: "bluesky",
     details: "@coffee.cobra.monster",
     logo: bluesky,
     url: "https://bsky.app/profile/coffee.cobra.monster",
   },
-  { id: "furaffinity", details: "user/RegalRegex", logo: furaffinity, url: "https://www.furaffinity.net/user/regalregex" },
+  {
+    id: "bluesky NSFW",
+    details: "@regalnsfw.bsky.social",
+    logo: bluesky,
+    url: "https://bsky.app/profile/regalnsfw.bsky.social",
+  },
+
   { id: "mastodon", details: "@Regal@Yiff.Life", logo: mastodon, url: "https://yiff.life/@regal" },
 ];
 
-const { logos = true } = Astro.props;
+const galleriesList: Sites[] = [
+  {
+    id: "artfight",
+    details: "~RegalRegex",
+    logo: artfight,
+    url: "https://artfight.net/~RegalRegex",
+  },
+  { id: "furaffinity", details: "user/RegalRegex", logo: furaffinity, url: "https://www.furaffinity.net/user/regalregex" },
+  {
+    id: "itaku",
+    details: "@regal",
+    logo: itaku,
+    url: "https://itaku.ee/profile/regal",
+  },
+];
+
+const contactList: Sites[] = [
+  {
+    id: "discord",
+    details: "@.regal",
+    logo: discord,
+    url: "",
+  },
+  {
+    id: "telegram",
+    details: "@RegalRegex",
+    logo: telegram,
+    url: "",
+  },
+  {
+    id: "email",
+    details: "regal@cobra.monster",
+    logo: email,
+    url: "",
+  },
+];
+
+interface Props {
+  logos?: boolean;
+  siteGroup: "socials" | "galleries" | "contact";
+}
+
+const { logos = true, siteGroup } = Astro.props;
+const siteList = siteGroup === "socials" ? socialsList : galleriesList;
 ---
 
 {
-  socialsList.map((social) => (
-    <LinkButton to={social.url} button={false}>
-      <div class="flex items-center">
-        {logos && <Image class=" p-1 max-w-10 " src={social.logo} alt={social.id} />}
-        <div class="capitalize">{social.id}</div>
+  (siteGroup === "socials" || siteGroup === "galleries") &&
+    siteList.map((site) => (
+      <LinkButton to={site.url} button={false}>
+        <div class="flex items-center">
+          {logos && <Image class=" p-1 max-w-10 " src={site.logo} alt={site.id} />}
+          <div class="capitalize ml-1">{site.id}</div>
+        </div>
+      </LinkButton>
+    ))
+}
+{
+  siteGroup === "contact" &&
+    contactList.map((site) => (
+      <div>
+        <div class="flex items-center">
+          {logos && <Image class=" p-1 max-w-10 " src={site.logo} alt={site.id} />}
+          <div class="ml-1">{site.details}</div>
+        </div>
       </div>
-    </LinkButton>
-  ))
+    ))
 }
