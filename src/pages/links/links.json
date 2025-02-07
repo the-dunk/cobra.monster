@@ -1,0 +1,32 @@
+{
+  "artLinks": [
+    {
+      "url": "https://unionzine.neocities.org/",
+      "title": "Union Zine",
+      "description": "🔞 Very cool leather, latex, bondage, etc. zine by kinky friends of mine. Great display of varied art styles with a focus on \"community\" in kink."
+    },
+    {
+      "url": "https://koboldorion.itch.io/kobold-zine-1",
+      "title": "Kobold Zine",
+      "description": "kobold zine!! kobold zine!! kobold zine!!"
+    },
+    {
+      "url": "https://devilwaltz.com/",
+      "title": "Devil Waltz",
+      "description": "Insanely cool webcomic by a good friend about rival Tieflings in a cool, scrappy fantasy world. Features characters originally created for some DnD games I DM'd but have grown so far beyond that."
+    },
+    {
+      "url": "https://ia-ia-ia.world/",
+      "title": "IA IA IA",
+      "description": "Webcomic about a duck!! There are also knights and dragons and cool other things! Very unique, fun art style and sense of humor. Worth your time 100% :3"
+    }
+  ],
+  "miscLinks": [
+    {
+      "url": "https://www.beautifulaudio.biz/",
+      "title": "Beautiful Audio",
+      "description": "Passionate guy making amazing mods for Grado headphones. Had very positive email interactions with him, and his custom work have made my ${1} truly a pair of 'forever' headphones.",
+      "auxLink": "https://gradolabs.com/products/gw100x,Grado100Ws"
+    }
+  ]
+}

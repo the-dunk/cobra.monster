@@ -1,0 +1,49 @@
+---
+import LinkButton from "../../components/LinkButton.astro";
+import TextDeco from "../../components/TextDeco.astro";
+
+interface jsonLink {
+  url: string;
+  title: string;
+  description: string;
+  auxLink?: string;
+}
+
+interface Props {
+  linkJsonArray: jsonLink[];
+}
+const { linkJsonArray } = Astro.props;
+---
+
+{
+  linkJsonArray.map((link: jsonLink) => {
+    if (link.auxLink) {
+      let linkedDesc = link.description.split(/\${\d}/);
+      const auxLinks = link.auxLink.split("|");
+      return (
+        <li>
+          <LinkButton to={link.url}>{link.title}</LinkButton>
+          <span>
+            {" "}
+            -{" "}
+            {linkedDesc.map((descChunk, index) => {
+              if (auxLinks[index]) {
+                return (
+                  <>
+                    {descChunk} <TextDeco url={auxLinks[index].split(",")[0]}>{auxLinks[index].split(",")[1]}</TextDeco>
+                  </>
+                );
+              }
+              return <>{descChunk}</>;
+            })}
+          </span>
+        </li>
+      );
+    }
+    return (
+      <li>
+        <LinkButton to={link.url}>{link.title}</LinkButton> - {link.description}
+      </li>
+    );
+  })
+}
