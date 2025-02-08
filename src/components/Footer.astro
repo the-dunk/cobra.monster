@@ -4,6 +4,8 @@ import LinkButton from "./LinkButton.astro";
 import argentAss from "../assets/argent/argentAss.png";
 import BadgeDisplay from "./BadgeDisplay.astro";
 import SocialsList from "./SocialsList.astro";
+import TextDeco from "./TextDeco.astro";
+import CobraLogo from "./CobraLogo.astro";
 
 interface Props {
   homePage?: boolean;
@@ -16,7 +18,7 @@ const { homePage } = Astro.props;
 <footer class:list={["bg-redDark border-redLight w-full text-stone-200 absolute  border-t-8", `${homePage ? "min-h-[225px]" : "min-h-[75px]"}`]}>
   {
     homePage && (
-      <div class="grid grid-cols-2 gap-2 m-5 pb-5 border-b-2 border-dashed border-yellow">
+      <div class="flex flex-col xs:grid grid-cols-2 gap-2 m-5 pb-5 border-b-2 border-dashed border-yellow">
         <div class="flex flex-col justify-center items-center gap-2">
           <LinkButton button={false} to="/">
             <h2 class="text-2xl font-bold">Furry Fitness Webring</h2>
@@ -40,44 +42,48 @@ const { homePage } = Astro.props;
       </div>
     )
   }
-  <div class="grid grid-cols-5 p-5">
-    <div>
-      <LinkButton to="/#top" button={false}>⇧ Back To Top</LinkButton>
-    </div>
-    <div class="col-span-3">
-      <nav class="flex">
-        <div id="linkBox" class="flex justify-between w-full">
-          <div class="flex flex-col">
-            <h2 class="text-2xl font-bold">Socials</h2>
-            <SocialsList logos={false} siteGroup="socials" />
-          </div>
-          <div class="flex flex-col">
-            <h2 class="text-2xl font-bold">Stuff</h2>
-            <ul>
-              <li>
-                <LinkButton button={false} to="/about"> About Me </LinkButton>
-              </li>
-              <li>
-                <LinkButton button={false} to="/links"> Links </LinkButton>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h2 class="text-2xl font-bold">Furry Fitness Webring</h2>
-            <ul>
-              <li>
-                <LinkButton button={false} to="/"> ←︎ Previous </LinkButton>
-              </li>
-              <li>
-                <LinkButton button={false} to="/"> →︎ Next </LinkButton>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-    <div class="flex justify-self-center aspect-square max-w-[100px] hover:animate-assJiggle">
-      <Image class="drop-shadow-lg" src={argentAss} alt="woohooehehee" />
-    </div>
+  <div class="flex flex-col flex-wrap gap-4 p-5">
+    <nav id="linkBox" class="grid grid-cols-2 xs:flex col-span-3 gap-5 justify-between w-full border-b-2 border-slate-200 pb-5">
+      <div class="flex flex-col">
+        <h2 class="text-xl xs:text-2xl font-bold">Socials</h2>
+        <SocialsList logos={false} siteGroup="socials" />
+      </div>
+      <div class="flex flex-col">
+        <h2 class="text-xl xs:text-2xl font-bold">Stuff</h2>
+        <ul>
+          <li>
+            <LinkButton button={false} to="/about"> About </LinkButton>
+          </li>
+          <li>
+            <LinkButton button={false} to="/links"> Links </LinkButton>
+          </li>
+          <li>
+            <LinkButton button={false} to="/blog"> Blog </LinkButton>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-xl xs:text-2xl font-bold">Furry Fitness Webring</h2>
+        <ul>
+          <li>
+            <LinkButton button={false} to="/"> ←︎ Previous </LinkButton>
+          </li>
+          <li>
+            <LinkButton button={false} to="/"> →︎ Next </LinkButton>
+          </li>
+        </ul>
+      </div>
+      <div class="hidden xs:flex justify-self-center aspect-square max-w-[100px] hover:animate-assJiggle">
+        <Image class="drop-shadow-lg" src={argentAss} alt="woohooehehee" />
+      </div>
+    </nav>
+    <a href="/" class="w-full justify-center flex items-center brightness-90 py-16 xs:py-5">
+      <div class="w-18 -ml-10">
+        <CobraLogo />
+      </div>
+      <div class="text-white text-3xl flex items-center font-medium font-prospekt">
+        COBRA<span class="text-4xl mb-1">★</span>MONSTER
+      </div>
+    </a>
   </div>
 </footer>

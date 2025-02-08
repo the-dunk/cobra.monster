@@ -1,14 +1,19 @@
 ---
 interface Props {
   url?: string;
+  inline?: boolean;
 }
 
-const { url } = Astro.props;
+const { url, inline = true } = Astro.props;
+const inlineStyle = inline ? "" : "font-medium text-xl";
 ---
 
 <span class="text-nowrap"
   ><a
-    class="hover:underline decoration-amber-400 decoration-2 cursor-pointer text-amber-300 visited:text-amber-600 visited:decoration-amber-600 font-extralight"
+    class:list={[
+      "hover:underline decoration-amber-400 decoration-2 cursor-pointer text-amber-300 visited:text-amber-600 visited:decoration-amber-600 font-extralight",
+      inlineStyle,
+    ]}
     href={url}><slot /></a
   ></span
 >

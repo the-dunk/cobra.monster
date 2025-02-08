@@ -10,15 +10,14 @@ import CobraLogo from "./CobraLogo.astro";
 <header class="grid grid-cols-12 place-items-center mx-auto pb-10 border-b-4 border-dashed border-yellow-500">
   <div class="border-4 bg-boxPrimary border-yellow-500 col-start-2 col-span-10 rounded-lg relative max-w-[1000px]">
     <!-- Main Box -->
-    <div class="grid lg:grid-cols-2 md:grid-cols-1 gap-2">
-      <!-- Just Text (Column 1)-->
-      <div class="grid grid-rows-1 lg:flex flex-col">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-2 flex">
+      <div class="flex flex-col">
+        <!-- Header + Age etc. -->
         <div class="text-white flex flex-col ml-2 row-start-2 flex-1 justify-around items-center">
           <div class="flex-col flex mb-5 lg:mb-0">
             <h2 class="text-6xl tracking-wide text-center">
               Hi I'm <span class="text-8xl"><br />Regal!</span>
             </h2>
-
             <div class="text-md border-t-2 border-red-600 text-slate-200 text-center">
               <ChiStar color={"text-red-600"} /> He/Him <ChiStar color={"text-red-600"} /> Chicago, IL <ChiStar color={"text-red-600"} />
               <span class="hidden xs:inline-block">
@@ -27,19 +26,22 @@ import CobraLogo from "./CobraLogo.astro";
             </div>
           </div>
         </div>
-        <div class="mx-5 text-3xl text-slate-300 font-semibold">
-          <p class="text-center">Communist Cobra Coder in</p>
-          <div class="flex justify-between mt-2">
+        <!-- CommunistCoderChicago -->
+        <div class="mx-5 flex flex-col items-center text-3xl text-slate-300 font-semibold">
+          <p class="text-center">Communist Cobra</p>
+          <p>in</p>
+          <div class="flex justify-between items-center w-full">
             <ChiStar color={"text-red-600"} /><ChiStar color={"text-red-600"} /><span>Chicago</span><ChiStar color={"text-red-600"} /><ChiStar
               color={"text-red-600"}
             />
           </div>
         </div>
-        <div class="px-20">
+        <!-- Logo -->
+        <div class="px-20 max-w-96">
           <CobraLogo />
         </div>
       </div>
-      <div class="hidden lg:flex p-5 justify-self-center">
+      <div class="hidden md:flex p-5 justify-self-center">
         <Image loading="eager" class="rounded-md self-center w-80 lg:w-max" src={argentCommCoffee} alt="Argent Badge" />
       </div>
     </div>

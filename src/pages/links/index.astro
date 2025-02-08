@@ -20,10 +20,10 @@ const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 befor
 
 <Layout>
   <TopNav />
-  <PageHeader leftRight="left">Tasty Links</PageHeader>
+  <PageHeader leftRight="left">Links</PageHeader>
   <HomeSection darkBg={false} border={[]}>
-    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 col-start-2 col-span-10"]}>
-      <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">More Regal</h2>
+    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
+      <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">More Regal</h2>
       <div class="py-8 flex flex-col sm:grid grid-cols-1 lg:grid-cols-2 gap-5 text-slate-200">
         <div class="xs:flex-row flex-col flex items-center gap-2">
           <h3 class="text-4xl">Socials</h3>
@@ -48,37 +48,42 @@ const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 befor
         <Image class="lg:max-w-[70%] rounded-md" src={ArgentRelax} alt="Argent Chill" />
       </div>
     </HomeContentBox>
-    <div class="col-start-2 col-span-10 flex justify-around text-6xl py-8">
+    <div class="col-start-2 col-span-10 flex justify-around text-5xl xs:text-6xl py-8">
       {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
     </div>
-    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 col-start-2 col-span-10"]}>
-      <!-- Multiple Columns? -->
-      <div class="flex flex-col">
-        <div>
-          <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Queer Art Projects</h2>
-          <ul class="list-disc">
+    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
+      <div class="flex flex-col divide-y-2 divide-stone-200">
+        <div class="mx-2 xs:mx-20 pb-5">
+          <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Queer Art</h2>
+          <ul class="list-disc flex flex-col gap-2 text-stone-200 text-lg">
             <LinkList linkJsonArray={links.artLinks} />
           </ul>
         </div>
-        <div>
-          <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Misc Cool Sites</h2>
-          <ul class="list-disc">
+        <div class="mx-2 xs:mx-20 py-5">
+          <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">WebDev</h2>
+          <ul class="list-disc flex flex-col gap-2 text-stone-200 text-lg">
+            <LinkList linkJsonArray={links.webDev} />
+          </ul>
+        </div>
+        <div class="mx-2 xs:mx-20 pt-5">
+          <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Misc Cool Sites</h2>
+          <ul class="list-disc flex flex-col gap-2 text-stone-200 text-lg">
             <LinkList linkJsonArray={links.miscLinks} />
           </ul>
         </div>
       </div>
     </HomeContentBox>
-    <div class="col-start-2 col-span-10 flex justify-around text-6xl py-8">
+    <div class="col-start-2 col-span-10 flex justify-around text-5xl xs:text-6xl py-8">
       {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
     </div>
-    <HomeContentBox columns={["lg:col-start-2 col-start-2 lg:col-span-4 col-span-10"]}>
-      <div class="flex flex-col text-slate-200">
-        <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Cool Folks</h2>
-        <p>Internet creatures with very cool personal sites! Eternally grateful to them and others for inspiration in making my own UwU</p>
-        <div class="content-center my-10">
+    <HomeContentBox columns={["lg:col-start-2 lg:col-span-5 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12 mb-5 xs:mb-0"]}>
+      <div class="flex flex-col text-slate-200 justify-between">
+        <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Cool Folks</h2>
+        <div class="content-center mb-5">
           <BadgeDisplay collection="critterBadges" />
         </div>
-        <div class="border-t-2 border-slate-200 pt-3">
+        <p class="mb-5">Internet creatures with very cool personal sites! Eternally grateful to them and others for inspiration in making my own UwU</p>
+        <div class="border-t-2 border-slate-200 pt-3 self-end">
           <p>
             If you've linked me on your site, feel free to shoot me an email at
             <a class="text-yellow hover:cursor-pointer" href="mailto:regal@cobra.monster">regal@cobra.monster</a> with your button and site so I can link back!
@@ -86,22 +91,13 @@ const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 befor
         </div>
       </div>
     </HomeContentBox>
-    <HomeContentBox columns={["lg:col-start-8 lg:col-span-4 col-start-2 col-span-10"]}>
-      <div class="flex flex-col text-slate-200 items-center">
-        <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Neat Buttons</h2>
+    <HomeContentBox columns={["lg:col-start-7 lg:col-span-5 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
+      <div class="flex flex-col text-slate-200 h-full justify-between">
+        <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Neat Buttons</h2>
         <div class="content-center mb-5">
           <BadgeDisplay collection="standardBadges" />
         </div>
-        <div class="border-t-2 border-slate-200 pt-3">
-          <p>If I find a neat button I just plop it here. Some of them are links!</p>
-          <p>A few button repositories I enjoyed looking through:</p>
-          <ul class="flex justify-around">
-            <li class={listDecoStyle}><LinkButton to="https://hellnet.work/8831/">HellNet</LinkButton></li>
-            <li class={listDecoStyle}>
-              <LinkButton to="https://yesterweb.org/graphics/buttons">Yesterweb</LinkButton>
-            </li>
-          </ul>
-        </div>
+        <p>If I find a neat button I just plop it here. Some of them are links!</p>
       </div>
     </HomeContentBox>
   </HomeSection>
@@ -111,7 +107,7 @@ const listDecoStyle = "chistar relative pl-6 before:absolute before:left-0 befor
     </div>
     <HomeContentBox columns={["col-start-7 col-span-5 self-center"]}>
       <div class="flex flex-col text-slate-200">
-        <h2 class="text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Neat Buttons</h2>
+        <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Neat Buttons</h2>
         <div class="content-center mb-5">
           <BadgeDisplay collection="standardBadges" />
         </div>

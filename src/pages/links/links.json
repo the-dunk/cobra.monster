@@ -21,6 +21,23 @@
       "description": "Webcomic about a duck!! There are also knights and dragons and cool other things! Very unique, fun art style and sense of humor. Worth your time 100% :3"
     }
   ],
+  "webDev": [
+    {
+      "url": "https://html5up.net",
+      "title": "HTML5up",
+      "description": "Pure HTML and CSS HTML5 site templates. Cool and free. Good for projects and professional stuff, but I've just used them as tutorials/inspiration for solid web design fundamentals."
+    },
+    {
+      "url": "https://thenounproject.com",
+      "title": "The Noun Project",
+      "description": "Mostly-free repo of artists' icon art. Good source of icons or inspiration."
+    },
+    {
+      "url": "https://ionic.io/ionicons",
+      "title": "Ionicons",
+      "description": "Free, tidy set of icons for apps."
+    }
+  ],
   "miscLinks": [
     {
       "url": "https://www.beautifulaudio.biz/",

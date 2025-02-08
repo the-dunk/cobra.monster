@@ -5,9 +5,21 @@ interface Props {
 }
 
 const { to, button = false } = Astro.props;
-const linkStyling = button
-  ? ["border-yellow", "hover:bg-yellow", "rounded-md", "border-2", "hover:text-black", "p-2"]
-  : ["underline", "decoration-yellow", "decoration-2", "hover:text-amber-500"];
 ---
 
-<a class:list={["font-medium text-lg  w-max cursor-pointer  ", linkStyling]} href={to}><slot /></a>
+{
+  button ? (
+    <button class:list={["border-yellow", "hover:bg-yellow", "rounded-md", "border-2", "hover:text-black", "p-2"]}>
+      <a class:list={["font-medium text-lg  w-max cursor-pointer  "]} href={to}>
+        <slot />
+      </a>
+    </button>
+  ) : (
+    <a
+      class:list={["font-medium text-md xs:text-lg  w-max cursor-pointer ", ["underline", "decoration-yellow", "decoration-2", "hover:text-amber-500"]]}
+      href={to}
+    >
+      <slot />
+    </a>
+  )
+}
