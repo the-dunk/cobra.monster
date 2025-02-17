@@ -10,7 +10,7 @@ interface Props {
 const {
   post: {
     slug,
-    data: { title, subtitle, image, date, description },
+    data: { title, subtitle, date, description },
   },
 } = Astro.props;
 /**
@@ -35,7 +35,7 @@ const {
       </time> -->
 
         <div class="text-slate-200">
-          {description && <p>{description.substring(0, 200)}</p>}
+          {description && <p class="line-clamp-2">{description}</p>}
         </div>
       </div>
     </div>

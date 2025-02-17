@@ -1,33 +1,38 @@
 ---
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import vaporwaveArgent from "../assets/argent/vaporwaveArgent.png";
 
 interface Props {
-  blurbs: Array<CollectionEntry<"aboutBlurbs">>;
+  blurbs: Array<CollectionEntry<"posts">>;
 }
 const { blurbs } = Astro.props;
 ---
 
-<ul class="grid grid-cols-2 gap-5">
-  {
-    blurbs.map((blurb) => {
-      return (
-        <li class="mb-2 p-5 bg-boxPrimary border-yellow border-2 rounded-md text-white flex">
-          <div>
-            <span class="text-4xl border-r-2 border-white pr-2">{blurb.data.emoji}</span>
-          </div>
-          <div class="ml-2">
-            <h2 class="mb-2">
-              <a
-                class="text-3xl hover:underline decoration-amber-400 decoration-2 cursor-pointer text-amber-300 visited:text-amber-600 visited:decoration-amber-600 font-medium"
-                href={`/about/${blurb.slug}`}
-              >
-                {blurb.data.title}
-              </a>
-            </h2>
-            <p>{blurb.data.subtitle}</p>
-          </div>
-        </li>
-      );
-    })
-  }
-</ul>
+<div class="col-start-2 col-span-10 @container">
+  <ul class="grid gap-5 grid-cols-[repeat(auto-fit,minmax(min(28ch,100%),1fr))]">
+    <Image src={vaporwaveArgent} alt="Vaporwave Argent" loading="eager" class="@min-[calc(28ch*2+1.25rem)]:order-first order-last row-span-2" />
+    {
+      blurbs.map((blurb) => {
+        return (
+          <li class=" p-5 bg-boxPrimary border-yellow border-4 text-slate-200 flex items-center ">
+            <div>
+              <span class="text-4xl pr-2">{blurb.data.emoji}</span>
+            </div>
+            <div class="ml-2 border-l-2 border-slate-2oo pl-4">
+              <h2 class="mb-2">
+                <a
+                  class="text-3xl hover:underline decoration-amber-400 decoration-2 cursor-pointer text-amber-300 visited:text-amber-600 visited:decoration-amber-600 font-medium text-wrap"
+                  href={`/about/${blurb.slug}`}
+                >
+                  {blurb.data.title}
+                </a>
+              </h2>
+              <p>{blurb.data.subtitle}</p>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>

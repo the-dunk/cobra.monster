@@ -9,15 +9,15 @@ const tags = defineCollection({
 
 const posts = defineCollection({
   type: "content",
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      subtitle: z.string().optional(),
-      image: image().optional(),
-      date: z.date(),
-      description: z.string().optional(),
-      tags: z.array(reference("tags")).optional(),
-    }),
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string().optional(),
+    date: z.date(),
+    description: z.string().optional(),
+    tags: z.array(reference("tags")).optional(),
+    blogExclude: z.boolean().optional(),
+    emoji: z.string().optional(),
+  }),
 });
 
 const critterBadges = defineCollection({
@@ -38,19 +38,9 @@ const standardBadges = defineCollection({
   }),
 });
 
-const aboutBlurbs = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    subtitle: z.string(),
-    emoji: z.string().optional(),
-  }),
-});
-
 export const collections = {
   tags,
   posts,
   critterBadges,
   standardBadges,
-  aboutBlurbs,
 };

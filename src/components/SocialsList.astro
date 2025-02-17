@@ -87,7 +87,7 @@ const siteList = siteGroup === "socials" ? socialsList : galleriesList;
       <LinkButton to={site.url} button={false}>
         <div class="flex items-center">
           {logos && <Image class=" p-1 max-w-10 " src={site.logo} alt={site.id} />}
-          <div class="capitalize ml-1">{site.id}</div>
+          <div class="capitalize ">{site.id}</div>
         </div>
       </LinkButton>
     ))

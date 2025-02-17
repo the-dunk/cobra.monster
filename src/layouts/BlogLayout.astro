@@ -1,13 +1,10 @@
 ---
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
-import PageHeader from "../components/PageHeader.astro";
 import TopNav from "../components/TopNav.astro";
 import type { MarkdownHeading } from "astro";
 import TableOfContents from "../components/TableOfContents.astro";
 import TagContents from "../components/TagContents.astro";
-import { getEntries } from "astro:content";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -16,15 +13,13 @@ interface Props {
 
 const {
   post: {
-    data: { title, subtitle, image, date, description, tags },
+    data: { title, subtitle, date, description, tags, blogExclude },
   },
   headings,
 } = Astro.props;
 
-// const splitDate = date.toLocaleDateString('en-GB').split('/')
-const formattedDate = date.toLocaleString("en-US", { day: "2-digit", month: "long", year: "numeric" });
-const displayTags = tags?.map((tag) => tag.id);
-// console.log(await getEntries('tags'));
+const formattedDate = date?.toLocaleString("en-US", { day: "2-digit", month: "long", year: "numeric" });
+// const displayTags = tags?.map((tag) => tag.id);
 const listDecoStyle = "prose-ul:before:text-white";
 ---
 
@@ -34,7 +29,6 @@ const listDecoStyle = "prose-ul:before:text-white";
   <meta name="viewport" content="width=device-width" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="generator" content={Astro.generator} />
-  <meta name="og:image" content={image?.src} />
   <title>{title}</title>
 </head>
 
@@ -42,7 +36,6 @@ const listDecoStyle = "prose-ul:before:text-white";
   <TopNav />
   <article class="m-10 mt-28">
     <header class="grid grid-cols-12">
-      <!-- <PageHeader leftRight="left">{title}</PageHeader> -->
       <div class="col-start-2 col-span-10 mb-10">
         <h1 class="font-black text-yellow decoration-4 decoration-white text-6xl mb-5">{title}</h1>
         <h2 class="text-slate-200 text-3xl font-medium">{subtitle}</h2>
@@ -52,7 +45,7 @@ const listDecoStyle = "prose-ul:before:text-white";
       <div class="col-start-2 col-span-3 border-t-4 border-slate-200">
         <div id="publishTags" class="border-b-2 border-slate-200 pb-4">
           <div class="mt-2">
-            <h3 class="font-medium text-2xl">Published</h3>
+            <h3 class="font-medium text-2xl">{blogExclude ? "Last Updated" : "Published"}</h3>
             <p>{formattedDate}</p>
           </div>
           {
@@ -63,7 +56,7 @@ const listDecoStyle = "prose-ul:before:text-white";
             )
           }
         </div>
-        <TableOfContents headings={headings} />
+        {headings.length > 0 && <TableOfContents headings={headings} />}
       </div>
       <div
         class:list={[

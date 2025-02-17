@@ -43,7 +43,7 @@ const { homePage } = Astro.props;
     )
   }
   <div class="flex flex-col flex-wrap gap-4 p-5">
-    <nav id="linkBox" class="grid grid-cols-2 xs:flex col-span-3 gap-5 justify-between w-full border-b-2 border-slate-200 pb-5">
+    <nav id="linkBox" class="grid grid-cols-2 xs:flex col-span-3 gap-5 justify-around w-full pb-5">
       <div class="flex flex-col">
         <h2 class="text-xl xs:text-2xl font-bold">Socials</h2>
         <SocialsList logos={false} siteGroup="socials" />
@@ -52,7 +52,7 @@ const { homePage } = Astro.props;
         <h2 class="text-xl xs:text-2xl font-bold">Stuff</h2>
         <ul>
           <li>
-            <LinkButton button={false} to="/about"> About </LinkButton>
+            <LinkButton button={false} to="/about"> About Me </LinkButton>
           </li>
           <li>
             <LinkButton button={false} to="/links"> Links </LinkButton>
@@ -77,7 +77,7 @@ const { homePage } = Astro.props;
         <Image class="drop-shadow-lg" src={argentAss} alt="woohooehehee" />
       </div>
     </nav>
-    <a href="/" class="w-full justify-center flex items-center brightness-90 py-16 xs:py-5">
+    <a href="/" class="w-full justify-center md:hidden flex items-center brightness-90 py-16 xs:py-5 border-t-2 border-slate-200">
       <div class="w-18 -ml-10">
         <CobraLogo />
       </div>

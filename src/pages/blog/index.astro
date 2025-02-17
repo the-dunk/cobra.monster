@@ -5,9 +5,11 @@ const blogEntries = await getCollection("posts");
 import Layout from "../../layouts/Layout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 
-const allPosts = blogEntries.sort((a, b) => {
-  return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf();
-});
+const allPosts = blogEntries
+  .filter((entry) => !entry.data.blogExclude)
+  .sort((a, b) => {
+    return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf();
+  });
 ---
 
 <Layout>

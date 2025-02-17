@@ -2,9 +2,9 @@
 import { getCollection } from "astro:content";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import type { CollectionEntry } from "astro:content";
-import type { MarkdownHeading } from "astro";
+import type { GetStaticPaths, MarkdownHeading } from "astro";
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async () => {
   const blogEntries = await getCollection("posts");
 
   const headings = await Promise.all(
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
     params: { slug: entry.slug },
     props: { entry, headings: headings[index] },
   }));
-}
+}) satisfies GetStaticPaths;
 
 interface Props {
   entry: CollectionEntry<"posts">;
@@ -31,5 +31,4 @@ const { Content } = await entry.render();
 
 <BlogLayout post={entry} headings={headings}>
   <Content />
-  <div slot="nav"></div>
 </BlogLayout>

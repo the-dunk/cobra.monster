@@ -26,7 +26,7 @@
   /* Breakpoints */
   --breakpoint-xs: 545px;
   /* Fonts */
-  --font-prospekt: Prospekt Regular;
+  --font-prospekt: "Prospekt Regular", sans-serif;
 
   @keyframes wiggle {
     0%,
