@@ -33,6 +33,19 @@ const bgSettings = () => {
   </head>
 
   <body>
+    <!-- <div class="brb">BRB</div> -->
+    <style>
+      .brb {
+        width: 100%;
+        height: 100vw;
+        background-color: darkseagreen;
+        color: black;
+        font-size: 15rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
     <div class:list={["justify-center min-h-[100vh]", bgSettings()]}>
       <slot />
       <Footer homePage={homePage} />

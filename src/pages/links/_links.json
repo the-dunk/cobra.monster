@@ -18,7 +18,14 @@
     {
       "url": "https://ia-ia-ia.world/",
       "title": "IA IA IA",
-      "description": "Webcomic about a duck!! There are also knights and dragons and cool other things! Very unique, fun art style and sense of humor. Worth your time 100% :3"
+      "description": "Webcomic about a duck!! There are also knights and dragons and cool other things! Very unique, fun art style and sense of humor. Worth your time 100% :3 Made by my very cool friend ${1}",
+      "auxLink": "https://edsite.black,Ed"
+    },
+    {
+      "url": "https://panopticat.com/",
+      "title": "Panopticat",
+      "description": "Rad comic by my friend ${1}",
+      "auxLink": "https://bsky.app/profile/dregadraws.bsky.social,Drega"
     }
   ],
   "webDev": [
@@ -36,7 +43,13 @@
       "url": "https://ionic.io/ionicons",
       "title": "Ionicons",
       "description": "Free, tidy set of icons for apps."
+    },
+    {
+      "url": "https://bennettfeely.com/clippy/",
+      "title": "\"Clippy\" CSS clip-path tool",
+      "description": "Helpful tool for designing complex clip-path shapes with CSS"
     }
+    
   ],
   "miscLinks": [
     {
@@ -44,11 +57,7 @@
       "title": "Beautiful Audio",
       "description": "Passionate guy making amazing mods for Grado headphones. Had very positive email interactions with him, and his custom work have made my ${1} truly a pair of 'forever' headphones.",
       "auxLink": "https://gradolabs.com/products/gw100x,Grado100Ws"
-    },
-    {
-      "url": "https://bennettfeely.com/clippy/",
-      "title": "\"Clippy\" CSS clip-path tool",
-      "description": "Helpful tool for designing complex clip-path shapes with CSS"
     }
+    
   ]
 }

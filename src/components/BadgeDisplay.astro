@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { shuffleArray } from "../utils/arrayShuffle";
 
 interface Props {
   collection: "critterBadges" | "standardBadges";
@@ -10,7 +11,7 @@ const { collection } = Astro.props;
 const btnStyle = "transition duration-300 hover:scale-[1.5] cursor-pointer";
 
 const badgesCollection = await getCollection(collection);
-const badges = badgesCollection.sort((a, b) => a.id.localeCompare(b.id));
+const badges = collection === "standardBadges" ? shuffleArray(badgesCollection) : badgesCollection.sort((a, b) => a.id.localeCompare(b.id));
 ---
 
 <div class="flex flex-wrap gap-2 justify-center">
