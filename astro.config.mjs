@@ -1,36 +1,26 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-
 import react from "@astrojs/react";
-
 import mdx from "@astrojs/mdx";
 import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import tailwindcss from "@tailwindcss/vite";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 
+
 // https://astro.build/config
 export default defineConfig({
-  vite: { plugins: [tailwindcss()] },
-  integrations: [
-    react(),
-    mdx({
-      syntaxHighlight: false,
-      rehypePlugins: [
-        rehypeSlug,
-        [
-          rehypePrettyCode,
-          {
-            theme: "synthwave-84",
-            transformers: [
-              transformerCopyButton({
-                visibility: "always",
-                feedbackDuration: 3_000,
-              }),
-            ],
-          },
-        ],
-      ],
-    }),
-  ],
+  vite: {
+    plugins: [tailwindcss()]
+  },
+  integrations: [mdx({
+    syntaxHighlight: false,
+    rehypePlugins: [rehypeSlug, [rehypePrettyCode, {
+      theme: "synthwave-84",
+      transformers: [transformerCopyButton({
+        visibility: "always",
+        feedbackDuration: 3_000
+      })]
+    }]]
+  }), react()]
 });

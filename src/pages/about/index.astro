@@ -1,21 +1,16 @@
 ---
-import { Image } from "astro:assets";
 import HomeSection from "../../components/HomeSection.astro";
 import TopNav from "../../components/TopNav.astro";
 import Layout from "../../layouts/Layout.astro";
-import { getCollection } from "astro:content";
 import AboutBlurbList from "../../components/AboutBlurbList.astro";
 import PageHeader from "../../components/PageHeader.astro";
-
-const blurbEntries = await getCollection("posts");
-const blurbs = blurbEntries.filter((blurb) => blurb.data.blogExclude).sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <Layout>
   <TopNav />
-  <PageHeader leftRight="left">About Regal</PageHeader>
+  <PageHeader>About Regal</PageHeader>
   <HomeSection darkBg={false} border={[]}>
-    <AboutBlurbList blurbs={blurbs} />
+    <AboutBlurbList />
   </HomeSection>
 </Layout>
 

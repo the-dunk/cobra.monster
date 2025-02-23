@@ -12,9 +12,9 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props;
 
-const allTaggedPosts = (await getCollection("posts", ({ data }) => data.tags?.map((tag) => tag.id).includes(entry.id))).sort(
-  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
-);
+// const allTaggedPosts = (await getCollection("posts", ({ data }) => data.tags?.map((tag) => tag.id).includes(entry.id))).sort(
+//   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+// );
 ---
 
-<PostList tag={entry.id} posts={allTaggedPosts} />
+<PostList tagId={entry.id} />

@@ -10,7 +10,7 @@ const rejoined = splitSpliced.join("/") === "" ? "/" : splitSpliced.join("/");
 ---
 
 <nav class="py-2 bg-redDark border-redLight w-full flex xs:flex-row flex-col text-white">
-  <a href="/" class="text-3xl border-r-0 xs:border-r-2 border-slate-200 border-opacity-75 mx-5 pr-4 flex items-center font-medium font-prospekt">
+  <a href="/" class="text-3xl border-r-0 xs:border-r-2 border-slate-200 border-opacity-75 mx-5 pr-4 flex items-center font-medium font-prospekt self-center">
     <div class="w-12">
       <CobraLogo />
     </div>
@@ -18,7 +18,7 @@ const rejoined = splitSpliced.join("/") === "" ? "/" : splitSpliced.join("/");
       COBRA<span class="text-4xl mb-1">★</span>MONSTER
     </div>
   </a>
-  <div class="flex items-center xs:ml-0 ml-5">
+  <div class="hidden items-center xs:flex">
     <ul class="flex gap-5 text-redDarkest font-medium">
       <li class="hover:scale-[1.15] transition duration-300">
         <a href={rejoined} class:list={["capitalize px-2 py-1 bg-slate-200 rounded-full"]}>←︎ {returnPathName}</a>

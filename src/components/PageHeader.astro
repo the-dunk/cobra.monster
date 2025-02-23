@@ -1,35 +1,15 @@
 ---
-interface Props {
-  leftRight: "left" | "right";
-}
-const { leftRight } = Astro.props;
 const goldGradient = "bg-linear-45 from-amber-500 via-yellow-300 via-50% to-yellow-600";
 ---
 
-{
-  leftRight === "right" && (
-    <div class="flex mt-10 justify-end ml-20">
-      <div class="banner min-w-20 scale-x-[-1]" />
-      <div class="bannerBg max-w-fit">
-        <h1 class:list={["text-right text-8xl  bg-clip-text text-transparent mr-10", goldGradient]}>
-          <slot />
-        </h1>
-      </div>
-    </div>
-  )
-}
-{
-  leftRight === "left" && (
-    <div class="flex mt-10 mr-20">
-      <div class="bannerBg  max-w-fit ">
-        <h1 class:list={["text-8xl  bg-clip-text text-transparent ml-10", goldGradient]}>
-          <slot />
-        </h1>
-      </div>
-      <div class="banner min-w-20" />
-    </div>
-  )
-}
+<div class="flex mt-10 w-full">
+  <div class="bannerBg">
+    <h1 class:list={["text-8xl  bg-clip-text text-transparent ml-10", goldGradient]}>
+      <slot />
+    </h1>
+  </div>
+  <div class="banner min-w-20 -ml-1 mr-5"></div>
+</div>
 
 <style>
   .bannerBg {

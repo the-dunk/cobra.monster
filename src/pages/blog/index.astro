@@ -1,18 +1,44 @@
 ---
 import { getCollection } from "astro:content";
 import PostList from "../../components/PostList.astro";
-const blogEntries = await getCollection("posts");
+
 import Layout from "../../layouts/Layout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
+import TopNav from "../../components/TopNav.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import HomeSection from "../../components/HomeSection.astro";
+import HomeContentBox from "../../components/HomeContentBox.astro";
 
-const allPosts = blogEntries
-  .filter((entry) => !entry.data.blogExclude)
-  .sort((a, b) => {
-    return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf();
-  });
+const tags = await getCollection("tags");
+
+// TODO: make this a layout, and use in the [...tag] page
 ---
 
 <Layout>
-  <SiteHeader />
-  <PostList posts={allPosts} />
+  <TopNav />
+  <PageHeader>Regal's Blog</PageHeader>
+  <HomeSection darkBg={false} border={[]}>
+    <HomeContentBox columns={["col-span-12"]}>
+      <!-- Tags -->
+      <div class="mb-8 flex flex-wrap gap-2">
+        {
+          tags.map((tag) => {
+            const classes = ["bg-red-700", "text-white", "hover:bg-yellow-300"];
+            // if (tag.id === tagName) {
+            //   classes[0] = "bg-red-500";
+            // }
+            return (
+              <a href={`/blog/tagged/${tag.id}`} class={classes.join(" ")}>
+                #{tag.id}
+              </a>
+            );
+          })
+        }
+      </div>
+      <div class="flex">
+        <h2>Year</h2>
+        <PostList />
+      </div></HomeContentBox
+    >
+  </HomeSection>
 </Layout>

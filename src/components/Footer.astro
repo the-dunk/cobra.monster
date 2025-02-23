@@ -4,7 +4,6 @@ import LinkButton from "./LinkButton.astro";
 import argentAss from "../assets/argent/argentAss.png";
 import BadgeDisplay from "./BadgeDisplay.astro";
 import SocialsList from "./SocialsList.astro";
-import TextDeco from "./TextDeco.astro";
 import CobraLogo from "./CobraLogo.astro";
 
 interface Props {
@@ -15,7 +14,7 @@ const { homePage } = Astro.props;
 ---
 
 <!-- NOTE: Height of footer must be offset by padding-bottom in Layout -->
-<footer class:list={["bg-redDark border-redLight w-full text-stone-200 absolute  border-t-8", `${homePage ? "min-h-[225px]" : "min-h-[75px]"}`]}>
+<footer class:list={["bg-redDark border-redLight w-full text-stone-200 absolute  border-t-8 pb-5", `${homePage ? "min-h-[225px]" : "min-h-[75px]"}`]}>
   {
     homePage && (
       <div class="flex flex-col xs:grid grid-cols-2 gap-2 m-5 pb-5 border-b-2 border-dashed border-yellow">
@@ -44,11 +43,11 @@ const { homePage } = Astro.props;
   }
   <div class="flex flex-col flex-wrap gap-4 p-5">
     <nav id="linkBox" class="grid grid-cols-2 xs:flex col-span-3 gap-5 justify-around w-full pb-5">
-      <div class="flex flex-col">
+      <div class="flex flex-col ml-[25%] xs:ml-0">
         <h2 class="text-xl xs:text-2xl font-bold">Socials</h2>
         <SocialsList logos={false} siteGroup="socials" />
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-col ml-[25%] xs:ml-0">
         <h2 class="text-xl xs:text-2xl font-bold">Stuff</h2>
         <ul>
           <li>
@@ -77,6 +76,14 @@ const { homePage } = Astro.props;
         <Image class="drop-shadow-lg" src={argentAss} alt="woohooehehee" />
       </div>
     </nav>
+    <div class="flex flex-col gap-2 pt-5 border-t-2 border-dashed border-yellow">
+      <span>Site art credits can be found on the <a class="underline decoration-2 decoration-yellow" href="/credits">Art Credit Page</a></span>
+      <span class="text-slate-200"
+        >Mutant Standard emoji are licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="underline decoration-2 decoration-yellow"
+          >CC BY-NC-SA 4.0 International</a
+        >.</span
+      >
+    </div>
     <a href="/" class="w-full justify-center md:hidden flex items-center brightness-90 py-16 xs:py-5 border-t-2 border-slate-200">
       <div class="w-18 -ml-10">
         <CobraLogo />

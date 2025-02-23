@@ -1,23 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
 import vaporwaveArgent from "../assets/argent/vaporwaveArgent.png";
-
-interface Props {
-  blurbs: Array<CollectionEntry<"posts">>;
-}
-const { blurbs } = Astro.props;
+import { getCollection } from "astro:content";
+const blurbEntries = await getCollection("posts");
+const blurbs = blurbEntries.filter((blurb) => blurb.data.blogExclude).sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <div class="col-start-2 col-span-10 @container">
-  <ul class="grid gap-5 grid-cols-[repeat(auto-fit,minmax(min(30ch,100%),1fr))]">
-    <!-- <div class="background-yellow"> -->
+  <ul class="grid gap-5 grid-cols-[repeat(auto-fit,minmax(min(30ch,100%),1fr))] 2xl:grid-cols-4">
     <Image src={vaporwaveArgent} alt="Vaporwave Argent" loading="eager" class="self-center @min-[calc(30ch*2+1.25rem)]:order-first order-last row-span-2" />
-    <!-- </div> -->
     {
       blurbs.map((blurb) => {
         return (
-          <li class=" p-5 bg-boxPrimary border-yellow border-4 text-slate-200 flex items-center ">
+          <li class=" p-5 bg-boxPrimary border-yellow border-4 text-slate-200 flex items-center min-h-48">
             {blurb.data.emoji && (
               <div class="flex-[1_1_0]">
                 <Image src={blurb.data.emoji} alt={blurb.data.title} class="" />

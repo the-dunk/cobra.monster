@@ -1,41 +1,30 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import PostSummary from "./PostSummary.astro";
-import ChiStar from "./ChiStar.astro";
+import { getEntries } from "astro:content";
 
 interface Props {
-  posts: Array<CollectionEntry<"posts">>;
-  tag?: string;
+  tagId?: string
+  // taggedPosts?: Array<CollectionEntry<"posts">>;
   postLimit?: number;
 }
 
-const tags = await getCollection("tags");
+const blogEntries = await getCollection("posts");
 
-const { posts, tag: tagName, postLimit } = Astro.props;
-const limit = postLimit ? postLimit : posts.length;
+const { tagId, postLimit } = Astro.props;
+
+const blogSort = (posts: Array<CollectionEntry<"posts">>) => posts.sort((a, b) => {
+    return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf();
+  });
+
+const posts = tagId ? blogEntries.filter((entry) => !entry.data.blogExclude && entry.data.tags?.map((tag) => tag.id).includes(tagId)) : blogEntries
+  .filter((entry) => !entry.data.blogExclude);
+const limit = postLimit ? postLimit : posts?.length;
 ---
 
-<div class="flex flex-col ">
-  {
-    !postLimit && (
-      <div class="mb-8 flex flex-wrap gap-2">
-        {tags.map((tag) => {
-          const classes = ["bg-red-700", "text-white", "hover:bg-yellow-300"];
-          if (tag.id === tagName) {
-            classes[0] = "bg-red-500";
-          }
-          return (
-            <a href={`/blog/${tag.id}`} class={classes.join(" ")}>
-              #{tag.id}
-            </a>
-          );
-        })}
-      </div>
-    )
-  }
   <div class="flex flex-col">
     {
-      posts.map((post, i) => {
+      blogSort(posts).map((post, i) => {
         if (i < limit) {
           return (
             <div class="mt-5">
@@ -48,7 +37,6 @@ const limit = postLimit ? postLimit : posts.length;
       })
     }
   </div>
-</div>
 
 <style>
   h2 {
