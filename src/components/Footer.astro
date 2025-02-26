@@ -48,7 +48,7 @@ const { homePage } = Astro.props;
         <SocialsList logos={false} siteGroup="socials" />
       </div>
       <div class="flex flex-col ml-[25%] xs:ml-0">
-        <h2 class="text-xl xs:text-2xl font-bold">Stuff</h2>
+        <h2 class="text-xl xs:text-2xl font-bold">Cool Stuff</h2>
         <ul>
           <li>
             <LinkButton button={false} to="/about"> About Me </LinkButton>
@@ -61,29 +61,29 @@ const { homePage } = Astro.props;
           </li>
         </ul>
       </div>
-      <!-- <div>
-        <h2 class="text-xl xs:text-2xl font-bold">Furry Fitness Webring</h2>
+      <div class="flex flex-col ml-[25%] xs:ml-0">
+        <h2 class="text-xl xs:text-2xl font-bold">Site Info</h2>
         <ul>
           <li>
-            <LinkButton button={false} to="/"> ←︎ Previous </LinkButton>
+            <LinkButton button={false} to="/credits"> Art Credits </LinkButton>
           </li>
           <li>
-            <LinkButton button={false} to="/"> →︎ Next </LinkButton>
+            <LinkButton button={false} to="https://github.com/RegalRegex/cobra.monster"> Github </LinkButton>
           </li>
         </ul>
-      </div> -->
+      </div>
       <div class="hidden xs:flex justify-self-center aspect-square max-w-[100px] hover:animate-assJiggle">
         <Image class="drop-shadow-lg" src={argentAss} alt="woohooehehee" />
       </div>
     </nav>
-    <div class="flex flex-col gap-2 pt-5 border-t-2 border-dashed border-yellow">
-      <span>Site art credits can be found on the <a class="underline decoration-2 decoration-yellow" href="/credits">Art Credit Page</a></span>
-      <span class="text-slate-200"
+    <!-- <div class="flex divide-x-2 divide-yellow gap-2 ml-16">
+      <span>Art credits and sources available: <a class="underline decoration-2 decoration-yellow" href="/credits">Art Credit Page</a></span>
+      <span
         >Mutant Standard emoji are licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="underline decoration-2 decoration-yellow"
           >CC BY-NC-SA 4.0 International</a
         >.</span
       >
-    </div>
+    </div> -->
     <a href="/" class="w-full justify-center md:hidden flex items-center brightness-90 py-16 xs:py-5 border-t-2 border-slate-200">
       <div class="w-18 -ml-10">
         <CobraLogo />

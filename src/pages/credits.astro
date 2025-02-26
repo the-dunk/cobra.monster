@@ -1,9 +1,78 @@
 ---
+import { Image } from "astro:assets";
 import HomeContentBox from "../components/HomeContentBox.astro";
 import HomeSection from "../components/HomeSection.astro";
 import PageHeader from "../components/PageHeader.astro";
 import TopNav from "../components/TopNav.astro";
 import Layout from "../layouts/Layout.astro";
+import LinkButton from "@components/LinkButton.astro";
+
+// Images
+// // Tali
+import argentTali from "@assets/argent/squareArgent.png";
+// // Jai
+import coffeePotArgent from "@assets/argent/coffeepotArgent.png";
+import giornoArgent from "@assets/argent/giornoArgent.png";
+import argentAss from "@assets/argent/argentAss.png";
+import logo from "@assets/logos/cobraLogo.png";
+// // Lime
+import vaporWaveArgent from "@assets/argent/vaporwaveArgent.png";
+// // Luzzy
+import argentRest from "@assets/argent/ArgentRest_Luzzy.jpg";
+// // SpearxWind
+import communismCoffee from "@assets/argent/CommunismCoffeeArgent.png";
+import TextDeco from "@components/TextDeco.astro";
+
+// Emoji
+import sunsetCity from "@assets/mutantEmoji/sunset_city.png";
+import hotDrink from "@assets/mutantEmoji//hot_drink.png";
+import muscleClaw from "@assets/mutantEmoji/muscle_clw_y2.png";
+import laptop from "@assets/mutantEmoji/laptop.png";
+import artistPalette from "@assets/mutantEmoji/artist_palette.png";
+// // Argent
+import emojiArgentSmile from "@assets/mutantEmoji/argent_512.png";
+import emojiArgentPleading from "@assets/mutantEmoji/argent_pleading.png";
+import emojiArgentTriumph from "@assets/mutantEmoji/argent_triumph.png";
+import emojiArgentWeary from "@assets/mutantEmoji//argent_weary_512.png";
+import ChiStar from "@components/ChiStar.astro";
+
+interface artist {
+    name: string;
+    url: string;
+    images: ImageMetadata[];
+}
+
+const artistArray: artist[] = [
+    {
+        name: "Talikira",
+        url: "https://x.com/Talikira",
+        images: [argentTali],
+    },
+    {
+        name: "Damien (Sharpibees)",
+        url: "https://bsky.app/profile/sharpibees.bsky.social",
+        images: [coffeePotArgent, giornoArgent, argentAss, logo],
+    },
+    {
+        name: "Limecircles",
+        url: "https://bsky.app/profile/limesquares.bsky.social",
+        images: [vaporWaveArgent],
+    },
+    {
+        name: "Luzzy",
+        url: "https://bsky.app/profile/luzzyderay.bsky.social",
+        images: [argentRest],
+    },
+    {
+        name: "SpearxWind",
+        url: "https://bsky.app/profile/spearxwind.bsky.social",
+        images: [communismCoffee],
+    },
+];
+
+const mutantEmoji: ImageMetadata[] = [sunsetCity, hotDrink, muscleClaw, laptop, artistPalette];
+
+const argentEmoji: ImageMetadata[] = [emojiArgentSmile, emojiArgentPleading, emojiArgentTriumph, emojiArgentWeary];
 ---
 
 <Layout>
@@ -13,8 +82,70 @@ import Layout from "../layouts/Layout.astro";
         <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
             <div class="flex flex-col">
                 <div>
-                    <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Art Credits</h2>
+                    <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Argent Art</h2>
+                    <p>Much of the art on this site was made by the very cool people listed below. Please check out their stuff! :3</p>
+                    <ul class="md:flex block flex-wrap gap-5 items-center justify-center">
+                        {
+                            artistArray.map((artist) => (
+                                <li class="my-4">
+                                    <LinkButton button={false} to={artist.url}>
+                                        {artist.name}
+                                    </LinkButton>
+                                    <div class="rounded-md border-yellow border-0 p-2 bg-black/35 mt-2 flex justify-center items-center flex-wrap grow">
+                                        {artist.images.map((image) => (
+                                            <Image src={image} alt={image.src.split("/").at(-1) || "argent image"} class="max-w-32 min-w-20" />
+                                        ))}
+                                    </div>
+                                </li>
+                            ))
+                        }
+                    </ul>
                 </div>
+            </div>
+        </HomeContentBox>
+        <div class="col-start-2 col-span-10 flex justify-around text-5xl xs:text-6xl py-8">
+            {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
+        </div>
+        <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
+            <div>
+                <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Emoji</h2>
+                <p>
+                    The stylish emoji used around this site were created by <TextDeco inline={true} url="https://nocturne.works/">Caius Nocturne</TextDeco> as part
+                    of their (awesome) <TextDeco inline={true} url="https://mutant.tech">Mutant Standard</TextDeco> emoji set.
+                </p>
+                <div class="flex my-4 gap-2 justify-around">
+                    {mutantEmoji.map((image) => <Image src={image} alt={image.src.split("/").at(-1) || "mutant emoji"} class="max-w-20 min-w-10" />)}
+                </div>
+                <p>They also made custom-commissioned Argent emoji :3</p>
+                <div class="rounded-md p-2 bg-black/35 mt-2 flex justify-around items-center flex-wrap gap-2">
+                    {argentEmoji.map((image) => <Image src={image} alt={image.src.split("/").at(-1) || "argent emoji"} class="max-w-32 min-w-20" />)}
+                </div>
+            </div>
+        </HomeContentBox>
+        <div class="col-start-2 col-span-10 flex justify-around text-5xl xs:text-6xl py-8">
+            {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
+        </div>
+        <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
+            <div>
+                <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Chicago Stuff</h2>
+                <p>
+                    The Chicago star ligature <ChiStar color="text-redLight" /> as well as the Roboto typeface used throughout this site were inspired + implemented
+                    via instructions from the city's official <TextDeco inline={true} url="https://design.chicago.gov/"> Typography & Design</TextDeco> page. And
+                    especially the <TextDeco inline={true} url="https://design.chicago.gov/all">All Assets Page</TextDeco>.
+                </p>
+                <p>
+                    I didn't know this page existed until I tried to find the Chicago Star as a random "oh this would be a neat design to incorporate" thought.
+                    I was immediately charmed by the care put to this page, as well as the snark:
+                    <blockquote class="border-l-4 border-yellow italic font-bold mx-12 my-4 pl-4 leading-8">
+                        <p><span class="text-4xl">"</span>Now, you are probably thinking to yourself,</p>
+                        <p>“Shut up and just give me the star so I can get a tattoo already!”</p>
+                        <p>And I say to you: “No.”</p>
+                        <p>?!?</p>
+                        <p>
+                            This is way better: <TextDeco inline={true} url="https://design.chicago.gov/typography">Visit the typography page.</TextDeco>
+                        </p>
+                    </blockquote>
+                </p>
             </div>
         </HomeContentBox>
     </HomeSection>
