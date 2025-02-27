@@ -1,42 +1,81 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import PostSummary from "./PostSummary.astro";
-import { getEntries } from "astro:content";
+import type { ReactElement } from "react";
 
 interface Props {
-  tagId?: string
+  tagId?: string;
   // taggedPosts?: Array<CollectionEntry<"posts">>;
   postLimit?: number;
+}
+
+interface PostsByYear {
+  [year: number]: Array<CollectionEntry<"posts">>;
 }
 
 const blogEntries = await getCollection("posts");
 
 const { tagId, postLimit } = Astro.props;
 
-const blogSort = (posts: Array<CollectionEntry<"posts">>) => posts.sort((a, b) => {
+// Excluding About Blurbs and filtering by tag, if necessary
+const blogPosts: Array<CollectionEntry<"posts">> = tagId
+  ? blogEntries.filter((entry) => !entry.data.blogExclude && entry.data.tags?.map((tag) => tag.id).includes(tagId))
+  : blogEntries.filter((entry) => !entry.data.blogExclude);
+
+// Sorting blog posts by year
+const blogSort = (): PostsByYear[] => {
+  const sortedPosts = blogPosts.sort((a, b) => {
     return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf();
   });
+  let yearArray: number[] = [];
+  sortedPosts.forEach((post) =>
+    yearArray.find((obj) => obj === post.data.date.getFullYear()) === undefined ? yearArray.push(post.data.date.getFullYear()) : "",
+  );
+  return yearArray.map((year) => {
+    return { [year]: sortedPosts.filter((post) => post.data.date.getFullYear() === year) };
+  });
+};
 
-const posts = tagId ? blogEntries.filter((entry) => !entry.data.blogExclude && entry.data.tags?.map((tag) => tag.id).includes(tagId)) : blogEntries
-  .filter((entry) => !entry.data.blogExclude);
-const limit = postLimit ? postLimit : posts?.length;
+const limit = postLimit ? postLimit : blogPosts?.length;
+
 ---
 
-  <div class="flex flex-col">
-    {
-      blogSort(posts).map((post, i) => {
-        if (i < limit) {
-          return (
-            <div class="mt-5">
-              <PostSummary post={post}  />
+<div class="flex flex-col">
+  {!postLimit &&
+    blogSort().map((yearObj: PostsByYear, index: number) => {
+      let yearNum: number = parseInt(Object.keys(yearObj)[0]);
+      {
+        return (
+          <div class:list={["sm:grid flex flex-col grid-cols-[1fr, 3fr]",`${index !==0 ? 'border-t-4 border-slate-200/40 mt-5':''}` ]}>
+            <div class="text-4xl mr-5">
+              <h3 class="sm:sticky relative top-0 pt-4 font-bold">{yearNum}</h3>
             </div>
-            <div class="flex justify-around w-full text-2xl mt-5  py-2">
-      </div>
-          );
-        }
-      })
-    }
-  </div>
+            <div class="mt-5 col-start-2">
+              {yearObj[yearNum].map((post):ReactElement[] => {
+                return (<div class="mb-5">
+                  <PostSummary post={post} />
+                </div>);
+              })}
+            </div>
+          </div>
+        );
+      }
+    })
+  }
+  {postLimit && 
+    blogPosts.map((post, i) => {
+      if (i < limit) {
+        return (
+          <div class="mt-5">
+            <PostSummary post={post}  />
+          </div>
+          <div class="flex justify-around w-full text-2xl mt-5  py-2">
+    </div>
+        );
+      }
+    })
+  }
+</div>
 
 <style>
   h2 {

@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import LinkButton from "./LinkButton.astro";
-import argentAss from "../assets/argent/argentAss.png";
-import BadgeDisplay from "./BadgeDisplay.astro";
-import SocialsList from "./SocialsList.astro";
-import CobraLogo from "./CobraLogo.astro";
+import LinkButton from "@components/LinkButton.astro";
+import argentAss from "@assets/argent/argentAss.png";
+import BadgeDisplay from "@components/BadgeDisplay.astro";
+import SocialsList from "@components/SocialsList.astro";
+import CobraLogo from "@components/CobraLogo.astro";
 
 interface Props {
   homePage?: boolean;
@@ -65,7 +65,7 @@ const { homePage } = Astro.props;
         <h2 class="text-xl xs:text-2xl font-bold">Site Info</h2>
         <ul>
           <li>
-            <LinkButton button={false} to="/credits"> Art Credits </LinkButton>
+            <LinkButton button={false} to="/credits"> Site Credits </LinkButton>
           </li>
           <li>
             <LinkButton button={false} to="https://github.com/RegalRegex/cobra.monster"> Github </LinkButton>
@@ -76,14 +76,6 @@ const { homePage } = Astro.props;
         <Image class="drop-shadow-lg" src={argentAss} alt="woohooehehee" />
       </div>
     </nav>
-    <!-- <div class="flex divide-x-2 divide-yellow gap-2 ml-16">
-      <span>Art credits and sources available: <a class="underline decoration-2 decoration-yellow" href="/credits">Art Credit Page</a></span>
-      <span
-        >Mutant Standard emoji are licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="underline decoration-2 decoration-yellow"
-          >CC BY-NC-SA 4.0 International</a
-        >.</span
-      >
-    </div> -->
     <a href="/" class="w-full justify-center md:hidden flex items-center brightness-90 py-16 xs:py-5 border-t-2 border-slate-200">
       <div class="w-18 -ml-10">
         <CobraLogo />

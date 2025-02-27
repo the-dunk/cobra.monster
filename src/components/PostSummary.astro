@@ -1,7 +1,5 @@
 ---
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import ChiStar from "./ChiStar.astro";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -10,7 +8,7 @@ interface Props {
 const {
   post: {
     slug,
-    data: { title, subtitle, date, description },
+    data: { title, subtitle, date },
   },
 } = Astro.props;
 /**
@@ -19,24 +17,22 @@ const {
 ---
 
 <div class="flex flex-col">
-  <div class="flex">
-    <div id="dateSquareContainer" class="flex flex-col text-center px-2 text-slate-200 mr-2 h-max rounded-sm text-sm font-bold mt-1">
+  <div class="flex flex-col sm:flex-row">
+    <div id="dateSquareContainer" class="hidden sm:flex flex-col text-center px-2 text-slate-200 mr-2 h-max rounded-sm text-sm font-bold mt-1">
       <span>{date.toLocaleDateString("en-US", { day: "numeric" })}</span>
       <span>{date.toLocaleDateString("en-US", { month: "short" })}</span>
     </div>
-    <div id="blogSummaryContainer" class="border-l-2 border-slate-200">
-      <div class="ml-4">
+    <div id="blogSummaryContainer" class="border-0 sm:border-l-2 border-slate-200">
+      <div class="sm:ml-4 ml-0">
         <a class="w-max cursor-pointer" href=`/blog/${slug}`>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl underline decoration-yellow mb-2 font-medium">{title}</h2></a
+          <h2 class="text-xl sm:text-2xl md:text-3xl underline decoration-yellow font-medium">{title}</h2></a
         >
-        <h3 class="text-xl text-slate-200">{subtitle}</h3>
-        <!-- <time class="text-gray-400" datetime={date.toISOString()}>
-        {date.toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}
-      </time> -->
-
-        <div class="text-slate-200">
-          {description && <p class="line-clamp-2">{description}</p>}
+        <div class="block sm:hidden italic text-slate-200/70 text-sm">
+          <span>{date.toLocaleDateString("en-US", { day: "numeric" })}</span>
+          <span>{date.toLocaleDateString("en-US", { month: "short" })}</span>
+          <span>{date.toLocaleDateString("en-US", { year: "numeric" })}</span>
         </div>
+        <h3 class="text-lg text-slate-200">{subtitle}</h3>
       </div>
     </div>
   </div>

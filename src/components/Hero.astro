@@ -1,23 +1,19 @@
 ---
-import argentCommCoffee from "../assets/argent/CommunismCoffeeArgent.png";
-import TextDeco from "./TextDeco.astro";
+import argentCommCoffee from "@assets/argent/CommunismCoffeeArgent.png";
 import { Image } from "astro:assets";
-import ChiStar from "./ChiStar.astro";
-import cozyArgent from "../assets/argent/cozyCoffeeArgent_Oblvon.png";
-import CobraLogo from "./CobraLogo.astro";
+import ChiStar from "@components/ChiStar.astro";
+import CobraLogo from "@components/CobraLogo.astro";
 ---
 
 <header class="grid grid-cols-12 place-items-center mx-auto pb-10 border-b-4 border-dashed border-yellow-500">
   <div class="border-4 bg-boxPrimary border-yellow-500 col-start-2 col-span-10 rounded-lg relative max-w-[1000px]">
     <!-- Main Box -->
     <div class="lg:grid lg:grid-cols-2 lg:gap-2 flex">
-      <div class="flex flex-col">
+      <div class="flex flex-col md:p-5 p-0">
         <!-- Header + Age etc. -->
         <div class="text-white flex flex-col ml-2 row-start-2 flex-1 justify-around items-center">
           <div class="flex-col flex mb-5 lg:mb-0">
-            <h2 class="text-6xl tracking-wide text-center">
-              Hi I'm <span class="text-8xl"><br />Regal!</span>
-            </h2>
+            <h2 class="md:text-9xl text-8xl text-center">Regal</h2>
             <div class="text-md border-t-2 border-red-600 text-slate-200 text-center">
               <ChiStar color={"text-red-600"} /> He/Him <ChiStar color={"text-red-600"} /> Chicago, IL <ChiStar color={"text-red-600"} />
               <span class="hidden xs:inline-block">
@@ -26,11 +22,10 @@ import CobraLogo from "./CobraLogo.astro";
             </div>
           </div>
         </div>
-        <!-- CommunistCoderChicago -->
-        <div class="mx-5 flex flex-col items-center text-3xl text-slate-300 font-semibold">
-          <p class="text-center">Communist Cobra</p>
-          <p>in</p>
-          <div class="flex justify-between items-center w-full">
+        <div class="text-center md:ml-5 mx-5 flex flex-col justify-around text-slate-300 font-semibold gap-2 mb-5">
+          <p class="text-3xl">Communist Cobra</p>
+          <p class="text-xl font-normal -my-1 in">in</p>
+          <div class="flex justify-between items-center w-full text-4xl">
             <ChiStar color={"text-red-600"} /><ChiStar color={"text-red-600"} /><span>Chicago</span><ChiStar color={"text-red-600"} /><ChiStar
               color={"text-red-600"}
             />
@@ -55,5 +50,25 @@ import CobraLogo from "./CobraLogo.astro";
   #bullettedAside {
     font-family: "BigShouldersText-VariableFont_Wght", sans-serif;
     font-variant-divgatures: discretionary-divgatures;
+  }
+
+  .in {
+    display: flex;
+    flex-direction: row;
+    width: 55%;
+    align-self: center;
+  }
+  .in:before,
+  .in:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid;
+    margin: auto;
+  }
+  .in:before {
+    margin-right: 10px;
+  }
+  .in:after {
+    margin-left: 10px;
   }
 </style>

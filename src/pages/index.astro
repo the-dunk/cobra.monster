@@ -1,18 +1,18 @@
 ---
 import "../styles/global.css";
 import { getCollection } from "astro:content";
-import PostList from "../components/PostList.astro";
+import PostList from "@components/PostList.astro";
 const blogPosts = await getCollection("posts");
-import Layout from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
-import Hero from "../components/Hero.astro";
-import SiteHeader from "../components/SiteHeader.astro";
-import HomeSection from "../components/HomeSection.astro";
-import LinkButton from "../components/LinkButton.astro";
-import HomeContentBox from "../components/HomeContentBox.astro";
-import giornoArgent from "../assets/argent/giornoArgent.png";
-import TextDeco from "../components/TextDeco.astro";
-import coffeePotArgent from "../assets/argent/coffeePotArgent.png";
+import Hero from "@components/Hero.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import HomeSection from "@components/HomeSection.astro";
+import LinkButton from "@components/LinkButton.astro";
+import HomeContentBox from "@components/HomeContentBox.astro";
+import giornoArgent from "@assets/argent/giornoArgent.png";
+import TextDeco from "@components/TextDeco.astro";
+import coffeePotArgent from "@assets/argent/coffeePotArgent.png";
 
 const allPosts = blogPosts
   .filter((post) => !post.data.blogExclude)
@@ -23,22 +23,21 @@ const allPosts = blogPosts
 
 <Layout homePage={true}>
   <SiteHeader homePage={true} />
-  <div class="text-center">
+  <div class="text-center py-2">
     <span id="monsterTxt" class="Qt text-white text-4xl md:text-6xl italic tracking-wide">
       The Crisis of Capitalism unearths a MONSTER
-      <!-- THE CRISIS OF CAPITALISM UNEARTHS A MONSTER -->
       <span class="text-nowrap">. . . </span><span class="Qt text-white text-4xl tracking-wide italic">uwu</span>
     </span>
   </div>
   <Hero />
   <HomeSection darkBg={true}>
-    <HomeContentBox columns={["col-start-1", "col-span-12", "lg:col-span-8", "z-10"]}>
+    <HomeContentBox columns={["col-start-1 col-span-12 lg:col-span-8 z-10"]}>
       <div class="mb-2 text-wrap">
         <h2 class="text-4xl xs:text-5xl md:text-6xl font-bold text-white underline decoration-redLight text-wrap text-center">Recent Blog Posts</h2>
       </div>
       <PostList postLimit={3} />
       <div class="ml-16">
-        <LinkButton to={"/blog"} button={true}> All Blog Posts →︎ </LinkButton>
+        <LinkButton to={"/blog"} button={true}>All Blog Posts →︎</LinkButton>
       </div>
     </HomeContentBox>
     <div class="lg:flex w-full pr-5 col-span-4 aspect-square self-center place-items-center hidden">
@@ -48,21 +47,21 @@ const allPosts = blogPosts
   <HomeSection darkBg={false} border={["border-t-4"]}>
     <HomeContentBox columns={["md:col-start-2", "md:col-span-10", "col-start-1", "col-span-12"]}>
       <div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-          <div class="text-2xl font-light">
-            <h2 class="font-prospekt text-7xl mb-10 underline decoration-redLight text-center md:text-left">About Regal</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+          <div class="text-2xl font-light flex flex-col gap-3 justify-around">
+            <h2 class="font-prospekt text-7xl mb-10 underline decoration-redLight text-center md:text-left flex">About Regal</h2>
             <p>
               I'm a Chicago-based frontend software dev who spends most of his free time not doing software dev. I love my city and interacting with it and my
               neighbors via hobbies and <span class="line-through">radical</span> progressive politics.
             </p>
-            <br />
             <p>
-              I'm into a lot of things, including <TextDeco url="/">Fancy Coffee</TextDeco>, <TextDeco url="/">Weightlifting & Bodybuilding</TextDeco>,
-              <TextDeco>Urbanism</TextDeco> & <TextDeco>Biking</TextDeco>, <TextDeco>Drawing</TextDeco>, Building <TextDeco>Mechanical Keyboards</TextDeco>, and <TextDeco
-                >Marxist Theory</TextDeco
-              >.
+              I'm into a lot of things, including <TextDeco url="/about/coffee">Fancy Coffee</TextDeco>, <TextDeco url="/about/weightlifting"
+                >Weightlifting & Bodybuilding</TextDeco
+              >,
+              <TextDeco url="/about/urbanism">Urbanism & Biking</TextDeco>, <TextDeco url="/about/digitalart">Drawing</TextDeco>, Building <TextDeco
+                url="/about/mechanicalkeyboards">Mechanical Keyboards</TextDeco
+              >, and <TextDeco url="/about/communism">Marxist Theory</TextDeco>.
             </p>
-            <br />
             <p>
               More than anything, I like talking to folks and making new friends. So feel free to say hi on one of the <TextDeco url="/links"
                 >various socials</TextDeco

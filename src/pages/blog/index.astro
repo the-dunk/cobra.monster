@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import PostList from "../../components/PostList.astro";
 
 import Layout from "../../layouts/Layout.astro";
-import SiteHeader from "../../components/SiteHeader.astro";
 import TopNav from "../../components/TopNav.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import HomeSection from "../../components/HomeSection.astro";
@@ -16,29 +15,26 @@ const tags = await getCollection("tags");
 
 <Layout>
   <TopNav />
-  <PageHeader>Regal's Blog</PageHeader>
+  <PageHeader>Blog</PageHeader>
   <HomeSection darkBg={false} border={[]}>
-    <HomeContentBox columns={["col-span-12"]}>
-      <!-- Tags -->
-      <div class="mb-8 flex flex-wrap gap-2">
+    <!-- Tags -->
+    <div class="col-span-10 col-start-2 mb-8 mx-5">
+      <div class="flex flex-wrap gap-2">
         {
           tags.map((tag) => {
-            const classes = ["bg-red-700", "text-white", "hover:bg-yellow-300"];
-            // if (tag.id === tagName) {
-            //   classes[0] = "bg-red-500";
-            // }
             return (
-              <a href={`/blog/tagged/${tag.id}`} class={classes.join(" ")}>
+              <a href={`/blog/tagged/${tag.id}`} class="px-2 py-1 bg-yellow text-black rounded-full hover:brightness-125">
                 #{tag.id}
               </a>
             );
           })
         }
       </div>
+    </div>
+    <HomeContentBox columns={["col-span-10 col-start-2"]}>
       <div class="flex">
-        <h2>Year</h2>
         <PostList />
-      </div></HomeContentBox
-    >
+      </div>
+    </HomeContentBox>
   </HomeSection>
 </Layout>
