@@ -5,10 +5,13 @@ import argentAss from "@assets/argent/argentAss.png";
 import BadgeDisplay from "@components/BadgeDisplay.astro";
 import SocialsList from "@components/SocialsList.astro";
 import CobraLogo from "@components/CobraLogo.astro";
+import Wrench from "@assets/mutantEmoji/wrench.png";
 
 interface Props {
   homePage?: boolean;
 }
+
+const disabledStyling = "bg-black/50";
 
 const { homePage } = Astro.props;
 ---
@@ -23,18 +26,23 @@ const { homePage } = Astro.props;
   {
     homePage && (
       <div class="flex flex-col xs:grid grid-cols-2 gap-2 m-5 pb-5 border-b-2 border-dashed border-yellow">
-        <div class="flex flex-col justify-center items-center gap-2">
-          <LinkButton button={false} to="/">
-            <h2 class="text-2xl font-bold">Furry Fitness Webring</h2>
+        <div class="flex flex-col justify-center items-center gap-2 disabled">
+          <h2 class="text-2xl font-bold flex gap-2">
+            <Image class="max-w-8" src={Wrench} alt="wrench" />
+            Under Construction
+            <Image class="max-w-8" src={Wrench} alt="wrench" />
+          </h2>
+          <LinkButton button={false} to="">
+            <h2 class="text-xl font-bold line-through">Furry Fitness Webring</h2>
           </LinkButton>
-          <ul class="flex justify-center gap-10">
+          <ul class="flex justify-center gap-10 line-through">
             <li>
-              <LinkButton button={false} to="/">
+              <LinkButton button={false} to="">
                 ←︎ Previous
               </LinkButton>
             </li>
             <li>
-              <LinkButton button={false} to="/">
+              <LinkButton button={false} to="">
                 Next →︎
               </LinkButton>
             </li>
@@ -91,3 +99,9 @@ const { homePage } = Astro.props;
     </a>
   </div>
 </footer>
+
+<style>
+  .disabled {
+    pointer-events: none;
+  }
+</style>

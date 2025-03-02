@@ -9,7 +9,7 @@ const tags = await getCollection("tags");
 
 <BlogLayout>
   <Fragment slot="tag-list">
-    <div class="py-4 px-2 rounded-lg w-full text-white">
+    <div class="py-4 rounded-lg w-full text-white">
       <TagContents tagIds={tags.map((tag) => tag.id)} />
     </div>
   </Fragment>
