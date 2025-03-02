@@ -1,20 +1,31 @@
 ---
-import TextDeco from "./TextDeco.astro";
-
 interface Props {
   tagIds: string[];
+  inline?: boolean;
+  selected?: string;
 }
-const { tagIds } = Astro.props;
+const { tagIds, inline = false, selected } = Astro.props;
+
+// const buttonColors = "decoration-white text-slate-200 bg-redDark";
+const inlineStyling = inline ? "text-slate-300" : "p-1.5 m-0.5 bg-redDark";
+// const buttonColors = color === "red" ? "decoration-white text-slate-200 bg-redDark" : "decoration-black text-black bg-yellow";
 ---
 
 <div>
-  <h3 class="text-2xl font-medium">Tags</h3>
-  <ul>
+  <ul class="flex gap-2">
     {
       tagIds.map((tagId) => (
         <li>
-          {/* TODO: Update links */}
-          <TextDeco url={`/blog/tagged/${tagId}`}>{tagId}</TextDeco>
+          <a
+            href={`/blog/tagged/${tagId}`}
+            class:list={[
+              "hover:brightness-150 rounded-lg underline decoration-1 font-medium decoration-white ",
+              `${inlineStyling}`,
+              `${selected === tagId ? " ring-2 ring-white brightness-150 grayscale-25" : ""}`,
+            ]}
+          >
+            #{tagId}
+          </a>
         </li>
       ))
     }

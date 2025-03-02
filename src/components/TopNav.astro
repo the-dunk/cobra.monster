@@ -1,10 +1,42 @@
 ---
 import CobraLogo from "./CobraLogo.astro";
 
-const split = Astro.url.pathname.split("/");
-const splitSpliced = split.toSpliced(-1);
-const returnPathName = splitSpliced[splitSpliced.length - 1] === "" ? "home" : splitSpliced[splitSpliced.length - 1];
-const rejoined = splitSpliced.join("/") === "" ? "/" : splitSpliced.join("/");
+interface Exception {
+  remove: string;
+  replace: string;
+  levels: number;
+}
+
+interface UrlSplitReference {
+  urlDisplay: string;
+  url: string;
+}
+
+const exceptions: Exception[] = [
+  {
+    remove: "",
+    replace: "home",
+    levels: 1,
+  },
+  {
+    remove: "tagged",
+    replace: "blog",
+    levels: 1,
+  },
+];
+const splitUrl = Astro.url.pathname.split("/").toSpliced(-1);
+const returnPathName = (): UrlSplitReference => {
+  const topLevel = splitUrl[splitUrl.length - 1];
+  const exception = [...exceptions].find((item) => item.remove === topLevel);
+  console.log({ splitUrl });
+
+  console.log({ exception });
+
+  return {
+    urlDisplay: exception ? exception.replace : topLevel,
+    url: exception?.replace === "home" ? "/" : splitUrl.toSpliced(-1, exception?.levels).join("/"),
+  };
+};
 
 // TODO: if home, display nav links instead
 ---
@@ -21,7 +53,7 @@ const rejoined = splitSpliced.join("/") === "" ? "/" : splitSpliced.join("/");
   <div class="hidden items-center xs:flex">
     <ul class="flex gap-5 text-redDarkest font-medium">
       <li class="hover:scale-[1.15] transition duration-300">
-        <a href={rejoined} class:list={["capitalize px-2 py-1 bg-slate-200 rounded-full"]}>←︎ {returnPathName}</a>
+        <a href={returnPathName().url} class:list={["capitalize px-2 py-1 bg-slate-200 rounded-full"]}>←︎ {returnPathName().urlDisplay}</a>
       </li>
     </ul>
   </div>

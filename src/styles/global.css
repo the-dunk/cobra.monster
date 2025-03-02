@@ -124,10 +124,22 @@
   src: url("/fonts/Digital Dot Roadsign.otf") format("opentype");
 }
 
+* {
+  box-sizing: border-box;
+}
+*:before, *:after {
+  box-sizing: border-box;
+}
 html,
 body {
   margin: 0;
+  height: 100%;
 }
+/* body {
+  display: table;
+  height: 100%;
+  width: 100%;
+} */
 
 html {
   /* font-family: "Roboto-VariableFont_wdth,wght", sans-serif;
@@ -139,6 +151,7 @@ html {
   font-family: "Roboto-VariableFont_wdth,wght", sans-serif;
   /* font-family: "Snake Chan", sans-serif; */
 }
+
 .stripedBg {
   background: repeating-linear-gradient(45deg, #450a0a, #450a0a 70px, #340606 70px, #340606 140px);
 }

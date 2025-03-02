@@ -14,7 +14,12 @@ const { homePage } = Astro.props;
 ---
 
 <!-- NOTE: Height of footer must be offset by padding-bottom in Layout -->
-<footer class:list={["bg-redDark border-redLight w-full text-stone-200 absolute  border-t-8 pb-5", `${homePage ? "min-h-[225px]" : "min-h-[75px]"}`]}>
+<footer
+  class:list={[
+    "bg-redDark border-redLight  text-stone-200 table-row h-auto border-separate ring-8 ring-redLight",
+    `${homePage ? "min-h-[225px]" : "min-h-[75px]"}`,
+  ]}
+>
   {
     homePage && (
       <div class="flex flex-col xs:grid grid-cols-2 gap-2 m-5 pb-5 border-b-2 border-dashed border-yellow">

@@ -12,12 +12,12 @@ const { homePage, blog } = Astro.props;
 
 const bgSettings = () => {
   if (homePage) {
-    return "gradientBg pb-[275px]";
+    return "gradientBg";
   }
   if (blog) {
-    return "blogBg pb-[152px]";
+    return "blogBg";
   }
-  return "stripedBg pb-[152px]";
+  return "stripedBg";
 };
 ---
 
@@ -33,21 +33,10 @@ const bgSettings = () => {
   </head>
 
   <body>
-    <!-- <div class="brb">BRB</div> -->
-    <style>
-      .brb {
-        width: 100%;
-        height: 100vw;
-        background-color: darkseagreen;
-        color: black;
-        font-size: 15rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    </style>
-    <div class:list={["justify-center min-h-[100vh]", bgSettings()]}>
-      <slot />
+    <div class:list={["min-h-[100vh] overflow-hidden  table w-full border-separate", bgSettings()]}>
+      <div class="@container table-row">
+        <slot />
+      </div>
       <Footer homePage={homePage} />
     </div>
   </body>

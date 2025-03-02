@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
+import TopNav from "../components/TopNav.astro";
+import type { MarkdownHeading } from "astro";
+import TableOfContents from "../components/TableOfContents.astro";
+import TagContents from "../components/TagContents.astro";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+  headings: MarkdownHeading[];
+}
+
+const {
+  post: {
+    data: { title, subtitle, date, tags, blogExclude },
+  },
+  headings,
+} = Astro.props;
+
+const formattedDate = date?.toLocaleString("en-US", { day: "2-digit", month: "long", year: "numeric" });
+// const displayTags = tags?.map((tag) => tag.id);
+const listDecoStyle = "prose-ul:before:text-white";
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+</head>
+
+<Layout blog={true}>
+  <TopNav />
+  <article class="m-10 md:mt-28 mt-8">
+    <header class="flex flex-col md:grid grid-cols-12 md:border-0 border-b-2 border-slate-200 md:mb-0 md:pb-0 mb-2 pb-10">
+      <div class="lg:col-start-2 col-span-10 md:mb-10 mb-5">
+        <h1 class="font-black text-yellow decoration-4 decoration-white md:text-6xl text-4xl mb-5">{title}</h1>
+        <h2 class="text-slate-200 md:text-3xl text-lg font-medium">{subtitle}</h2>
+        <p class="md:hidden flex text-slate-200 text-sm">{blogExclude ? "Last Updated" : "Published"}: {formattedDate}</p>
+      </div>
+      {
+        (tags || headings.length > 0) && (
+          <aside class="text-slate-200 md:hidden block">
+            {tags && (
+              <div class="flex mb-8">
+                <TagContents tagIds={tags.map((tag) => tag.id)} />
+              </div>
+            )}
+            <div class="border-t-4 border-slate-200">{headings.length > 0 && <TableOfContents headings={headings} />}</div>
+          </aside>
+        )
+      }
+    </header>
+
+    <div class="text-xl text-slate-200 md:grid grid-cols-12 gap-10 flex flex-col">
+      <aside class="col-start-1 lg:col-start-2 col-span-4 lg:col-span-3 border-t-4 border-slate-200 hidden md:block">
+        <div id="publishTags" class="border-b-2 border-slate-200 pb-4">
+          <div class="mt-2">
+            <h3 class="font-medium text-2xl">{blogExclude ? "Last Updated" : "Published"}</h3>
+            <p>{formattedDate}</p>
+          </div>
+          {
+            tags && (
+              <div class="mt-2 text-sm">
+                <TagContents inline={true} tagIds={tags.map((tag) => tag.id)} />
+              </div>
+            )
+          }
+        </div>
+        {headings.length > 0 && <TableOfContents headings={headings} />}
+      </aside>
+      <main
+        class:list={[
+          "col-span-8 prose prose-slate dark:prose-invert prose-blockquote:border-amber-300 prose-hr:border-slate-200 prose-pre:bg-cyan-200 ",
+          `${listDecoStyle}`,
+        ]}
+      >
+        <!-- Slot = Content -->
+        <slot />
+      </main>
+    </div>
+  </article>
+</Layout>

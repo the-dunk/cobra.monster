@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import PostList from "../../../components/PostList.astro";
-import Layout from "src/layouts/Layout.astro";
+import PostList from "@components/PostList.astro";
+import BlogLayout from "@layouts/BlogLayout.astro";
+import TagContents from "@components/TagContents.astro";
 
 export async function getStaticPaths() {
   const tagEntries = await getCollection("tags");
@@ -11,13 +12,15 @@ export async function getStaticPaths() {
     props: { entry },
   }));
 }
+const tags = await getCollection("tags");
 const { entry } = Astro.props;
-
-// const allTaggedPosts = (await getCollection("posts", ({ data }) => data.tags?.map((tag) => tag.id).includes(entry.id))).sort(
-//   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
-// );
 ---
 
-<Layout>
-  <PostList tagId={entry.id} />
-</Layout>
+<BlogLayout>
+  <Fragment slot="tag-list">
+    <TagContents selected={entry.id} tagIds={tags.map((tag) => tag.id)} />
+  </Fragment>
+  <Fragment slot="post-list">
+    <PostList tagId={entry.id} />
+  </Fragment>
+</BlogLayout>

@@ -8,14 +8,15 @@ const tags = defineCollection({
 });
 
 const posts = defineCollection({
-  // type: "content",
+  type: "content",
   schema: ({image}) => z.object({
     title: z.string(),
     subtitle: z.string(),
     date: z.date(),
     tags: z.array(reference("tags")).optional(),
     blogExclude: z.boolean().optional(),
-    emoji: z.preprocess(val => `/src/assets/mutantEmoji/${val}`, image()).optional()
+    emoji: z.preprocess(val => `/src/assets/mutantEmoji/${val}`, 
+      image()).optional()
   }),
 });
 

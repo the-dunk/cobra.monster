@@ -1,71 +1,20 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import Layout from "./Layout.astro";
-import TopNav from "../components/TopNav.astro";
-import type { MarkdownHeading } from "astro";
-import TableOfContents from "../components/TableOfContents.astro";
-import TagContents from "../components/TagContents.astro";
-
-interface Props {
-  post: CollectionEntry<"posts">;
-  headings: MarkdownHeading[];
-}
-
-const {
-  post: {
-    data: { title, subtitle, date, description, tags, blogExclude },
-  },
-  headings,
-} = Astro.props;
-
-const formattedDate = date?.toLocaleString("en-US", { day: "2-digit", month: "long", year: "numeric" });
-// const displayTags = tags?.map((tag) => tag.id);
-const listDecoStyle = "prose-ul:before:text-white";
+import Layout from "@layouts/Layout.astro";
+import TopNav from "@components/TopNav.astro";
+import PageHeader from "@components/PageHeader.astro";
+import HomeSection from "@components/HomeSection.astro";
+import HomeContentBox from "@components/HomeContentBox.astro";
 ---
 
-<head>
-  <meta charset="UTF-8" />
-  {description && <meta name="description" content={description} />}
-  <meta name="viewport" content="width=device-width" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="generator" content={Astro.generator} />
-  <title>{title}</title>
-</head>
-
-<Layout blog={true}>
-  <TopNav />
-  <article class="m-10 mt-28">
-    <header class="grid grid-cols-12">
-      <div class="col-start-2 col-span-10 mb-10">
-        <h1 class="font-black text-yellow decoration-4 decoration-white text-6xl mb-5">{title}</h1>
-        <h2 class="text-slate-200 text-3xl font-medium">{subtitle}</h2>
-      </div>
-    </header>
-    <div class="text-xl text-slate-200 grid grid-cols-12 gap-10">
-      <div class="col-start-2 col-span-3 border-t-4 border-slate-200">
-        <div id="publishTags" class="border-b-2 border-slate-200 pb-4">
-          <div class="mt-2">
-            <h3 class="font-medium text-2xl">{blogExclude ? "Last Updated" : "Published"}</h3>
-            <p>{formattedDate}</p>
-          </div>
-          {
-            tags && (
-              <div class="mt-2">
-                <TagContents tagIds={tags.map((tag) => tag.id)} />
-              </div>
-            )
-          }
-        </div>
-        {headings.length > 0 && <TableOfContents headings={headings} />}
-      </div>
-      <div
-        class:list={[
-          "col-span-8 prose prose-slate dark:prose-invert prose-blockquote:border-amber-300 prose-hr:border-slate-200 prose-pre:bg-cyan-200 ",
-          `${listDecoStyle}`,
-        ]}
-      >
-        <slot />
-      </div>
-    </div>
-  </article>
+<Layout>
+    <TopNav />
+    <PageHeader>Blog</PageHeader>
+    <HomeSection darkBg={false} border={[]}>
+        <HomeContentBox columns={["col-span-10 col-start-2"]}>
+            <div class="flex flex-col">
+                <slot name="tag-list" />
+                <slot name="post-list" />
+            </div>
+        </HomeContentBox>
+    </HomeSection>
 </Layout>

@@ -1,40 +1,19 @@
 ---
 import { getCollection } from "astro:content";
-import PostList from "../../components/PostList.astro";
-
-import Layout from "../../layouts/Layout.astro";
-import TopNav from "../../components/TopNav.astro";
-import PageHeader from "../../components/PageHeader.astro";
-import HomeSection from "../../components/HomeSection.astro";
-import HomeContentBox from "../../components/HomeContentBox.astro";
+import PostList from "@components/PostList.astro";
+import BlogLayout from "@layouts/BlogLayout.astro";
+import TagContents from "@components/TagContents.astro";
 
 const tags = await getCollection("tags");
-
-// TODO: make this a layout, and use in the [...tag] page
 ---
 
-<Layout>
-  <TopNav />
-  <PageHeader>Blog</PageHeader>
-  <HomeSection darkBg={false} border={[]}>
-    <!-- Tags -->
-    <div class="col-span-10 col-start-2 mb-8 mx-5">
-      <div class="flex flex-wrap gap-2">
-        {
-          tags.map((tag) => {
-            return (
-              <a href={`/blog/tagged/${tag.id}`} class="px-2 py-1 bg-yellow text-black rounded-full hover:brightness-125">
-                #{tag.id}
-              </a>
-            );
-          })
-        }
-      </div>
+<BlogLayout>
+  <Fragment slot="tag-list">
+    <div class="py-4 px-2 rounded-lg w-full text-white">
+      <TagContents tagIds={tags.map((tag) => tag.id)} />
     </div>
-    <HomeContentBox columns={["col-span-10 col-start-2"]}>
-      <div class="flex">
-        <PostList />
-      </div>
-    </HomeContentBox>
-  </HomeSection>
-</Layout>
+  </Fragment>
+  <Fragment slot="post-list">
+    <PostList />
+  </Fragment>
+</BlogLayout>
