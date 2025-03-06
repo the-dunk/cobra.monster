@@ -25,6 +25,7 @@
   --animate-assJiggle: assWiggle 0.3s ease-in-out infinite;
   /* Breakpoints */
   --breakpoint-xs: 545px;
+  --breakpoint-2xl: 1600px;
   /* Fonts */
   --font-prospekt: "Prospekt Regular", sans-serif;
 

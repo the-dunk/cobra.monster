@@ -45,8 +45,8 @@ const limit = postLimit ? postLimit : blogPosts?.length;
       let yearNum: number = parseInt(Object.keys(yearObj)[0]);
       {
         return (
-          <div class:list={["sm:grid flex flex-col grid-cols-[1fr, 1fr] w-full",`${index !==0 ? 'border-t-4 border-slate-200/40 mt-5':''}` ]}>
-            <div class="text-5xl mr-5">
+          <div class:list={["flex sm:flex-row flex-col w-full",`${index !==0 ? 'border-t-4 border-slate-200/40 mt-5':''}` ]}>
+            <div class="text-5xl mr-5 w-fit">
               <h3 class="sm:sticky relative top-0 pt-4 font-bold">{yearNum}</h3>
             </div>
             <div class="mt-5 col-start-2">
