@@ -7,14 +7,15 @@ interface Props {
   headings: MarkdownHeading[];
 }
 const { headings } = Astro.props;
-const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
+const filteredHeadings = headings.filter((heading) => heading.text !== "Footnotes");
+// const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 ---
 
 <nav class="sticky top-0 pt-4">
-  <h3 class="text-2xl font-medium">Contents</h3>
+  <h3 class="text-3xl font-medium mb-2">Contents</h3>
   <ul>
     {
-      headings.map((heading) => {
+      filteredHeadings.map((heading, i) => {
         if (heading.depth > 1) {
           return (
             <li>
@@ -30,9 +31,10 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
           );
         }
         return (
-          <li class:list={[`${heading.depth === 1 ? "mt-3" : ""}`]}>
-            <TextDeco url={`#${heading.slug}`}>{heading.text}</TextDeco>
-          </li>
+            <div class:list={[" w-[75%]  bg-slate-200/30 p-0.5 mb-1.5", `${i===0 ? 'hidden' :'inline-block'}`]}></div>
+            <li>
+              <TextDeco url={`#${heading.slug}`}>{heading.text}</TextDeco>
+            </li>
         );
       })
     }

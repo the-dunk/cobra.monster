@@ -2,16 +2,16 @@
 import { Image } from "astro:assets";
 
 interface Props {
-    emoji: ImageMetadata;
-    size?: "sticker" | "emoji";
+  emoji: ImageMetadata;
+  size?: "sticker" | "emoji";
 }
 const { emoji, size = "emoji" } = Astro.props;
 const imgSize = size === "sticker" ? "max-w-32" : "max-w-16";
 ---
 
-<div class="border-yellow border-l-8 bg-redDark/40 w-fit p-2">
-    <Image src={emoji} alt={emoji.src.split("/").at(-1) || "mutant emoji"} class:list={["w-fit not-prose", imgSize]} />
+<div class="ml-2 bg-redDark/40 w-fit p-1">
+  <Image src={emoji} alt={emoji.src.split("/").at(-1) || "mutant emoji"} class:list={["w-fit not-prose", imgSize]} />
 </div>
-<blockquote class="emojiBlockQuote p-2 bg-redDark/40 italic border-yellow border-l-8">
-    <slot />
+<blockquote class="emojiBlockQuote bg-redDark/40 italic border-yellow border-l-8">
+  <slot />
 </blockquote>

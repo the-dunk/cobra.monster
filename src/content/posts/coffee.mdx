@@ -5,8 +5,14 @@ date: 2025-03-05
 emoji: hot_drink.png
 blogExclude: true
 ---
+import { Image } from "astro:assets";
+
 import EmojiBlockquote from "@components/EmojiBlockquote.astro";
+import AccordionWrapper from "@components/Accordion/AccordionWrapper"
 import ArgentYikes from "@assets/argent/stickers/babanasaur/yikes.png";
+import ArgentUwu from "@assets/argent/stickers/babanasaur/uwu.png"
+import ArgentEyy from "@assets/argent/stickers/babanasaur/eyy.png"
+import ArgentRelief from "@assets/argent/stickers/babanasaur/relief.png"
 
 Mmm coffee. I've been into coffee since early college days, and have only grown more serious about it as time goes on.
 Scroll on for my latest coffee sourcing & prep recommendations--towards the bottom I'll share my gear and #CoffeeJourney
@@ -17,7 +23,24 @@ Length Warning: This is probably my TOP passion. Please use the **Table of Conte
 # Recommendations
 These change over time, but I consistently look for top-tier consumer-level roasters, equipment, and techniques.
 ## Types of Drinks
-In order, my favorite ways of preparing coffee:
+In order, these are my favorite ways of preparing coffee.
+<AccordionWrapper client:idle>
+<span slot="title">1. Pour Overs</span>
+<p slot="content">Specifically a ceramic V60 or Origami dripper</p>
+</AccordionWrapper>
+<AccordionWrapper client:idle title='2. Pour Overs'>
+<p slot="content">Specifically a ceramic V60 or Origami dripper</p>
+</AccordionWrapper>
+<AccordionWrapper client:idle title='1. Pour Overs'>
+<p slot="content">Specifically a ceramic V60 or Origami dripper</p>
+</AccordionWrapper>
+<AccordionWrapper client:idle title='1. Pour Overs'>
+<p slot="content">Specifically a ceramic V60 or Origami dripper</p>
+</AccordionWrapper>
+<AccordionWrapper client:idle title='1. Pour Overs'>
+<p slot="content">Specifically a ceramic V60 or Origami dripper</p>
+</AccordionWrapper>
+
 1. Pour-over (\*ceramic\* V60 or Origami dripper)
 2. Espresso (espresso, macchiato, cortado, cappuccino or small americano)
 3. Aeropress
@@ -51,18 +74,32 @@ I started venturing out into downtown, and testing out coffee shops there. Most 
 
 Dale was super cool. I actually recognised him from another coffee shop where he used to work bar (on the espresso machine). I explained that I was trying to get more serious about coffee, but didn't know where to start. He said he'd help me out, and he poured 3 different fancy coffees for me to try.\
 At the time I didn't like black coffee, and even then didn't love those...but talking to him, I was able to taste the "notes" he talked about. It was the first time I'd actually tried multiple coffees together in a "flight" like this.
-> This happened in 2013 or so. I asked about Dale the last time I visited, but he no longer owns the shop.\
+This happened in 2013 or so. I asked about Dale the last time I visited, but he no longer owns the shop.\
 I'm grateful for  his kindness and hope he's doing well.
 ## The Grind
 Since then it has been a series of trials and error in finding the right equipment, techniques, coffee...etc.
 ### The Equipment
 I'm pretty pleased to say that I've stayed true to the *"Buy Once Cry Once"* mentality, and have bought high quality equipment just one time, and never had regrets.\
-I do have a bunch of ancillary coffee brewing equipment that I rarely use, like my Vietnamese Phin or my [Bripe](https://www.youtube.com/watch?v=tltBHjmIUJ0). But these are truly novelties, and if not a gift, they were reasonably cheap.
+I do have a bunch of ancillary coffee brewing equipment that I rarely use, like my Vietnamese Phin or my [Bripe](https://www.youtube.com/watch?v=tltBHjmIUJ0). But these are novelties, and if not a gift, they were reasonably cheap.
 ### The Beans
 This is the most active aspect of my coffee journey at the moment–I'm constantly finding new varietals and funky flavors to try. I'm especially searching for GOOD decaf because drinking caffeinated coffee late into the day is just impossible.
 ### The Shops
-Ask any of my close friends and they'll tell you how crazy I am about going to coffeeshops. A true *perkalurker* I like to bed down at a coffee shop for hours at a time to work, draw, and vibe.
+Ask any of my close friends and they'll tell you how crazy I am about going to coffeeshops. Although not a *perkalurker*, I like to plant myself down at a coffee shop for hours at a time to work, draw, and vibe.
 > A **"Perkalurker"** is one who sets at a coffee shop by spending the minimum requisite "buy-in" (usually just a cup of drip coffee) and stays there all day, taking space and spending little. [^1]\
 I do not do this. I spend time conscious of how busy it is, and tip consistently etc. Treating the space as a the treasured [Third Space](https://www.vox.com/the-highlight/24119312/how-to-find-a-third-place-cafe-bar-gym-loneliness-connection) it really is.
+
+There's just something so special about being surrounded by chill strangers having conversations, doing work, reading...all in our own little worlds, enjoying fun little drinks. Putting the rest of the world to the side for a bit just to truly Vibe.
+
+#### The City Fabric
+Even before moving to Chicago, Coffee Shops were my impetus for exploring the city. On vacation, they serve as oases to grab some wifi, get my bearings, and figure out where I'm going next.\
+My google map is completely packed with coffee shop lists and pins. If someone wants to "meet for coffee" I nearly have 10 questions ready just to narrow down the exact vibe and quality we need lol.
+#### The Connections
+I can't begin to count how many friends I've made in or at coffeeshops. Online and offline, they're a nexus of connection for me. A neutral space, food and drinks available, the casual anonymity of The Public™️ around you...it's just a good place to make connections!
+<EmojiBlockquote emoji={ArgentEyy} size={'sticker'}>
+If you're reading this and visiting Chicago in the near future, you're 100% invited to [hit me up](/links) for a coffee meetup! I love showing off my favorite spots to cool potential new friends :3
+If you're reading this and visiting Chicago in the near future, you're 100% invited to [hit me up](/links) for a coffee meetup! I love showing off my favorite spots to cool potential new friends :3
+If you're reading this and visiting Chicago in the near future, you're 100% invited to [hit me up](/links) for a coffee meetup! I love showing off my favorite spots to cool potential new friends :3
+If you're reading this and visiting Chicago in the near future, you're 100% invited to [hit me up](/links) for a coffee meetup! I love showing off my favorite spots to cool potential new friends :3
+</EmojiBlockquote>
 
 [^1]: Citation needed (I can't remember or find where I first heard this term)

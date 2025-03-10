@@ -7,25 +7,25 @@
 .prose {
   --tw-prose-bullets: theme(--color-yellow);
   --tw-prose-counters: theme(--color-yellow);
-  --tw-prose-captions: theme(--color-slate-400)
+  --tw-prose-captions: theme(--color-slate-400);
 }
 
 /* Forcing edits on Prose blog post styling */
 .prose img {
   margin-bottom: 0;
 }
-.prose blockquote>p::before {
+.prose blockquote > p::before {
   content: none;
 }
-.prose blockquote>p::after {
+.prose blockquote > p::after {
   content: none;
 }
-.prose .emojiBlockQuote{
+.prose .emojiBlockQuote {
   margin-top: 0;
-  padding: calc(var(--spacing)*2);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 6);
   /* border-left: none; */
 }
-.prose .emojiBlockQuote p{
+.prose .emojiBlockQuote p {
   margin: 0;
 }
 
@@ -36,5 +36,4 @@ h4,
 h5,
 h6 {
   font-family: var(--header-typeface, sans-serif);
-
 }
