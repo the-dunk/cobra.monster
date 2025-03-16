@@ -3,6 +3,7 @@
 @plugin "@tailwindcss/typography";
 
 :root {
+  --gutter: clamp(1.125rem, 2.5vw + 0.5rem, 2.75rem);
   .chistar {
     font-family: "BigShouldersText-VariableFont_Wght", sans-serif;
     font-variant-ligatures: discretionary-ligatures;
