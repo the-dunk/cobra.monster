@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import PostSummary from "./PostSummary.astro";
 import type { ReactElement } from "react";
+import { sortCollection } from "src/utils/sortCollection";
 
 interface Props {
   tagId?: string;
@@ -24,9 +25,7 @@ const blogPosts: Array<CollectionEntry<"posts">> = tagId
 
 // Sorting blog posts by year
 const blogSort = (): PostsByYear[] => {
-  const sortedPosts = blogPosts.sort((a, b) => {
-    return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf();
-  });
+  const sortedPosts = sortCollection(blogPosts, "date");
   let yearArray: number[] = [];
   sortedPosts.forEach((post) =>
     yearArray.find((obj) => obj === post.data.date.getFullYear()) === undefined ? yearArray.push(post.data.date.getFullYear()) : "",

@@ -19,7 +19,7 @@ const inlineStyling = inline ? "text-amber-400" : "p-1.5 m-0.5 bg-redDark";
             class:list={[
               "hover:brightness-150 rounded-lg underline decoration-1 font-medium decoration-white ",
               `${inlineStyling}`,
-              `${selected === tagId ? " ring-2 ring-white brightness-150 grayscale-25" : ""}`,
+              `${selected === tagId ? " ring-2 ring-white brightness-150 grayscale-25 border-r-2 border-b-2 border-slate-200" : ""}`,
             ]}
           >
             #{tagId}
