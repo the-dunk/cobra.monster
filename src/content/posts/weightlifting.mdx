@@ -3,29 +3,76 @@ title: Weightlifting
 subtitle: I've been weightlifting since 2017 and host a Furry Fitness server
 emoji: muscle_clw_y2.png
 blogExclude: true
-date: 2025-02-09
+date: 2025-03-18
 ---
 import EmojiBlockquote from "@components/EmojiBlockquote.astro";
 import { Image } from "astro:assets";
+import AccordionWrapper from "@components/Accordion/AccordionWrapper";
+import AccordionPhotoTemplate from "@components/Accordion/AccordionPhotoTemplate.astro"
+import TextDeco from "@components/TextDeco.astro"
 
 import wrench from "@assets/mutantEmoji/utility/wrench.png"
+import cameraFlash from "@assets/mutantEmoji/utility/camera_with_flash.png"
+import argentThink from "@assets/mutantEmoji/argent_thinking_512.png"
 
 <EmojiBlockquote emoji={wrench} size="emoji">
 Under Construction!
 </EmojiBlockquote>
 
-# The Story
+I started weightlifting in college as a physical therapy thing, but only in 2017 did I finally get serious about it. Today it's an incredibly important hobby and lifestyle thing for me, and I really enjoy connecting with others over it.
 
-## Weightlifting for Me
+# Physique
+Nowadays the #1 reason I weightlift is for my physique. The health benefits are in the back of my mind, and I love benefiting from the energy boost and resiliancy I get, but very honestly I am mostly working to achieve an idealised self-image.
+> You can really see it in <TextDeco inline={true} url="/fursona">Argent's design</TextDeco>
 
-# Regal's Workout Advice!
+I'm a big fan of encouraging folks' vanity-related motivations. Societal stigma gives vanity a bad name, but I think caring about your physique for your \*own\* reasons is a fantastic reason to exercise.\
+And honestly any motivation that gets you to exercise is a health win!
+
+<AccordionWrapper client:idle>
+<span slot="title"><Image class="max-w-8 pb-2 inline-block m-auto" src={cameraFlash} alt='camera'/> Current Physique (fursona-censored)</span>
+<div slot="content">
+I'll update this as I can remember to, but here I'll share some physique pics I'm happy with :3
+<AccordionPhotoTemplate numImages={1}>
+<div slot="image">
+![HackSquat 2025](@assets/aboutPages/weightlifting/hackSquatArgentSelfie.jpg)
+</div>
+<span slot="caption">_Hack Squat_</span>
+</AccordionPhotoTemplate>
+</div>
+</AccordionWrapper>
+
+# Regal's Workout Advice
+<EmojiBlockquote size="emoji" emoji={argentThink}>
+This section serves as a landing spot for myself to link to from elsewhere.
+</EmojiBlockquote>
+
+By no means an expert, I'm a big nerd who's had his fair share of fitness + nutrition successes and failures.
+## Diet and Nutrition
+Personally, diet is so important that I think any serious "how to put on muscle or lose fat" guide should start with it.
+### Nutrition basics
+>"There is no such thing as unhealthy food, only unhealthy diets."
+#### Macros
+"Macros" refers to the 3 macronutrients: **Carbohydrates**, **Protein,** and **Fat**.\
+Each Macro serves a multitude of important biological functions. A healthy diet will include some amount of each of these.\
+Briefly:
+- **Carbohydrates** = primary source of energy–the body has a very easy time using carbs for energy
+- **Protein** = support for building muscle and repairing systems within the body
+- **Fat** = protective cushion around organs and the body, also needed for hormone production
+##### Macros and Calories
+Along with their other functions, macronutrients also provide energy, measured in kilo-calories (when you hear talk of "calories", people are usually talking about kilo-calories). To calculate how many calories are in your diet, you simply add up the macros in your diet, and multiply their amounts in grams by either 4 or 9 to find out how many calories they're contributing.
+- 1g each Carbohydrates or Protein = 4 calories
+- 1g Fat = 9 calories
+Fat is healthy, but because it's more than twice as energy dense as carbs or protein, fats are often seen as "bad". 10g of fat is 90 calories compared to 10g of carbs (40cal).
+### Exercise vs. Diet
+When it comes to researching "how do I build muscle or cut fat?", you'll usually find some statistic like "70-80% diet, 30-20% exercise", meaning simply that monitoring + changing your diet is much more important than tweaking your exercise routine.\
+In my experience it's not usually welcome advice. It feels much more exciting and actionable to hear that if you just lift weights 3x a week you'll get the physique of your dreams. Changing your diet feels harder and less proactive than running a mile every day.
 
 ## Fitness YouTubers I like
-Risky to put trust in an influencer...but these guys haven't steered me wrong yet.
+It's risky to put trust in an influencer...but these guys haven't steered me wrong yet.
 
-- Jeff Nippard
-- Renaissance Periodization (Dr. Mike Israetel)
-- Jeremy Ethier
+- [Jeff Nippard](https://www.youtube.com/@JeffNippard): The big-name "Science-based Weightlifting" YouTuber. I've been using his workout routines for years now. Huge fan.
+- [Renaissance Periodization (Dr. Mike Israetel)](https://www.youtube.com/@RenaissancePeriodization): An intense guy with incredible nuanced scientific weightlifting + muscle advice
+- [Jeremy Ethier](https://www.youtube.com/@JeremyEthier): More of a gimmicky YouTuber but good info and high production quality.
 
 # Discord Server
 

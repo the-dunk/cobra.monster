@@ -1,0 +1,41 @@
+---
+interface Props {
+  numImages: 1 | 2;
+}
+
+const { numImages } = Astro.props;
+---
+
+{
+  numImages === 1 && (
+    <div class="max-w-[55%] m-auto gap-2 my-4 not-prose ">
+          <slot name="image" />
+      <figure class="text-center text-sm">
+            <slot name="caption"/>
+            </figure>
+    </div>
+  )
+}
+{
+  numImages === 2 && (
+  <div class="flex gap-2 my-4 not-prose ">
+    <div>
+        <div>
+            <slot name="image-1"/>
+        </div>
+        <figure class="text-center text-sm">_
+            <slot name="caption-1"/>
+            _</figure>
+    </div>
+    </div>
+    <div>
+        <div>
+        <slot name="image-2"/>
+        </div>
+        <figure class="text-center text-sm">_
+            <slot name="caption-2"/>
+            _</figure>
+    </div>
+</div>
+  )
+}
