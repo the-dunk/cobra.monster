@@ -10,6 +10,7 @@ import { Image } from "astro:assets";
 import AccordionWrapper from "@components/Accordion/AccordionWrapper";
 import AccordionPhotoTemplate from "@components/Accordion/AccordionPhotoTemplate.astro"
 import TextDeco from "@components/TextDeco.astro"
+import QuoteBlock from "@components/QuoteBlock.astro"
 
 import wrench from "@assets/mutantEmoji/utility/wrench.png"
 import cameraFlash from "@assets/mutantEmoji/utility/camera_with_flash.png"
@@ -40,17 +41,24 @@ I'll update this as I can remember to, but here I'll share some physique pics I'
 </AccordionPhotoTemplate>
 </div>
 </AccordionWrapper>
+<br />
 
 # Regal's Workout Advice
-<EmojiBlockquote size="emoji" emoji={argentThink}>
-This section serves as a landing spot for myself to link to from elsewhere.
-</EmojiBlockquote>
-
+This is a non-exhaustive mini-blog post of important fitness and nutrition info.\
 By no means an expert, I'm a big nerd who's had his fair share of fitness + nutrition successes and failures.
 ## Diet and Nutrition
-Personally, diet is so important that I think any serious "how to put on muscle or lose fat" guide should start with it.
+In my opinion, diet is so important that I think any serious "how to put on muscle and/or lose fat" guide should start with it.
+<QuoteBlock>Labeling specific foods in an overly
+simplistic manner as “good foods” and
+“bad foods” is not only inconsistent
+with the total diet approach, but it can
+cause many people to abandon efforts
+to make dietary improvements.<span slot="credit">Jeanne H Freeland-Graves, Susan Nitzke [^1]</span></QuoteBlock>
 ### Nutrition basics
->"There is no such thing as unhealthy food, only unhealthy diets."
+If you want to change your body composition in any way–building muscle or cutting fat, the #1 thing to understand is **Energy In/Energy Out.** Gaining or losing body mass is just a matter of whether you're consuming more calories than you expend each day. Whether it's fat or muscle depends on your activity level.
+
+If you haven't, check out this or any **Total Daily Energy Expenditure (TDEE)** <TextDeco inline={true} url="https://tdeecalculator.net/">**Calculator**</TextDeco> to get a rough estimate of how many calories your body burns just to maintain your current lifestyle.
+
 #### Macros
 "Macros" refers to the 3 macronutrients: **Carbohydrates**, **Protein,** and **Fat**.\
 Each Macro serves a multitude of important biological functions. A healthy diet will include some amount of each of these.\
@@ -58,8 +66,13 @@ Briefly:
 - **Carbohydrates** = primary source of energy–the body has a very easy time using carbs for energy
 - **Protein** = support for building muscle and repairing systems within the body
 - **Fat** = protective cushion around organs and the body, also needed for hormone production
+
 ##### Macros and Calories
-Along with their other functions, macronutrients also provide energy, measured in kilo-calories (when you hear talk of "calories", people are usually talking about kilo-calories). To calculate how many calories are in your diet, you simply add up the macros in your diet, and multiply their amounts in grams by either 4 or 9 to find out how many calories they're contributing.
+Along with their other functions, macronutrients also provide energy, measured in kilocalories.
+
+> When you hear talk of "calories", people are usually talking about kilo-calories. Going forward, "calories" mentioned here actually refers to kilocalories.
+
+To calculate how many calories are in your diet, you simply add up the macros in your diet, and multiply their amounts in grams by either 4 or 9 to find out how many calories they're contributing.
 - 1g each Carbohydrates or Protein = 4 calories
 - 1g Fat = 9 calories
 Fat is healthy, but because it's more than twice as energy dense as carbs or protein, fats are often seen as "bad". 10g of fat is 90 calories compared to 10g of carbs (40cal).
@@ -75,5 +88,8 @@ It's risky to put trust in an influencer...but these guys haven't steered me wro
 - [Jeremy Ethier](https://www.youtube.com/@JeremyEthier): More of a gimmicky YouTuber but good info and high production quality.
 
 # Discord Server
+I host a public furry fitness server! While fitness and furry-themed, it's an 18+ social space first and foremost. A good chill hangout space with the extra benefit of being filled with experienced fitness folk who can help answer questions and suggest workout routines.
 
-[Join my Furry Fitness Server!](https://discord.gg/zHVnKRb)
+[Regal Furry Fitness invite link](https://discord.gg/zHVnKRb)
+
+[^1]: <a href="https://sci-hub.se/10.1016/j.jand.2012.12.013">Position of the Academy of Nutrition and Dietetics: Total Diet Approach to Healthy Eating</a>

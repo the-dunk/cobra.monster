@@ -1,0 +1,42 @@
+<blockquote class="flex italic font-light font-serif relative my-10 border-slate-200 py-10">
+  <div class="ml-20">
+    <p>
+      <slot />
+    </p>
+    <p>
+      –<slot name="credit" />
+    </p>
+  </div>
+</blockquote>
+
+<style>
+  blockquote {
+    background: none;
+    border: none;
+  }
+  blockquote::before {
+    position: absolute;
+    display: block;
+    height: 0;
+    width: calc(17 * var(--spacing));
+    text-align: left;
+    color: var(--color-white);
+    font-size: var(--text-9xl);
+    content: "“";
+    top: calc(-2 * var(--spacing));
+    line-height: 1em;
+  }
+  blockquote::after {
+    position: absolute;
+    display: block;
+    height: 0;
+    width: calc(17 * var(--spacing));
+    text-align: left;
+    color: var(--color-white);
+    font-size: var(--text-9xl);
+    content: "”";
+    bottom: calc(13 * var(--spacing));
+    right: 0;
+    line-height: 1em;
+  }
+</style>
