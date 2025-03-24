@@ -6,11 +6,14 @@ blogExclude: true
 date: 2025-03-22
 ---
 import EmojiBlockquote from "@components/EmojiBlockquote.astro";
+import AccordionWrapper from "@components/Accordion/AccordionWrapper"
+import AccordionPhotoTemplate from "@components/Accordion/AccordionPhotoTemplate.astro"
 import TextDeco from "@components/TextDeco.astro"
 import { Image } from "astro:assets";
 
 import wrench from "@assets/mutantEmoji/utility/wrench.png"
 import indexFinger from "@assets/mutantEmoji/hands/index_finger_clw_y2.png"
+import artistPalette from "@assets/mutantEmoji/artist_palette.png"
 
 <EmojiBlockquote emoji={wrench} size="emoji">
 Under Construction!
@@ -19,6 +22,49 @@ Under Construction!
 Aside from gift art and art trades, my digital art is purely a fun hobby of self-satisfaction. Up til now I mostly do simple illustrative character art, but I've lately been trying to branch out into digital painting and comics.
 
 # Technique and Tools
+After a fair bit of experimentation I've settled pretty hard on my simple drawing setup:
+- iPad Pro (currently a 2018 model)
+- Apple Pencil
+- Paperlike screen protector
+- Procreate drawing app
+
+And then a case or stand for the ipad but this isn't too important.
+
+# Art Fight
+Every year in July I participate in [Art Fight](https://artfight.net/info/about), a really cool annual art-trading event. It's a fun thing I do with friends, but it's also consistently served to push my artistic limits and encourage experimentation.\
+I'm pretty inconsistent with my art output, but Art Fight is the one real exception since it's a time-limited event.
+
+## Art Fight Faves
+You can check out my whole profile on the site [here](https://artfight.net/~RegalRegex) (my art are those listed as "attacks"), but I'll also share a few of my favorites.
+<AccordionWrapper client:idle>
+    <span slot="title"><Image class="max-w-8 pb-2 inline-block m-auto" src={artistPalette} alt='artist palette'/> Favorite Art Fight Pieces</span>
+    <div slot="content">
+        <AccordionPhotoTemplate numImages={2}>
+            <div slot="image-1">
+            ![snugglefruit](@assets/aboutPages/digitalArt/artFight/snugglefruit.png)
+            </div>
+            <span slot="caption-1">_[Snuggle Fruit](https://artfight.net/attack/1154497.snugglefruit) — Just a cute one_</span>
+            <div slot="image-2">
+                ![atreonFlex](@assets/aboutPages/digitalArt/artFight/atreonFlex.png)
+            </div>
+            <span slot="caption-2">_[Atreon Flex](https://artfight.net/attack/1672670.atreon-flex) — Love drawing muscular backs_</span>
+        </AccordionPhotoTemplate>
+        <AccordionPhotoTemplate numImages={1}>
+            <div slot="image">
+            ![snugglefruit](@assets/aboutPages/digitalArt/artFight/vaporwaveSynth.png)
+            </div>
+            <span slot="caption">_[Vaporwave Synth](https://artfight.net/attack/5662577.vaporwave-sebastian) — This one speaks for itself_</span>
+        </AccordionPhotoTemplate>
+        <AccordionPhotoTemplate numImages={1}>
+            <div slot="image">
+                ![atreonFlex](@assets/aboutPages/digitalArt/artFight/beanLads.png)
+            </div>
+            <span slot="caption">_[Bean Lads](https://artfight.net/attack/7308667.chicago-squad) — Celebrated a bunch of friends moving to Chicago by drawing us all together :3_</span>
+        </AccordionPhotoTemplate>
+    </div>
+</AccordionWrapper>
+
+---
 
 # Art Origin
 Aside from a few halfway attempts at traditional art in high school (mostly drawing dragons and guns from Halo), I'd say I really started in 2014.
@@ -28,7 +74,7 @@ Back in 2014 I was not only a [Brony](https://en.wikipedia.org/wiki/Brony_(disam
 Courtesy of my younger sister who won a contest and never cared to use it, I had a brand new iPad at my disposal.[^1] I bought the insanely good iPad art app [Procreate](https://procreate.com/) for $5, and started drawing My Little Pony characters with my fingertip on my iPad, often sitting in cafes in my university downtown.
 
 ### Princess Celestia
-My first ever fully-finished digital art piece I think says a lot about me lol. It's a portrait of the matronly godlike pony character from the show, Princess Celestia. I distinctly remember a few things about working on this:
+My first ever fully-finished digital art piece I think says a lot about me lol. It's a portrait of the matronly godlike pony character from the show, [Princess Celestia](https://mlp.fandom.com/wiki/Princess_Celestia). I distinctly remember a few things about working on this:
 1. It is all one layer–I either didn't have access to, or didn't know how to use layers in this program yet. So this is MS Paint level of drawing on top of mistakes etc.
 2. I spent at least a full week on this.
 3. I was so so so proud of it afterwards. I think just a year later I made a follow-up "redraw" of it.
@@ -38,6 +84,8 @@ _My first "finished" digital art piece: Portrait of Celestia_
 Amazingly I didn't even have to dig for this. I've saved nearly every piece of art I've ever made in cloud storage somewhere.
 
 <EmojiBlockquote emoji={indexFinger} size="emoji">**Protip:** Do this. Save everything. Personal digital art storage is cheap, so no matter how 'cringe', you should save your art. Future you will thank you.</EmojiBlockquote>
+
+---
 
 ## 2015 - 2019
 I lump these 4 or so years together because I didn't make many huge strides in my art skill. I drew frequently enough, but I wasn't fully passionate about what I was drawing up until about 2019 when I really began to get into my Original Characters (OCs)[^2].\
@@ -51,6 +99,8 @@ Here are a few pieces from this 'era' of mine (I lived in Texas for most of it):
 ![DyrimCLean](@assets/aboutPages/digitalArt/2015-2019/DyrimClean.jpg)_Dyrim was my first OC I really fell in love with. This is probably the 2nd time I ever drew her._
 ![TransRightsDyrim](@assets/aboutPages/digitalArt/2015-2019/TransRightsDyrim.PNG)_Less than a year later, I got much better at drawing her. Also TRANS RIGHTS!!!_
 
+---
+
 ## 2019-2023
 This is the latest major 'era' of art for me, due to life events. In this period I really branched out, tried new things, and connected with various new artist friends who helped me grow my skills and style.
 
@@ -62,7 +112,6 @@ In 2019 I was encouraged to make a real fursona, instead of just using Dyrim.[^3
 ![Shendu](@assets/aboutPages/digitalArt/2019-2023/shenduDragonTalisman.png)
 ![Argent Flex](@assets/aboutPages/digitalArt/2019-2023/ArgentSnakeyFlex.png)
 
-# Art Fight
 
 [^1]:I know iPads in 2013 weren't nearly as capable and useful as they are now, but even still this is wild to me lol. A year or two later she actually won _another_ contest and got an iPad Mini which maybe she used. I don't know. Crazy lucky.
 [^2]:Argent was designed in Summer 2019 :3
