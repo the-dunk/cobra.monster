@@ -4,16 +4,18 @@ subtitle: I'm a huge coffee nerd and (almost) always drink it black
 date: 2025-03-05
 emoji: hot_drink.png
 blogExclude: true
-# TODO: replace Accordion images w/ template
 ---
 import { Image } from "astro:assets";
 
 import EmojiBlockquote from "@components/EmojiBlockquote.astro";
 import AccordionWrapper from "@components/Accordion/AccordionWrapper"
+import AccordionPhotoTemplate from "@components/Accordion/AccordionPhotoTemplate.astro"
 import ArgentYikes from "@assets/argent/stickers/babanasaur/yikes.png";
 import ArgentUwu from "@assets/argent/stickers/babanasaur/uwu.png"
 import ArgentEyy from "@assets/argent/stickers/babanasaur/eyy.png"
 import ArgentRelief from "@assets/argent/stickers/babanasaur/relief.png"
+
+![Pour Over](@assets/aboutPages/coffee/pourOver.jpg)
 
 Mmm coffee. I've been into coffee since early college days, and have only grown more serious about it as time goes on.
 Scroll on for my latest coffee sourcing & prep recommendations--towards the bottom I'll share my gear and #CoffeeJourney
@@ -30,22 +32,18 @@ In order, these are my 3 favorite ways of preparing coffee:
 <span slot="title"><span className="text-yellow mr-1">1.</span> Pour Overs</span>
 <div slot="content">
 Specifically a ceramic V60 or Origami dripper. There are a lot of great pour-over cones, but these two have been the best for me personally.
-<div className="flex gap-2 my-4 not-prose ">
-    <div>
-        <div>
-        ![V60 Pour Over](@assets/aboutPages/coffee/pour-over-wes-walker-unsplash.jpg)
-        </div>
-        <figure className="text-center text-sm">_V60 photo by <a href="https://unsplash.com/@southwes">Wes Walker</a> on <a href="https://unsplash.com/photos/clear-glass-coffee-pot-on-brown-wooden-table-BrfShtTVC6I">Unsplash</a>_</figure>
-    </div>
-    <div>
-        <div>
-        ![Origami Pour Over](@assets/aboutPages/coffee/origami-dripper-madeline-liu-unsplash.jpg)
-        </div>
-        <figure className="text-center text-sm">_Origami dripper photo by <a href="https://unsplash.com/@madeline_sd">Madeline Liu</a> on <a href="https://unsplash.com/photos/a-couple-of-paper-fans-sitting-on-top-of-a-table-oJ26HxqGEfI">Unsplash</a>_</figure>
-    </div>
-</div>
+<AccordionPhotoTemplate numImages={2}>
+            <div slot="image-1">
+           ![V60 Pour Over](@assets/aboutPages/coffee/pour-over-wes-walker-unsplash.jpg)
+            </div>
+            <span slot="caption-1">_V60 photo by <a href="https://unsplash.com/@southwes">Wes Walker</a> on <a href="https://unsplash.com/photos/clear-glass-coffee-pot-on-brown-wooden-table-BrfShtTVC6I">Unsplash</a>_</span>
+            <div slot="image-2">
+                ![Origami Pour Over](@assets/aboutPages/coffee/origamiDrippersOsmium.jpg)
+            </div>
+            <span slot="caption-2">_Origami dripper_</span>
+</AccordionPhotoTemplate>
 I used to not love pour-overs, but having practiced more I'm very pleased by how consistently I can pull out the unique flavor notes in my fancy coffee :3
-<br />
+
 Also "Ceramic" is important, because while plastic is pretty convenient, it's not a safe material to use in such a thermodynamic food prep process. I replaced mine with a ceramic once a friend pointed out that the small cracks I was seeing in my plastic dripper were likely harboring bacteria.
 </div>
 </AccordionWrapper>
@@ -53,20 +51,16 @@ Also "Ceramic" is important, because while plastic is pretty convenient, it's no
 <span slot="title"><span className="text-yellow mr-1">2.</span> Espresso Drinks</span>
 <div slot="content">
 I'm a fiend for good espresso. While I love it on its own, espresso drinks don't last very long! So I have a few favorites...Americanos and Macchiatos at the top!
-<div className="flex gap-2 my-4 not-prose ">
-    <div>
-        <div>
-        ![Espresso Pull (Marzocco)](@assets/aboutPages/coffee/espresso-nathan-dumlao-unsplash.jpg)
-        </div>
-        <figure className="text-center text-sm">_Espresso photo by <a href="https://unsplash.com/@nate_dumlao">Nathan Dumlao</a> on <a href="https://unsplash.com/photos/clear-drinking-glass-with-brown-liquid-on-silver-and-black-espresso-machine-dvuHNTJxIsg">Unsplash</a>_</figure>
-    </div>
-    <div>
-        <div>
-        ![Macchiato](@assets/aboutPages/coffee/macchiato-jeremy-yap-jn-unsplash.jpg)
-        </div>
-        <figure className="text-center text-sm">_Macchiato photo by <a href="https://unsplash.com/@jeremyyappy">Jeremy Yap</a> on <a href="https://unsplash.com/photos/selective-focus-photography-of-latte-in-teacup-jn-HaGWe4yw">Unsplash</a>_</figure>
-    </div>
-</div>
+<AccordionPhotoTemplate numImages={2}>
+            <div slot="image-1">
+           ![Espresso Pull (Marzocco)](@assets/aboutPages/coffee/espresso-nathan-dumlao-unsplash.jpg)
+            </div>
+            <span slot="caption-1">_Espresso photo by <a href="https://unsplash.com/@nate_dumlao">Nathan Dumlao</a> on <a href="https://unsplash.com/photos/clear-drinking-glass-with-brown-liquid-on-silver-and-black-espresso-machine-dvuHNTJxIsg">Unsplash</a>_</span>
+            <div slot="image-2">
+                ![Macchiato](@assets/aboutPages/coffee/macchiato-jeremy-yap-jn-unsplash.jpg)
+            </div>
+            <span slot="caption-2">_Macchiato photo by <a href="https://unsplash.com/@jeremyyappy">Jeremy Yap</a> on <a href="https://unsplash.com/photos/selective-focus-photography-of-latte-in-teacup-jn-HaGWe4yw">Unsplash</a>_</span>
+</AccordionPhotoTemplate>
 <strong>Real quick:</strong>
 Espresso = concentrated coffee liquid produced by forcing high-pressure water through a packed bed (puck) of finely-ground coffee beans.
 
@@ -85,12 +79,13 @@ I may have put Espresso as #2 but with the sheer variety of drink options it off
 <div slot="content">
 Aeropress is such a funky device. It used to be my #1 brewer just for the combination of Ease + Quality it produced. And even now it's my #1 recommendation for someone wanting to get into better homebrewed coffee.\
 It's just a plastic tube w/ a rubber gasket to make a simple pump. Cap it with a filter, fill with water and coffee, and just push liquid coffee into your cup. Simple!
-<div className="max-w-[55%] m-auto gap-2 my-4 not-prose ">
-    <div>
-    ![Aeropress Brew](@assets/aboutPages/coffee/aeropress-goran-ivos-unsplash.jpg)
-    </div>
-    <figure className="text-center text-sm">_Photo by <a href="https://unsplash.com/@goran_ivos">Goran Ivos</a> on <a href="https://unsplash.com/photos/white-and-black-coffee-cup-on-white-ceramic-plate-kQIaF3iPLS4">Unsplash</a>_</figure>
-</div>
+<AccordionPhotoTemplate numImages={1}>
+            <div slot="image">
+           ![Aeropress Brew](@assets/aboutPages/coffee/aeropress-goran-ivos-unsplash.jpg)
+            </div>
+            <span slot="caption">_Photo by <a href="https://unsplash.com/@goran_ivos">Goran Ivos</a> on <a href="https://unsplash.com/photos/white-and-black-coffee-cup-on-white-ceramic-plate-kQIaF3iPLS4">Unsplash</a>_</span>
+            
+</AccordionPhotoTemplate>
 For like, $30 it's pretty hard to beat. [Also the inventor's story is pretty cool.](https://aeropress.com/pages/about)
 Overall I'd say that the aeropress can make an extremely consistent "above-average" brew. If you really mess w/ it, you can make amazing things. But for me it's the lazy-man's pour-over quality 1-cup haha.
 </div>
@@ -102,7 +97,7 @@ In no particular order:
 - [Olympia Roasters](https://www.olympiacoffee.com/) *Olympia WA* - Best quality for value. Best source I've found for 3rd-wave quality coffee but at approachable prices.
 - [Black & White Roasters](https://www.blackwhiteroasters.com/) *South Carolina* - They have the funkiest, most diverse offerings. They change up often though, so you likely won't find the same thing twice.
 - [Dayglow](https://dayglow.coffee/) *Los Angeles CA* - Highest quality on this list, but priced as such.
-## Chicago Coffee Shops
+## Best Chicago Coffee Shops
 > Might expand on this later, for now just a simple list w/ summary
 - [Dayglow](https://maps.app.goo.gl/uqCUoDYaeBCt1HLK6): Insanely good coffee. High prices. Hard to get to by transit. Meh cafe layout.
 - [Caffe Umbria (Armitage)](https://maps.app.goo.gl/cCwU8PPkdtoUkd4X7): Above-average cofefe. Great space--they roast here weekday mornings, so can be noisy. Easy transit access.
@@ -157,4 +152,4 @@ I can't begin to count how many friends I've made in or at coffeeshops. Online a
 If you're reading this and visiting Chicago in the near future, you're 100% invited to [hit me up](/links) for a coffee meetup! I love showing off my favorite spots to cool potential new friends :3
 </EmojiBlockquote>
 
-[^1]: Citation needed (I can't remember or find where I first heard this term)
+[^1]: Citation needed (I can't remember or find where I first heard this term, and I don't believe I'm clever enough to have come up with it myself)

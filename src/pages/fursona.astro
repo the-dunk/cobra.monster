@@ -11,13 +11,17 @@ import SocialsList from "@components/SocialsList.astro";
 import ChiStar from "@components/ChiStar.astro";
 import links from "@components/LinkList/lists/_links.json";
 import LinkList from "@components/LinkList/LinkList.astro";
+import wrench from "@assets/mutantEmoji/utility/wrench.png";
+import EmojiBlockquote from "@components/EmojiBlockquote.astro";
 ---
 
 <Layout>
   <TopNav />
   <PageHeader leftRight="left">Fursona</PageHeader>
   <HomeSection darkBg={false} border={[]}>
-    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]} />
+    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
+      <EmojiBlockquote emoji={wrench} size="emoji"> Under Construction! </EmojiBlockquote>
+    </HomeContentBox>
   </HomeSection>
 
   <style>
