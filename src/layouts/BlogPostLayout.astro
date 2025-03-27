@@ -18,7 +18,8 @@ const {
   headings,
 } = Astro.props;
 
-const formattedDate = date?.toLocaleString("en-US", { day: "2-digit", month: "long", year: "numeric" });
+const formattedDate = date?.toLocaleString("en-US", { day: "2-digit", month: "long", year: "numeric", timeZone: "UTC" });
+
 // const displayTags = tags?.map((tag) => tag.id);
 const listDecoStyle = "prose-ul:before:text-white";
 ---
