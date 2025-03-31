@@ -2,15 +2,20 @@
 import { Image } from "astro:assets";
 
 interface Props {
-  emoji: ImageMetadata;
+  emoji: ImageMetadata | ImageMetadata[];
   size?: "sticker" | "emoji";
 }
 const { emoji, size = "emoji" } = Astro.props;
 const imgSize = size === "sticker" ? "max-w-32" : "max-w-16";
+const emojiArray = Array.isArray(emoji) ? emoji : [emoji];
 ---
 
-<div class="ml-2 bg-redDark/40 w-fit p-1">
-  <Image src={emoji} alt={emoji.src.split("/").at(-1) || "mutant emoji"} class:list={["w-fit not-prose", imgSize]} />
+<div class="ml-2 bg-redDark/40 w-fit p-1 flex gap-2">
+  {
+    emojiArray.map((emoji) => {
+      return <Image src={emoji} alt={emoji.src.split("/").at(-1) || "mutant emoji"} class:list={["w-fit not-prose", imgSize]} />;
+    })
+  }
 </div>
 <blockquote class="emojiBlockQuote bg-redDark/40 italic border-yellow border-l-8">
   <slot />
