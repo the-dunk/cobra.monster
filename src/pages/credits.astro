@@ -24,6 +24,12 @@ import communismCoffee from "@assets/argent/CommunismCoffeeArgent.png";
 import TextDeco from "@components/TextDeco.astro";
 // // Deriaz
 import coffeeShopChill from "@assets/argent/CoffeShopChill_Deriaz.jpg";
+// // Babanasaur
+import eyy from "@assets/argent/stickers/babanasaur/eyy.png";
+import relief from "@assets/argent/stickers/babanasaur/relief.png";
+import uwu from "@assets/argent/stickers/babanasaur/uwu.png";
+import whine from "@assets/argent/stickers/babanasaur/whine.png";
+import yikes from "@assets/argent/stickers/babanasaur/yikes.png";
 
 // Emoji
 import sunsetCity from "@assets/mutantEmoji/sunset_city.png";
@@ -43,42 +49,47 @@ import ChiFlag from "@assets/chicago/ChicagoFlag.svg";
 import ChiLogo from "@assets/chicago/ChicagoLogo.png";
 
 interface artist {
-    name: string;
-    url: string;
-    images: ImageMetadata[];
+  name: string;
+  url: string;
+  images: ImageMetadata[];
 }
 
 const artistArray: artist[] = [
-    {
-        name: "Talikira",
-        url: "https://x.com/Talikira",
-        images: [argentTali],
-    },
-    {
-        name: "Damien (Sharpibees)",
-        url: "https://bsky.app/profile/sharpibees.bsky.social",
-        images: [giornoArgent, argentAss, logo],
-    },
-    {
-        name: "Limecircles",
-        url: "https://bsky.app/profile/limesquares.bsky.social",
-        images: [vaporWaveArgent],
-    },
-    {
-        name: "Luzzy",
-        url: "https://bsky.app/profile/luzzyderay.bsky.social",
-        images: [argentRest],
-    },
-    {
-        name: "SpearxWind",
-        url: "https://bsky.app/profile/spearxwind.bsky.social",
-        images: [communismCoffee],
-    },
-    {
-        name: "Deriaz",
-        url: "https://bsky.app/profile/deriaz.bsky.social",
-        images: [coffeeShopChill],
-    },
+  {
+    name: "Talikira",
+    url: "https://x.com/Talikira",
+    images: [argentTali],
+  },
+  {
+    name: "Damien (Sharpibees)",
+    url: "https://bsky.app/profile/sharpibees.bsky.social",
+    images: [giornoArgent, argentAss, logo],
+  },
+  {
+    name: "Limecircles",
+    url: "https://bsky.app/profile/limesquares.bsky.social",
+    images: [vaporWaveArgent],
+  },
+  {
+    name: "Luzzy",
+    url: "https://bsky.app/profile/luzzyderay.bsky.social",
+    images: [argentRest],
+  },
+  {
+    name: "SpearxWind",
+    url: "https://bsky.app/profile/spearxwind.bsky.social",
+    images: [communismCoffee],
+  },
+  {
+    name: "Deriaz",
+    url: "https://bsky.app/profile/deriaz.bsky.social",
+    images: [coffeeShopChill],
+  },
+  {
+    name: "Babanasaur",
+    url: "https://bsky.app/profile/babanasaur.bsky.social",
+    images: [eyy, relief, uwu, whine, yikes],
+  },
 ];
 
 const mutantEmoji: ImageMetadata[] = [sunsetCity, hotDrink, muscleClaw, laptop, artistPalette];
@@ -87,86 +98,89 @@ const argentEmoji: ImageMetadata[] = [emojiArgentSmile, emojiArgentPleading, emo
 ---
 
 <Layout>
-    <TopNav />
-    <PageHeader>Credits</PageHeader>
-    <HomeSection darkBg={false} border={[]}>
-        <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
-            <div class="flex flex-col">
-                <div>
-                    <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Argent Art</h2>
-                    <p>Much of the art on this site was made by the very cool people listed below. Please check out their stuff! :3</p>
-                    <ul class="md:flex block flex-wrap gap-5 items-center justify-center">
-                        {
-                            artistArray.map((artist) => (
-                                <li class="my-4">
-                                    <LinkButton button={false} to={artist.url}>
-                                        {artist.name}
-                                    </LinkButton>
-                                    <div class="rounded-md border-yellow border-0 p-2 bg-black/35 mt-2 flex justify-center items-center flex-wrap grow">
-                                        {artist.images.map((image) => (
-                                            <Image src={image} alt={image.src.split("/").at(-1) || "argent image"} class="max-w-32 min-w-20 " />
-                                        ))}
-                                    </div>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div>
-            </div>
-        </HomeContentBox>
-        <div class="col-start-2 col-span-10 flex justify-around text-5xl xs:text-6xl py-8">
-            {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
+  <TopNav />
+  <PageHeader>Credits</PageHeader>
+  <HomeSection darkBg={false} border={[]}>
+    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
+      <div class="flex flex-col">
+        <div>
+          <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Argent Art</h2>
+          <p>Art credits for pieces without direct attribution (i.e. captions).</p>
+          <p>Much of the art on this site was made by the very cool people listed below. Please check out their stuff! :3</p>
+          <ul class="md:flex block flex-wrap gap-5 items-center justify-center">
+            {
+              artistArray.map((artist) => (
+                <li class="my-4">
+                  <LinkButton button={false} to={artist.url}>
+                    {artist.name}
+                  </LinkButton>
+                  <div class="rounded-md border-yellow border-0 p-2 bg-black/35 mt-2 flex justify-center items-center flex-wrap grow">
+                    {artist.images.map((image) => (
+                      <Image src={image} alt={image.src.split("/").at(-1) || "argent image"} class="max-w-32 min-w-20 " />
+                    ))}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
         </div>
-        <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
-            <div>
-                <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Emoji</h2>
-                <p>
-                    The stylish emoji used around this site were created by <TextDeco inline={true} url="https://nocturne.works/">Caius Nocturne</TextDeco> as part
-                    of their (awesome) <TextDeco inline={true} url="https://mutant.tech">Mutant Standard</TextDeco> emoji set.
-                </p>
-                <div class="flex my-4 gap-2 justify-around">
-                    {mutantEmoji.map((image) => <Image src={image} alt={image.src.split("/").at(-1) || "mutant emoji"} class="max-w-20 min-w-10" />)}
-                </div>
-                <p>They also made custom-commissioned Argent emoji :3</p>
-                <div class="rounded-md p-2 bg-black/35 mt-2 flex justify-around items-center flex-wrap gap-2">
-                    {argentEmoji.map((image) => <Image src={image} alt={image.src.split("/").at(-1) || "argent emoji"} class="max-w-32 min-w-20" />)}
-                </div>
-            </div>
-        </HomeContentBox>
-        <div class="col-start-2 col-span-10 flex justify-around text-5xl xs:text-6xl py-8">
-            {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
+      </div>
+    </HomeContentBox>
+    <div class="col-start-2 col-span-10 flex justify-around text-5xl xs:text-6xl py-8">
+      {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
+    </div>
+    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
+      <div>
+        <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Emoji</h2>
+        <p>
+          The stylish emoji used around this site were created by <TextDeco inline={true} url="https://nocturne.works/">Caius Nocturne</TextDeco> as part of their
+          (awesome) <TextDeco inline={true} url="https://mutant.tech">Mutant Standard</TextDeco> emoji set.
+        </p>
+        <div class="flex my-4 gap-2 justify-around">
+          {mutantEmoji.map((image) => <Image src={image} alt={image.src.split("/").at(-1) || "mutant emoji"} class="max-w-20 min-w-10" />)}
         </div>
-        <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
-            <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Chicago Stuff</h2>
-            <p>
-                The Chicago star ligature <ChiStar color="text-redLight" /> as well as the Roboto typeface used throughout this site were inspired + implemented
-                via instructions from the city's official <TextDeco inline={true} url="https://design.chicago.gov/"> Typography & Design</TextDeco> page. And especially
-                the <TextDeco inline={true} url="https://design.chicago.gov/all">All Assets Page</TextDeco>.
-            </p>
-            <p>
-                I didn't know this page existed until I tried to find the Chicago Star as a random "oh this would be a neat design to incorporate" thought. I
-                was immediately charmed by the care put to this page, as well as the snark:
-                <blockquote class="border-l-4 border-yellow italic font-bold mx-12 my-4 pl-4 leading-8">
-                    <p>Now, you are probably thinking to yourself,</p>
-                    <p>“Shut up and just give me the star so I can get a tattoo already!”</p>
-                    <p>And I say to you: “No.”</p>
-                    <p>?!?</p>
-                    <p>
-                        This is way better: <TextDeco inline={true} url="https://design.chicago.gov/typography">Visit the typography page.</TextDeco>
-                    </p>
-                </blockquote>
-            </p>
-            <div class="flex flex-col items-center gap-5 bg-white/15 rounded-md py-5">
-                <Image src={ChiLogo} alt="Chicago Logo" class="lg:w-[50%] w-[75%]" />
-                <Image src={ChiFlag} alt="Chicago Flag" class="lg:w-[50%] w-[75%]" />
-            </div>
-        </HomeContentBox>
-    </HomeSection>
-    <style>
-        h1,
-        h2 {
-            font-family: "Prospekt Regular", sans-serif;
-            color: white;
-        }
-    </style>
+        <p>They also made custom-commissioned Argent emoji :3</p>
+        <div class="rounded-md p-2 bg-black/35 mt-2 flex justify-around items-center flex-wrap gap-2">
+          {argentEmoji.map((image) => <Image src={image} alt={image.src.split("/").at(-1) || "argent emoji"} class="max-w-32 min-w-20" />)}
+        </div>
+      </div>
+    </HomeContentBox>
+    <div class="col-start-2 col-span-10 flex justify-around text-5xl xs:text-6xl py-8">
+      {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
+    </div>
+    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
+      <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Chicago Stuff</h2>
+      <p>
+        The Chicago star ligature <ChiStar color="text-redLight" /> as well as the Roboto typeface used throughout this site were inspired + implemented via instructions
+        from the city's official <TextDeco inline={true} url="https://design.chicago.gov/"> Typography & Design</TextDeco> page. And especially the <TextDeco
+          inline={true}
+          url="https://design.chicago.gov/all">All Assets Page</TextDeco
+        >.
+      </p>
+      <p>
+        I didn't know this page existed until I tried to find the Chicago Star as a random "oh this would be a neat design to incorporate" thought. I was
+        immediately charmed by the care put to this page, as well as the snark:
+        <blockquote class="border-l-4 border-yellow italic font-bold mx-12 my-4 pl-4 leading-8">
+          <p>Now, you are probably thinking to yourself,</p>
+          <p>“Shut up and just give me the star so I can get a tattoo already!”</p>
+          <p>And I say to you: “No.”</p>
+          <p>?!?</p>
+          <p>
+            This is way better: <TextDeco inline={true} url="https://design.chicago.gov/typography">Visit the typography page.</TextDeco>
+          </p>
+        </blockquote>
+      </p>
+      <div class="flex flex-col items-center gap-5 bg-white/15 rounded-md py-5">
+        <Image src={ChiLogo} alt="Chicago Logo" class="lg:w-[50%] w-[75%]" />
+        <Image src={ChiFlag} alt="Chicago Flag" class="lg:w-[50%] w-[75%]" />
+      </div>
+    </HomeContentBox>
+  </HomeSection>
+  <style>
+    h1,
+    h2 {
+      font-family: "Prospekt Regular", sans-serif;
+      color: white;
+    }
+  </style>
 </Layout>

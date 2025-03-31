@@ -1,0 +1,44 @@
+---
+import HomeContentBox from "@components/HomeContentBox.astro";
+import HomeSection from "@components/HomeSection.astro";
+import PageHeader from "@components/PageHeader.astro";
+import TopNav from "@components/TopNav.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout>
+  <TopNav />
+  <PageHeader leftRight="left">Site Map</PageHeader>
+  <HomeSection darkBg={false} border={[]}>
+    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
+      <!-- <div class="grid grid-cols-2"> -->
+      <div>
+        <h2 class="text-xl text-yellow">Site Stuff</h2>
+        <ul>
+          <li>Github</li>
+          <li>Site Story</li>
+          <li>Site Credits</li>
+        </ul>
+        <h2 class="text-xl text-yellow">About Regal</h2>
+        <ul>
+          <li>About Page</li>
+          <li>Blog</li>
+          <li>Social Media + Galleries</li>
+        </ul>
+        <h2 class="text-xl text-yellow">Furry Stuff</h2>
+        <ul>
+          <li>Fursona Page</li>
+          <li>OCs Page</li>
+        </ul>
+      </div>
+      <!-- </div> -->
+    </HomeContentBox>
+  </HomeSection>
+</Layout>
+<!-- <style>
+  h1,
+  h2 {
+    font-family: "Prospekt Regular", sans-serif;
+    color: white;
+  }
+</style> -->
