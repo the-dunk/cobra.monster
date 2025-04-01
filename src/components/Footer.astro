@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import LinkButton from "@components/LinkButton.astro";
+import Link from "@components/Link.astro";
 import argentAss from "@assets/argent/argentAss.png";
 import BadgeDisplay from "@components/BadgeDisplay.astro";
 import SocialsList from "@components/SocialsList.astro";
@@ -11,7 +11,9 @@ interface Props {
   homePage?: boolean;
 }
 
-const disabledStyling = "bg-black/50";
+const splitUrl: string[] = Astro.url.pathname.split("/");
+
+const lickJoke = splitUrl[1] === "lick";
 
 const { homePage } = Astro.props;
 // NOTE: Height of footer must be offset by padding-bottom in Layout
@@ -32,19 +34,15 @@ const { homePage } = Astro.props;
             Under Construction
             <Image class="max-w-8" src={Wrench} alt="wrench" />
           </h2>
-          <LinkButton button={false} to="">
+          <Link url="">
             <h2 class="text-xl font-bold line-through">Furry Fitness Webring</h2>
-          </LinkButton>
+          </Link>
           <ul class="flex justify-center gap-10 line-through">
             <li>
-              <LinkButton button={false} to="">
-                ←︎ Previous
-              </LinkButton>
+              <Link url="">←︎ Previous</Link>
             </li>
             <li>
-              <LinkButton button={false} to="">
-                Next →︎
-              </LinkButton>
+              <Link url="">Next →︎</Link>
             </li>
           </ul>
         </div>
@@ -52,6 +50,7 @@ const { homePage } = Astro.props;
           <BadgeDisplay collection="standardBadges" />
         </div>
       </div>
+        <button id="snakeMode" class="absolute bottom-0 left-0 p-1 ml-1 mb-1 border-white border-2 rounded-lg text-sm opacity-50 hover:cursor-pointer hover:opacity-80">Snake Mode?</button>
     )
   }
   <div class="flex flex-col flex-wrap gap-4 p-5">
@@ -64,13 +63,13 @@ const { homePage } = Astro.props;
         <h2 class="text-xl xs:text-2xl font-bold">Cool Stuff</h2>
         <ul>
           <li>
-            <LinkButton button={false} to="/about"> About Me </LinkButton>
+            <Link url="/about"> About Me </Link>
           </li>
           <li>
-            <LinkButton button={false} to="/links"> Links </LinkButton>
+            <Link url="/links"> Links </Link>
           </li>
           <li>
-            <LinkButton button={false} to="/blog"> Blog </LinkButton>
+            <Link url="/blog"> Blog </Link>
           </li>
         </ul>
       </div>
@@ -78,16 +77,19 @@ const { homePage } = Astro.props;
         <h2 class="text-xl xs:text-2xl font-bold">Site Info</h2>
         <ul>
           <li>
-            <LinkButton button={false} to="/credits"> Site Credits </LinkButton>
+            <Link url="/credits"> Site Credits </Link>
           </li>
           <li>
-            <LinkButton button={false} to="https://github.com/RegalRegex/cobra.monster"> Github </LinkButton>
+            <Link url="https://github.com/RegalRegex/cobra.monster"> Github </Link>
           </li>
         </ul>
       </div>
-      <div class="hidden xs:flex justify-self-center aspect-square max-w-[100px] hover:animate-assJiggle">
+      <a
+        href="/lick"
+        class:list={["hidden xs:flex justify-self-center aspect-square max-w-[100px] hover:animate-assJiggle", `${lickJoke ? "animate-assJiggle" : ""}`]}
+      >
         <Image class="drop-shadow-lg" src={argentAss} alt="woohooehehee" />
-      </div>
+      </a>
     </nav>
     <a href="/" class="w-full justify-center md:hidden flex items-center brightness-90 py-16 xs:py-5 border-t-2 border-slate-200">
       <div class="w-18 -ml-10">
@@ -103,5 +105,8 @@ const { homePage } = Astro.props;
 <style>
   .disabled {
     pointer-events: none;
+  }
+  #snakeMode {
+    font-family: "Snake Chan";
   }
 </style>

@@ -10,7 +10,7 @@ import discord from "../assets/logos/discord.svg";
 import telegram from "../assets/logos/telegram.svg";
 import email from "../assets/logos/email.svg";
 
-import LinkButton from "./LinkButton.astro";
+import Link from "./Link.astro";
 
 type Sites = {
   id: string;
@@ -84,12 +84,12 @@ const siteList = siteGroup === "socials" ? socialsList : galleriesList;
 {
   (siteGroup === "socials" || siteGroup === "galleries") &&
     siteList.map((site) => (
-      <LinkButton to={site.url} button={false}>
+      <Link url={site.url}>
         <div class="flex items-center">
           {logos && <Image class=" p-1 max-w-10 " src={site.logo} alt={site.id} />}
           <div class="capitalize ">{site.id}</div>
         </div>
-      </LinkButton>
+      </Link>
     ))
 }
 {

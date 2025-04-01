@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+
+import ArgentLickLg from "@assets/argent/ArgentLickBig_Ming.gif";
+import ArgentLickLgStatic from "@assets/argent/ArgentLickBig_Ming.jpg";
+import StaticScreenLayout from "@layouts/StaticScreenLayout.astro";
+---
+
+<StaticScreenLayout>
+  <div class="hidden items-center h-full motion-reduce:flex flex-col">
+    <Image src={ArgentLickLgStatic} alt={`lick`} class="m-auto" />
+    <p class="mb-10 text-3xl text-slate-200 text-center">
+      If you're seeing this, you have motion-reduction enabled! You're not missing much, just an animated slideshow of this goofy licking emoji.
+      <br />
+      UwU
+    </p>
+  </div>
+  <div class="motion-reduce:hidden overflow-hidden flex flex-col h-full py-5">
+    <h2 class="text-7xl animate-slideshowRight text-slate-200 whitespace-nowrap translate-x-0 will-change-transform">
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+    </h2>
+    <div class="flex place-content-center h-full animate-slideshowLeft grow">
+      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
+      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
+      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
+      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
+      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
+      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
+      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
+    </div>
+    <h2 class="text-7xl animate-slideshowRight text-slate-200 whitespace-nowrap translate-x-0 will-change-transform">
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+      <sup>*</sup>Licks U<sup>*</sup>
+    </h2>
+  </div>
+</StaticScreenLayout>
+
+<style>
+  h2 {
+    font-family:
+      Snake Chan,
+      sans-serif;
+  }
+</style>

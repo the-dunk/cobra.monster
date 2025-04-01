@@ -5,13 +5,12 @@ import HomeSection from "../components/HomeSection.astro";
 import PageHeader from "../components/PageHeader.astro";
 import TopNav from "../components/TopNav.astro";
 import Layout from "../layouts/Layout.astro";
-import LinkButton from "@components/LinkButton.astro";
+import Link from "@components/Link.astro";
 
 // Images
 // // Tali
 import argentTali from "@assets/argent/squareArgent.png";
 // // Jai
-import coffeePotArgent from "@assets/argent/coffeepotArgent.png";
 import giornoArgent from "@assets/argent/giornoArgent.png";
 import argentAss from "@assets/argent/argentAss.png";
 import logo from "@assets/logos/cobraLogo.png";
@@ -30,6 +29,10 @@ import relief from "@assets/argent/stickers/babanasaur/relief.png";
 import uwu from "@assets/argent/stickers/babanasaur/uwu.png";
 import whine from "@assets/argent/stickers/babanasaur/whine.png";
 import yikes from "@assets/argent/stickers/babanasaur/yikes.png";
+// // Orion
+import symmetricalO from "@assets/argent/SymmetricalArgent_Orion.png";
+// // Ming
+import ArgentLickLgStatic from "@assets/argent/ArgentLickBig_Ming.jpg";
 
 // Emoji
 import sunsetCity from "@assets/mutantEmoji/sunset_city.png";
@@ -90,6 +93,16 @@ const artistArray: artist[] = [
     url: "https://bsky.app/profile/babanasaur.bsky.social",
     images: [eyy, relief, uwu, whine, yikes],
   },
+  {
+    name: "Orion",
+    url: "https://bsky.app/profile/koboldorion.bsky.social",
+    images: [symmetricalO],
+  },
+  {
+    name: "Ming",
+    url: "/",
+    images: [ArgentLickLgStatic],
+  },
 ];
 
 const mutantEmoji: ImageMetadata[] = [sunsetCity, hotDrink, muscleClaw, laptop, artistPalette];
@@ -104,16 +117,14 @@ const argentEmoji: ImageMetadata[] = [emojiArgentSmile, emojiArgentPleading, emo
     <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
       <div class="flex flex-col">
         <div>
-          <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Argent Art</h2>
+          <h2 id="ArgentArt" class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Argent Art</h2>
           <p>Art credits for pieces without direct attribution (i.e. captions).</p>
           <p>Much of the art on this site was made by the very cool people listed below. Please check out their stuff! :3</p>
           <ul class="md:flex block flex-wrap gap-5 items-center justify-center">
             {
               artistArray.map((artist) => (
                 <li class="my-4">
-                  <LinkButton button={false} to={artist.url}>
-                    {artist.name}
-                  </LinkButton>
+                  <Link url={artist.url}>{artist.name}</Link>
                   <div class="rounded-md border-yellow border-0 p-2 bg-black/35 mt-2 flex justify-center items-center flex-wrap grow">
                     {artist.images.map((image) => (
                       <Image src={image} alt={image.src.split("/").at(-1) || "argent image"} class="max-w-32 min-w-20 " />
@@ -149,7 +160,7 @@ const argentEmoji: ImageMetadata[] = [emojiArgentSmile, emojiArgentPleading, emo
       {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
     </div>
     <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 xs:col-start-2 xs:col-span-10 col-start-1 col-span-12"]}>
-      <h2 class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Chicago Stuff</h2>
+      <h2 id="Chicago" class="text-5xl xs:text-6xl underline decoration-4 decoration-redLight mb-5 text-center">Chicago Stuff</h2>
       <p>
         The Chicago star ligature <ChiStar color="text-redLight" /> as well as the Roboto typeface used throughout this site were inspired + implemented via instructions
         from the city's official <TextDeco inline={true} url="https://design.chicago.gov/"> Typography & Design</TextDeco> page. And especially the <TextDeco

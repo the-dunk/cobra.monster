@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+import wrench from "@assets/mutantEmoji/utility/wrench.png";
+
+interface Props {
+  url: string;
+  wip?: boolean;
+}
+
+const { url, wip = false } = Astro.props;
+---
+
+<a
+  class:list={[
+    "font-medium text-md xs:text-lg  w-max cursor-pointer  hover:text-amber-500 flex gap-1",
+    `${wip ? "line-through decoration-1 decoration-white" : "underline decoration-2 decoration-yellow"}`,
+  ]}
+  href={url}
+>
+  <slot />
+  <Image src={wrench} alt="Construction" class:list={["w-5 m-auto", `${wip ? "block" : "hidden"}`]} />
+</a>

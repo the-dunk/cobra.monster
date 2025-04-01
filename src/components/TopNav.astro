@@ -24,21 +24,16 @@ const exceptions: Exception[] = [
     levels: 1,
   },
 ];
-const splitUrl = Astro.url.pathname.split("/").toSpliced(-1);
+const splitUrl: string[] = Astro.url.pathname.split("/").toSpliced(-1);
 const returnPathName = (): UrlSplitReference => {
   const topLevel = splitUrl[splitUrl.length - 1];
   const exception = [...exceptions].find((item) => item.remove === topLevel);
-  console.log({ splitUrl });
-
-  console.log({ exception });
 
   return {
     urlDisplay: exception ? exception.replace : topLevel,
     url: exception?.replace === "home" ? "/" : splitUrl.toSpliced(-1, exception?.levels).join("/"),
   };
 };
-
-// TODO: if home, display nav links instead
 ---
 
 <nav class="py-2 bg-redDark border-redLight w-full flex xs:flex-row flex-col text-white">

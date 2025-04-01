@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 import Hero from "@components/Hero.astro";
 import SiteHeader from "@components/SiteHeader.astro";
 import HomeSection from "@components/HomeSection.astro";
-import LinkButton from "@components/LinkButton.astro";
+import Button from "@components/Button.astro";
 import HomeContentBox from "@components/HomeContentBox.astro";
 import giornoArgent from "@assets/argent/giornoArgent.png";
 import TextDeco from "@components/TextDeco.astro";
@@ -15,20 +15,23 @@ import coffeeShopChill from "@assets/argent/CoffeShopChill_Deriaz.jpg";
 <Layout homePage={true}>
   <SiteHeader homePage={true} />
   <div class="text-center py-2">
-    <span id="monsterTxt" class="Qt text-white text-4xl md:text-6xl italic tracking-wide">
+    <span id="monsterTxt" class="headerTxt Qt text-white text-4xl md:text-6xl italic tracking-wide">
       The Crisis of Capitalism unearths a MONSTER
-      <span class="text-nowrap">. . . </span><span class="Qt text-white text-4xl tracking-wide italic">uwu</span>
+      <span class="text-nowrap">. . . </span><span class="headerTxt Qt text-white text-4xl tracking-wide italic">uwu</span>
     </span>
   </div>
   <Hero />
+
   <HomeSection darkBg={true} border={[]}>
     <HomeContentBox columns={["col-start-1 col-span-12 xl:col-span-8 z-10"]}>
       <div class="mb-2 text-wrap">
-        <h2 class="xs:text-7xl sm:text-6xl text-5xl xl:text-8xl font-bold text-white underline decoration-redLight text-wrap text-center">Recent Blog Posts</h2>
+        <h2 class="headerTxt xs:text-7xl sm:text-6xl text-5xl xl:text-8xl font-bold text-white underline decoration-redLight text-wrap text-center">
+          Recent Blog Posts
+        </h2>
       </div>
       <PostList postLimit={3} />
       <div class="sm:ml-16">
-        <LinkButton to={"/blog"} button={true}>All Blog Posts →︎</LinkButton>
+        <Button url="/blog">All Blog Posts →︎</Button>
       </div>
     </HomeContentBox>
     <div class="xl:flex w-full pr-5 col-span-4 aspect-square self-center place-items-center hidden">
@@ -39,7 +42,7 @@ import coffeeShopChill from "@assets/argent/CoffeShopChill_Deriaz.jpg";
     <HomeContentBox columns={["md:col-start-2", "md:col-span-10", "col-start-1", "col-span-12"]}>
       <div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-          <h2 class="font-prospekt xs:text-7xl text-5xl xl:text-8xl mb-10 underline decoration-redLight text-center md:text-left flex lg:col-span-2">
+          <h2 class="headerTxt font-prospekt xs:text-7xl text-5xl xl:text-8xl mb-10 underline decoration-redLight text-center md:text-left flex lg:col-span-2">
             About Regal
           </h2>
           <div class="text-2xl font-light flex flex-col gap-3 justify-around">
@@ -62,7 +65,7 @@ import coffeeShopChill from "@assets/argent/CoffeShopChill_Deriaz.jpg";
             </p>
             <br />
             <div class="mb-4">
-              <LinkButton to={"/about"} button={true}> More about Regal →︎ </LinkButton>
+              <Button url="/about"> More about Regal →︎ </Button>
             </div>
           </div>
           <div class="m-auto max-w-none lg:max-w-[500px]">
@@ -83,3 +86,16 @@ import coffeeShopChill from "@assets/argent/CoffeShopChill_Deriaz.jpg";
     }
   </style>
 </Layout>
+
+<script>
+  const snakeBtn = document.getElementById("snakeMode");
+  snakeBtn?.addEventListener("click", () => {
+    window.scrollTo(0, 0);
+    const page = document.getElementById("main");
+    if (page) {
+      page.style.fontFamily = "Snake Chan";
+    }
+    const headerEls = Array.from(document.getElementsByClassName("headerTxt") as HTMLCollectionOf<HTMLElement>);
+    headerEls.forEach((header) => (header.style.fontFamily = "Snake Chan"));
+  });
+</script>

@@ -24,6 +24,8 @@
   --animate-chrome: shine 2s ease-in-out infinite;
   --animate-idleBreathe: breathe 2s ease infinite;
   --animate-assJiggle: assWiggle 0.3s ease-in-out infinite;
+  --animate-slideshowLeft: moveSlideshowLeft 2s linear infinite;
+  --animate-slideshowRight: moveSlideshowRight 10s linear infinite;
   /* Breakpoints */
   --breakpoint-xs: 545px;
   --breakpoint-2xl: 1600px;
@@ -63,6 +65,19 @@
     }
     50% {
       transform: scaleY(1.025) translateY(-5px);
+    }
+  }
+  @keyframes moveSlideshowLeft {
+    100% {
+      transform: translateX(-500px);
+    }
+  }
+  @keyframes moveSlideshowRight {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
     }
   }
 }

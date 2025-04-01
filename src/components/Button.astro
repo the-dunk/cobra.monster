@@ -1,0 +1,14 @@
+---
+interface Props {
+  url: string;
+  wip?: boolean;
+}
+
+const { url, wip = false } = Astro.props;
+---
+
+<button class:list={["border-yellow", "hover:bg-yellow", "rounded-md", "border-2", "hover:text-black", "p-2"]}>
+  <a class:list={["font-medium text-lg  w-max cursor-pointer  "]} href={url}>
+    <slot />
+  </a>
+</button>
