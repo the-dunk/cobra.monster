@@ -13,7 +13,7 @@ const { url, wip = false } = Astro.props;
 <a
   class:list={[
     "font-medium text-md xs:text-lg  w-max cursor-pointer  hover:text-amber-500 flex gap-1",
-    `${wip ? "line-through decoration-1 decoration-white" : "underline decoration-2 decoration-yellow"}`,
+    `${wip ? "line-through decoration-1 decoration-white pointer-events-none" : "underline decoration-2 decoration-yellow"}`,
   ]}
   href={url}
 >

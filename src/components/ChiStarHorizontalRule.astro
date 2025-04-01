@@ -1,0 +1,7 @@
+---
+import ChiStar from "./ChiStar.astro";
+---
+
+<div class="col-start-2 col-span-10 flex justify-around text-5xl xs:text-6xl py-8">
+  {[...Array(4)].map(() => <ChiStar color="text-yellow" />)}
+</div>

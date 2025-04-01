@@ -8,7 +8,7 @@ blogExclude: true
 import { Image } from "astro:assets";
 
 import EmojiBlockquote from "@components/EmojiBlockquote.astro";
-import AccordionWrapper from "@components/Accordion/AccordionWrapper"
+import Accordion from "@components/Accordion/Accordion"
 import AccordionPhotoTemplate from "@components/Accordion/AccordionPhotoTemplate.astro"
 import ArgentYikes from "@assets/argent/stickers/babanasaur/yikes.png";
 import ArgentUwu from "@assets/argent/stickers/babanasaur/uwu.png"
@@ -29,7 +29,7 @@ These change over time, but I consistently look for top-tier consumer-level roas
 I (will) have [other blog posts](/blog/tagged/coffee) that probably go into more specific detail, so check those out too. But for now:
 ## Types of Drinks
 In order, these are my 3 favorite ways of preparing coffee:
-<AccordionWrapper client:idle>
+<Accordion client:idle>
 <span slot="title"><span className="text-yellow mr-1">1.</span> Pour Overs</span>
 <div slot="content">
 Specifically a ceramic V60 or Origami dripper. There are a lot of great pour-over cones, but these two have been the best for me personally.
@@ -47,8 +47,8 @@ I used to not love pour-overs, but having practiced more I'm very pleased by how
 
 Also "Ceramic" is important, because while plastic is pretty convenient, it's not a safe material to use in such a thermodynamic food prep process. I replaced mine with a ceramic once a friend pointed out that the small cracks I was seeing in my plastic dripper were likely harboring bacteria.
 </div>
-</AccordionWrapper>
-<AccordionWrapper client:idle>
+</Accordion>
+<Accordion client:idle>
 <span slot="title"><span className="text-yellow mr-1">2.</span> Espresso Drinks</span>
 <div slot="content">
 I'm a fiend for good espresso. While I love it on its own, espresso drinks don't last very long! So I have a few favorites...Americanos and Macchiatos at the top!
@@ -74,8 +74,8 @@ Every other espresso drink is just \*something else\* with espresso added to it:
 - **Latte** = A little bit of espresso, and a lot of steamed milk. Often sweetened with syrups (caramel latte, mocha latte, etc.)
 I may have put Espresso as #2 but with the sheer variety of drink options it offers, it's a pretty dang close 2nd.
 </div>
-</AccordionWrapper>
-<AccordionWrapper client:idle>
+</Accordion>
+<Accordion client:idle>
 <span slot="title"><span className="text-yellow mr-1">3.</span> Aeropress</span>
 <div slot="content">
 Aeropress is such a funky device. It used to be my #1 brewer just for the combination of Ease + Quality it produced. And even now it's my #1 recommendation for someone wanting to get into better homebrewed coffee.\
@@ -90,7 +90,7 @@ It's just a plastic tube w/ a rubber gasket to make a simple pump. Cap it with a
 For like, $30 it's pretty hard to beat. [Also the inventor's story is pretty cool.](https://aeropress.com/pages/about)
 Overall I'd say that the aeropress can make an extremely consistent "above-average" brew. If you really mess w/ it, you can make amazing things. But for me it's the lazy-man's pour-over quality 1-cup haha.
 </div>
-</AccordionWrapper>
+</Accordion>
 
 ## Roasters
 In no particular order:

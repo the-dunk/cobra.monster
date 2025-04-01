@@ -17,11 +17,9 @@ import { ClientRouter } from "astro:transitions";
   </head>
 
   <body>
-    <div class:list={["h-screen overflow-hidden flex flex-col w-full border-separate stripedBg"]}>
+    <div class:list={["h-screen overflow-hidden flex flex-col w-full border-separate stripedBg justify-between"]}>
       <TopNav />
-      <div class="flex-auto">
-        <slot />
-      </div>
+      <slot />
       <Footer />
     </div>
   </body>

@@ -10,6 +10,7 @@ import HomeContentBox from "@components/HomeContentBox.astro";
 import giornoArgent from "@assets/argent/giornoArgent.png";
 import TextDeco from "@components/TextDeco.astro";
 import coffeeShopChill from "@assets/argent/CoffeShopChill_Deriaz.jpg";
+import SiteMap from "@components/SiteMap.astro";
 ---
 
 <Layout homePage={true}>
@@ -38,7 +39,7 @@ import coffeeShopChill from "@assets/argent/CoffeShopChill_Deriaz.jpg";
       <Image class="rounded-lg" src={coffeeShopChill} alt="Grommit Argent" />
     </div>
   </HomeSection>
-  <HomeSection darkBg={false} border={["border-t-4"]}>
+  <HomeSection darkBg={false}>
     <HomeContentBox columns={["md:col-start-2", "md:col-span-10", "col-start-1", "col-span-12"]}>
       <div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
@@ -75,6 +76,12 @@ import coffeeShopChill from "@assets/argent/CoffeShopChill_Deriaz.jpg";
       </div>
     </HomeContentBox>
   </HomeSection>
+  <HomeSection darkBg={true} border={[]}>
+    <HomeContentBox columns={["md:col-start-2", "md:col-span-10", "col-start-1", "col-span-12"]}>
+      <h2 class="headerTxt font-prospekt xs:text-7xl text-5xl xl:text-8xl mb-10 underline decoration-redLight text-center lg:col-span-2">Site Map</h2>
+      <SiteMap />
+    </HomeContentBox>
+  </HomeSection>
 
   <style>
     h2,
@@ -89,6 +96,7 @@ import coffeeShopChill from "@assets/argent/CoffeShopChill_Deriaz.jpg";
 
 <script>
   const snakeBtn = document.getElementById("snakeMode");
+
   snakeBtn?.addEventListener("click", () => {
     window.scrollTo(0, 0);
     const page = document.getElementById("main");

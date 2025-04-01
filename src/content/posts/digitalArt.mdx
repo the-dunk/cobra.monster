@@ -6,7 +6,7 @@ blogExclude: true
 date: 2025-03-22
 ---
 import EmojiBlockquote from "@components/EmojiBlockquote.astro";
-import AccordionWrapper from "@components/Accordion/AccordionWrapper"
+import Accordion from "@components/Accordion/Accordion"
 import AccordionPhotoTemplate from "@components/Accordion/AccordionPhotoTemplate.astro"
 import TextDeco from "@components/TextDeco.astro"
 import { Image } from "astro:assets";
@@ -44,7 +44,7 @@ I'm pretty inconsistent with my art output, but Art Fight is the one real except
 
 ## Art Fight Faves
 You can check out my whole profile on the site [here](https://artfight.net/~RegalRegex) (my art are those listed as "attacks"), but I'll also share a few of my favorites.
-<AccordionWrapper client:idle>
+<Accordion client:idle>
     <span slot="title"><Image class="max-w-8 pb-2 inline-block m-auto" src={artistPalette} alt='artist palette'/> Favorite Art Fight Pieces</span>
     <div slot="content">
         <AccordionPhotoTemplate numImages={2}>
@@ -70,7 +70,7 @@ You can check out my whole profile on the site [here](https://artfight.net/~Rega
             <span slot="caption">_[Bean Lads](https://artfight.net/attack/7308667.chicago-squad) — Celebrated a bunch of friends moving to Chicago by drawing us all together :3_</span>
         </AccordionPhotoTemplate>
     </div>
-</AccordionWrapper>
+</Accordion>
 
 ---
 

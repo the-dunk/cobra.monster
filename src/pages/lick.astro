@@ -8,15 +8,15 @@ import StaticScreenLayout from "@layouts/StaticScreenLayout.astro";
 
 <StaticScreenLayout>
   <div class="hidden items-center h-full motion-reduce:flex flex-col">
-    <Image src={ArgentLickLgStatic} alt={`lick`} class="m-auto" />
+    <Image src={ArgentLickLgStatic} alt={`lick`} class="size-full aspect-square" class="" />
     <p class="mb-10 text-3xl text-slate-200 text-center">
       If you're seeing this, you have motion-reduction enabled! You're not missing much, just an animated slideshow of this goofy licking emoji.
       <br />
       UwU
     </p>
   </div>
-  <div class="motion-reduce:hidden overflow-hidden flex flex-col h-full py-5">
-    <h2 class="text-7xl animate-slideshowRight text-slate-200 whitespace-nowrap translate-x-0 will-change-transform">
+  <div class="motion-reduce:hidden flex flex-col justify-between h-full">
+    <h2 class="lg:text-7xl text-5xl animate-slideshowRight text-slate-200 whitespace-nowrap translate-x-0 will-change-transform mt-5">
       <sup>*</sup>Licks U<sup>*</sup>
       <sup>*</sup>Licks U<sup>*</sup>
       <sup>*</sup>Licks U<sup>*</sup>
@@ -33,16 +33,16 @@ import StaticScreenLayout from "@layouts/StaticScreenLayout.astro";
       <sup>*</sup>Licks U<sup>*</sup>
       <sup>*</sup>Licks U<sup>*</sup>
     </h2>
-    <div class="flex place-content-center h-full animate-slideshowLeft grow">
-      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
-      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
-      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
-      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
-      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
-      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
-      <Image src={ArgentLickLg} alt={`lick`} class="m-auto" />
+    <div class="flex place-content-center animate-slideshowLeft size-full">
+      {
+        Array.from({ length: 8 }, () => (
+          <div class="size-full aspect-square">
+            <Image src={ArgentLickLg} alt={`lick`} class="size-full" />
+          </div>
+        ))
+      }
     </div>
-    <h2 class="text-7xl animate-slideshowRight text-slate-200 whitespace-nowrap translate-x-0 will-change-transform">
+    <h2 class="lg:text-7xl text-5xl animate-slideshowRight text-slate-200 whitespace-nowrap translate-x-0 will-change-transform mb-5">
       <sup>*</sup>Licks U<sup>*</sup>
       <sup>*</sup>Licks U<sup>*</sup>
       <sup>*</sup>Licks U<sup>*</sup>
@@ -63,7 +63,8 @@ import StaticScreenLayout from "@layouts/StaticScreenLayout.astro";
 </StaticScreenLayout>
 
 <style>
-  h2 {
+  h2,
+  h3 {
     font-family:
       Snake Chan,
       sans-serif;

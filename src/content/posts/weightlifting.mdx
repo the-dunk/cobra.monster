@@ -7,7 +7,7 @@ date: 2025-03-18
 ---
 import EmojiBlockquote from "@components/EmojiBlockquote.astro";
 import { Image } from "astro:assets";
-import AccordionWrapper from "@components/Accordion/AccordionWrapper";
+import Accordion from "@components/Accordion/Accordion";
 import AccordionPhotoTemplate from "@components/Accordion/AccordionPhotoTemplate.astro"
 import TextDeco from "@components/TextDeco.astro"
 import QuoteBlock from "@components/QuoteBlock.astro"
@@ -35,7 +35,7 @@ Nowadays the #1 reason I weightlift is for my physique. The health benefits are 
 I'm a big fan of encouraging folks' vanity-related motivations. Societal stigma gives vanity a bad name, but I think caring about your physique for your \*own\* reasons is a fantastic reason to exercise.\
 And honestly any motivation that gets you to exercise is a health win!
 
-<AccordionWrapper client:idle>
+<Accordion client:idle>
 <span slot="title"><Image class="max-w-8 pb-2 inline-block m-auto" src={cameraFlash} alt='camera'/> Current Physique (fursona-censored)</span>
 <div slot="content">
 I'll update this as I can remember to, but here I'll share some physique pics I'm happy with :3
@@ -46,7 +46,7 @@ I'll update this as I can remember to, but here I'll share some physique pics I'
 <span slot="caption">_Psyched that my gym has a hack squat machine AND in front of a mirror_</span>
 </AccordionPhotoTemplate>
 </div>
-</AccordionWrapper>
+</Accordion>
 <br />
 
 ## Meditation
