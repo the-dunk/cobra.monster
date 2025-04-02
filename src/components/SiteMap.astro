@@ -5,10 +5,10 @@ import Link from "./Link.astro";
 import ArgentSymmetrical from "@assets/argent/SymmetricalArgent_Orion.png";
 ---
 
-<div class="grid grid-cols-1 xs:grid-cols-2 auto-rows-min lg:flex justify-around gap-5 xs:justify-items-start justify-items-center">
-  <div class="xs:hidden flex flex-col">
+<div class="grid grid-cols-1 xs:grid-cols-2 auto-rows-min lg:flex justify-around gap-5 xs:justify-items-start justify-items-center p-0 xs:pb-5">
+  <div class="xs:hidden flex flex-col gap-5">
     <section>
-      <h3 class="headerTxt text-4xl">About</h3>
+      <h3 class="headerTxt text-4xl 2xl:text-5xl">About</h3>
       <ul>
         <li>
           <Link url="/about">About Regal</Link>
@@ -27,7 +27,7 @@ import ArgentSymmetrical from "@assets/argent/SymmetricalArgent_Orion.png";
       </ul>
     </section>
     <section>
-      <h3 class="headerTxt text-4xl">Furry Stuff</h3>
+      <h3 class="headerTxt text-4xl 2xl:text-5xl">Furry Stuff</h3>
       <ul>
         <li><Link url="/" wip={true}>Fursona Page</Link></li>
         <li><Link url="/" wip={true}>OCs Page</Link></li>
@@ -35,7 +35,7 @@ import ArgentSymmetrical from "@assets/argent/SymmetricalArgent_Orion.png";
       </ul>
     </section>
     <section>
-      <h3 class="headerTxt text-4xl">Tools</h3>
+      <h3 class="headerTxt text-4xl 2xl:text-5xl">Tools</h3>
       <ul>
         <li>
           <Link url="/" wip={true}>WIP</Link>
@@ -43,7 +43,7 @@ import ArgentSymmetrical from "@assets/argent/SymmetricalArgent_Orion.png";
       </ul>
     </section>
     <section>
-      <h3 class="headerTxt text-4xl">Cool Links</h3>
+      <h3 class="headerTxt text-4xl 2xl:text-5xl">Cool Links</h3>
       <ul>
         <li>
           <Link url="/links#queerArt">Queer Art & Misc. Links</Link>
@@ -55,10 +55,10 @@ import ArgentSymmetrical from "@assets/argent/SymmetricalArgent_Orion.png";
     </section>
   </div>
   <div class="xs:flex basis-1/3 flex-col gap-5 xs:col-span-1 hidden items-center xs:m-auto lg:m-0">
-    <div>
+    <div class="flex flex-col gap-5">
       <section>
-        <h3 class="headerTxt text-4xl">About</h3>
-        <ul>
+        <h3 class="headerTxt text-4xl 2xl:text-5xl">About</h3>
+        <ul class="flex flex-col gap-2">
           <!-- <ul class="pl-5 list-disc list-outside [&_ul]:list-[revert]"> -->
           <li>
             <Link url="/about">About Regal</Link>
@@ -68,11 +68,19 @@ import ArgentSymmetrical from "@assets/argent/SymmetricalArgent_Orion.png";
           </li>
           <li>
             <Link url="/credits">Credits & Site Info</Link>
-            <ul class="pl-5 list-disc">
+            <ul class="pl-5 list-disc flex flex-col gap-2">
               <li><Link url="/credits#ArgentArt">Art Credits</Link></li>
               <li><Link url="/credits#Chicago">Design Credits</Link></li>
               <li><Link url="/" wip={true}>WebDev Log</Link></li>
             </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3 class="headerTxt text-4xl 2xl:text-5xl">Tools</h3>
+        <ul class="flex flex-col gap-2">
+          <li>
+            <Link url="/" wip={true}>WIP</Link>
           </li>
         </ul>
       </section>
@@ -82,26 +90,18 @@ import ArgentSymmetrical from "@assets/argent/SymmetricalArgent_Orion.png";
     <Image src={ArgentSymmetrical} alt="Argent Symm" class="rounded-lg max-w-[80%] lg:max-w-[100%] m-auto" />
   </div>
   <div class="xs:flex flex-col gap-5 xs:col-span-1 basis-1/3 hidden items-center xs:m-auto lg:m-0">
-    <div>
+    <div class="flex flex-col gap-5">
       <section>
-        <h3 class="headerTxt text-4xl">Furry Stuff</h3>
-        <ul>
+        <h3 class="headerTxt text-4xl 2xl:text-5xl">Furry Stuff</h3>
+        <ul class="flex flex-col gap-2">
           <li><Link url="/" wip={true}>Fursona Page</Link></li>
           <li><Link url="/" wip={true}>OCs Page</Link></li>
           <li><Link url="/links#socials">Art Galleries</Link></li>
         </ul>
       </section>
       <section>
-        <h3 class="headerTxt text-4xl">Tools</h3>
-        <ul>
-          <li>
-            <Link url="/" wip={true}>WIP</Link>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <h3 class="headerTxt text-4xl">Cool Links</h3>
-        <ul>
+        <h3 class="headerTxt text-4xl 2xl:text-5xl">Cool Links</h3>
+        <ul class="flex flex-col gap-2">
           <li>
             <Link url="/links#queerArt">Queer Art & Misc. Links</Link>
           </li>
@@ -113,3 +113,9 @@ import ArgentSymmetrical from "@assets/argent/SymmetricalArgent_Orion.png";
     </div>
   </div>
 </div>
+
+<style>
+  h3 {
+    font-family: "prospekt regular", sans-serif;
+  }
+</style>

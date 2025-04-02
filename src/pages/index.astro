@@ -77,7 +77,7 @@ import SiteMap from "@components/SiteMap.astro";
     </HomeContentBox>
   </HomeSection>
   <HomeSection darkBg={true} border={[]}>
-    <HomeContentBox columns={["md:col-start-2", "md:col-span-10", "col-start-1", "col-span-12"]}>
+    <HomeContentBox columns={["lg:col-start-3 lg:col-span-8 sm:col-start-2 sm:col-span-10 col-start-1 col-span-12"]}>
       <h2 class="headerTxt font-prospekt xs:text-7xl text-5xl xl:text-8xl mb-10 underline decoration-redLight text-center lg:col-span-2">Site Map</h2>
       <SiteMap />
     </HomeContentBox>
@@ -96,7 +96,6 @@ import SiteMap from "@components/SiteMap.astro";
 
 <script>
   const snakeBtn = document.getElementById("snakeMode");
-
   snakeBtn?.addEventListener("click", () => {
     window.scrollTo(0, 0);
     const page = document.getElementById("main");
