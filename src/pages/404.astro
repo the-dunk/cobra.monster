@@ -1,28 +1,16 @@
 ---
 import Footer from "@components/Footer.astro";
 import InfoPageLayout from "@layouts/InfoPageLayout.astro";
-import { Image } from "astro:assets";
-
-import argentWhine from "@assets/argent/stickers/babanasaur/whine.png";
+import ErrorPage from "@components/ErrorPage.astro";
 import TopNav from "@components/TopNav.astro";
 ---
 
 <InfoPageLayout>
   <main class="min-h-[100vh] overflow-hidden flex flex-col w-full border-separate">
     <TopNav />
-    <div class="flex flex-col justify-center items-center h-full grow">
-      <h1 class="text-9xl text-slate-200 font-black">404</h1>
-      <h1 class="text-6xl text-slate-200 font-black capitalize">Page not found</h1>
-      <Image src={argentWhine} alt="Argent Whine" class="max-w-64" />
-      <!-- <a class="rounded-md text-slate-200 p-2 bg-redDarkest hover:cursor-pointer hover:bg-redDark ring-2 ring-yellow mt-5 text-3xl" href="/">Go Home?</a>   -->
-    </div>
+    <ErrorPage title="404" subtitle="page not found" />
     <div class="table">
       <Footer />
     </div>
   </main>
 </InfoPageLayout>
-<style>
-  h1 {
-    font-family: "Prospekt Regular", sans-serif;
-  }
-</style>

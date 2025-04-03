@@ -3,11 +3,10 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import PostSummary from "./PostSummary.astro";
 import type { ReactElement } from "react";
 import { sortCollection } from "src/utils/sortCollection";
+import ErrorPage from "./ErrorPage.astro";
 
 interface Props {
   tagId?: string;
-  // taggedPosts?: Array<CollectionEntry<"posts">>;
-  postLimit?: number;
 }
 
 interface PostsByYear {
@@ -16,7 +15,7 @@ interface PostsByYear {
 
 const blogEntries = await getCollection("posts");
 
-const { tagId, postLimit } = Astro.props;
+const { tagId } = Astro.props;
 
 // Excluding About Blurbs and filtering by tag, if necessary
 const blogPosts: Array<CollectionEntry<"posts">> = tagId
@@ -34,48 +33,34 @@ const blogSort = (): PostsByYear[] => {
     return { [year]: sortedPosts.filter((post) => post.data.date.getFullYear() === year) };
   });
 };
-
-const limit = postLimit ? postLimit : blogPosts?.length;
-
 ---
 
-  {!postLimit &&
+{
+  blogPosts.length > 0 ? (
     blogSort().map((yearObj: PostsByYear, index: number) => {
       let yearNum: number = parseInt(Object.keys(yearObj)[0]);
       {
         return (
-          <div class:list={["flex sm:flex-row flex-col w-full",`${index !==0 ? 'border-t-4 border-slate-200/40 mt-5':''}` ]}>
+          <div class:list={["flex sm:flex-row flex-col w-full", `${index !== 0 ? "border-t-4 border-slate-200/40 mt-5" : ""}`]}>
             <div class="text-5xl mr-5 w-fit">
               <h3 class="headerTxt sm:sticky relative top-0 pt-4 font-bold">{yearNum}</h3>
             </div>
             <div class="mt-5 col-start-2">
-              {yearObj[yearNum].map((post):ReactElement[] => {
-                return (<div class="mb-5">
-                  <PostSummary post={post} />
-                </div>);
+              {yearObj[yearNum].map((post): ReactElement[] => {
+                return (
+                  <div class="mb-5">
+                    <PostSummary post={post} />
+                  </div>
+                );
               })}
             </div>
           </div>
         );
       }
     })
-  }
-  {postLimit && 
-    blogPosts.map((post, i) => {
-      if (i < limit) {
-        return (
-          <div class="mt-5">
-            <PostSummary post={post}  />
-          </div>
-          <div class="flex justify-around w-full text-2xl mt-5  py-2">
+  ) : (
+    <div class="my-5">
+      <ErrorPage subtitle={`No #${tagId} posts found!`} />
     </div>
-        );
-      }
-    })
-  }
-
-<style>
-  h2 {
-    font-family: "Prospekt Regular", sans-serif;
-  }
-</style>
+  )
+}

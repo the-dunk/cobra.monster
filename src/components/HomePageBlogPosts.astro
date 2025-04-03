@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import PostSummary from "@components/PostSummary.astro";
+
+const blogEntries = await getCollection("posts");
+
+const blogPosts: Array<CollectionEntry<"posts">> = blogEntries.filter((entry) => !entry.data.blogExclude).toReversed();
+---
+
+{
+  blogPosts.map((post, i) => {
+    if (i < 3) {
+      return <PostSummary post={post} />;
+    }
+  })
+}

@@ -3,14 +3,31 @@ title: Urbanism and Cycling
 subtitle: I'm passionate about urban design, biking, and transit
 emoji: bicycle.png
 blogExclude: true
-date: 2025-04-01
+date: 2025-04-03
 ---
 import EmojiBlockquote from "@components/EmojiBlockquote.astro";
+import Accordion from "@components/Accordion/Accordion"
 import { Image } from "astro:assets";
 
+import constructionSign from "@assets/mutantEmoji/construction_sign.png"
+import heart from "@assets/mutantEmoji/utility/purple_heart.png"
+import bicycle from "@assets/mutantEmoji/bicycle.png"
 
 ![Argent Bike](@assets/aboutPages/urbanism/argentBiking_spaceyNood.png)_Art by [Spacey_Nood](https://bsky.app/profile/spaceynood.bsky.social)_
 # Urbanism
+This special interest is the most succint answer to the question: "How did you end up in Chicago, anyways?" After spending my whole life in various suburbs and disappointing cities, the appeal of a city built for me to accessibly \*experience\* it was irresistable.
+
+## A No-Brainer
+Urbanism is one of those ideologies that feels much harder to explain than to demonstrate. If you don't live in a city with some level of urbanism baked into it, it's hard to understand why people would be passionate about **Transit, Bike Lanes, Housing,** and **Street Design.**\
+It is difficult to describe the pleasant comfort of being able to walk to the grocery store, passing local businesses and community spaces along the way. Having amenities within reach without needing to drive a car. It reduces *friction* and makes connecting to your physical space easier.
+
+## Activism
+Urbanist activism is straightforward and generally very focused. Urban development is inherently political, involving city and state bureacracies and systems. Each of which has some level of public involvement. The key is knowing what and when things are happening, and then simply showing up!\
+I've even "showed up" by just sending my Alderman (city councilor) an email in support of a new building proposal in my area.
+
+The activism can be pretty fun though. My friends and I recently went to a party celebrating [the departure of a Terrible transit agency head](https://blockclubchicago.org/2025/01/13/cta-boss-dorval-carter-retires-after-years-of-mounting-pressure-over-struggling-transit-service/) at a barcade.
+![Shuffleboard Art](@assets/aboutPages/urbanism/shuffleboardArtEmporium.jpg)
+_Drew some fursona art on the mini-shuffleboard they had there :3_
 
 # Biking
 Now living in Chicago, I'm an avid biker. But I think like many Americans, I didn't really have much of an opportunity earlier in life due to the suburbs being what they are.\
@@ -39,11 +56,31 @@ Riding 3rd gear up to a stop sign, stopping, and switching to 1st gear before st
 I imagine that most folks buy e-bikes because they have a specific need. Or perhaps they live in a hilly city that makes biking tricky...\
 Amidst my many-months of research for my e-bike I think I struggled to try and justify it but I ultimately concluded that I just \*wanted\* it. It's **a cool toy** and useful vehicle that I just wanted for "sometimes!"
 
-#### Things I Love About It
+<Accordion client:idle>
+<span slot="title">What I love about this bike <Image src={heart} alt='heart' class='max-w-6 inline-block'/><Image src={bicycle} alt='bicycle' class='max-w-8 pb-3 inline-block'/></span>
+<div slot="content">
 This bike is special. Even among e-bikes there's just a lot about this particular company and model that makes it stand out.
 - **Automatic-Transmission Internal Gearhub** - It's a 3-speed bike, but it shifts automatically as I pedal or stop. It took some getting used to, but it's a pretty novel experience not having to think about shifting
 - **Torque Sensor + Middrive Motor** - The real luxury of this bike, in my opinon. These two components are what make this bike keep its identity as a "bicycle" to me. There's no throttle, you MUST pedal, and when you do, these components are going to make you feel like a superhuman (depending on the assist level)
 - **Hydraulic Disc Brakes** - Not unusual on an e-bike but since my manual bike has calliper brakes it's like night and day. These hydraulic brakes have already saved my butt at least twice since getting this bike
+- **Carbon Belt-Drive** - Instead of a chain, the bike has a carbon belt. It's a small but nice thing because I don't have to worry about chain grease, and it's a lot quieter
 - **Overall Design Language** - I'm insane about that integrated headlight...the way it leads seamlessly into the "thin-for-an-e-bike" downtube. It just feels unique and elegant!
 - **The Screen** - I actually really love the control screen. It's got a nice color UI but I'm especially pleased by the variety of statistics you can toggle! I can even track my own Watt Hours energy output. That's rad
+- **It doesn't have a throttle** - If you live in a city you've definitely seen folks on e-bikes who don't seem to ever pedal. Throttles are pretty cool, but it doesn't really feel like riding a bike! This bike was designed with that philosophy in mind. You must pedal! And it feels really good to do so :3
 - **The Company** - Vvolt is just 6 employees, apparently. And every time I've reached out for clarification over chat-bot or calling in, I've gotten a human on the other end who can barely contain their excitement for their product. That's just really cool. Communication was good and they genuinely seem like a rad group of people making something unique.
+</div>
+</Accordion>
+
+
+
+## Bike Communities/Activism
+This is an area I'm still very new to, but want to get more involved with. In 2023 I did a few bike jams[^1] but haven't had the chance lately...The whole appeal of Urbanism and Biking to me is \*community\*, and bike jams are a super easy way to get into that.
+
+<EmojiBlockquote emoji={constructionSign} size="emoji">
+As of 2025, a huge topic of urbanist discussion in Chicago is what's going on with DuSable LakeShore Drive–a nasty huge North-South highway running right along Lake Michigan. The highway is due for repaving, so this is an opportunity to reshape it into something more than just 8 lanes of car traffic (e.g. bike lanes, a train/tram, burying it underground...)\
+Unfortunately the state DoT has been pretty resistant to that. One bike jam I went to recently was a rally up at a [Truman College](https://maps.app.goo.gl/NnMhQDsUyWW9wxXs7) to support a more transit + pedestrian-forward redesign. Very cool! Something I need to do much more with :3
+![Truman College Rally](@assets/aboutPages/urbanism/TrumanCollegeLakeShoreRally_Aug82024.jpg)
+_Truman College Rally for Lake Shore Drive Redesign | August 8, 2024_
+</EmojiBlockquote>
+
+[^1]: Bike Jams are organized bike rides, with a tendancy of being big enough to "jam" the road. The idea being that with enough folks, biking on the street becomes safer because we block the traffic.

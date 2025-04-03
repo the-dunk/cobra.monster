@@ -7,8 +7,8 @@ interface Props {
 const { url, wip = false } = Astro.props;
 ---
 
-<button class:list={["border-yellow", "hover:bg-yellow", "rounded-md", "border-2", "hover:text-black", "p-2"]}>
-  <a class:list={["font-medium text-lg  w-max cursor-pointer  "]} href={url}>
+<a class:list={["font-medium text-lg  w-max"]} href={url}>
+  <button class:list={["border-yellow hover:bg-yellow rounded-md border-2 hover:text-black p-2 hover:cursor-pointer"]}>
     <slot />
-  </a>
-</button>
+  </button>
+</a>
