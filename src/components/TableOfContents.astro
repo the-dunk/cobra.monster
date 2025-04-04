@@ -8,6 +8,8 @@ interface Props {
 }
 const { headings } = Astro.props;
 const filteredHeadings = headings.filter((heading) => heading.text !== "Footnotes");
+console.log(headings);
+
 // const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 ---
 
