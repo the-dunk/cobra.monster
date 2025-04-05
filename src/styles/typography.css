@@ -10,6 +10,33 @@
   --tw-prose-captions: theme(--color-slate-400);
 }
 
+/* Rehype Plugin Code Blocks Styling */
+.prose pre {
+  /* overflow-x: auto; */
+  text-wrap: wrap;
+  /* padding: 0; */
+  padding: calc(theme(--spacing) * 4);
+}
+
+figcaption[data-rehype-pretty-code-title] {
+  background-color: #262335;
+  display: inline-block;
+  padding: calc(theme(--spacing) * 2) calc(theme(--spacing) * 4) calc(theme(--spacing) * 1) calc(theme(--spacing) * 4);
+  /* border-radius: calc(theme(--spacing) * 2) calc(theme(--spacing) * 2) 0 0; */
+}
+
+.prose code {
+  padding: calc(theme(--spacing) * 4);
+}
+
+.prose pre {
+  border-radius: 0;
+}
+
+.rehype-pretty-copy {
+  margin-right: calc(theme(--spacing) * 4) !important;
+}
+
 /* Forcing edits on Prose blog post styling */
 .prose img {
   margin-bottom: 0;

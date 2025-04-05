@@ -6,16 +6,12 @@ blogExclude: true
 date: 2025-04-03
 ---
 import EmojiBlockquote from "@components/EmojiBlockquote.astro";
+import TextDeco from "@components/TextDeco.astro";
 import Accordion from "@components/Accordion/Accordion"
 import { Image } from "astro:assets";
 
 import argentSmirk from "@assets/mutantEmoji/argent_smirk_512.png"
 import laptop from "@assets/mutantEmoji/laptop.png"
-import wrench from "@assets/mutantEmoji/utility/wrench.png"
-
-<EmojiBlockquote emoji={wrench} size="emoji">
-Under Construction!
-</EmojiBlockquote>
 
 ![VS Code Screenshot](@assets/aboutPages/webdev/vsCodeScreencap_4-3-25.png)
 _woah so meta_
@@ -28,25 +24,77 @@ In lieu of a Marx and Engels-length footnotes section, I'm just going to frontlo
 <Accordion client:idle>
 <span slot="title">Glossary of Tech Terms <Image src={laptop} alt='laptop' class='max-w-6 inline-block'/></span>
 <div slot="content">
-## General Terms
+<h2>General Terms</h2>
 - **Frontend/Backend** - General terms of convenience for talking about what part of a website/application/system someone or something touches.
-- - Frontend - What the end-user sees. This is the "Website" as you see and interact with it. It has visual designs, and if it's running on a browser, it is 100% HTML, CSS, and Javascript at that point. **Python, Javascript,** and **PHP** are examples of Front-end coding languages.
-- - Backend - Boiled down, this is "server stuff". It's the part of the app that takes information from the Front, and processes it to interact with servers. **C++, Java,** and **C#** are examples of Backend coding languages.
+- - **Frontend** - What the end-user sees. This is the "Website" as you see and interact with it. It has visual designs, and if it's running on a browser, it is 100% HTML, CSS, and Javascript at that point. **Python, Javascript,** and **PHP** are examples of Front-end coding languages.
+- - **Backend** - Boiled down, this is "server stuff". It's the part of the app that takes information from the Front, and processes it to interact with servers. **C++, Java,** and **C#** are examples of Backend coding languages.
 - **Framework** - This refers to a "library" or some other package of code that wraps around a coding language. **React** is a Javascript Framework, for example. **Django** is one for Python, and **Laravel** for PHP. Frameworks give new tools and convenience to developers while ultimately compiling back down into that simple language
-## Languages
-- HTML - "Hypertext Markup Language", the bones of websites. If you see things written in tags `<p>Like This</p>` you're probably looking at HTML
-- CSS - "Cascading Style Sheets" is how you style HTML to make text bigger, add colors, do animations...everything! It's pretty cool but a little bit clunky.
-- Javascript - Named "Javascript" specifically to benefit from the market share popularity of "Java" (they are otherwise unrelated). It's the ✨browser magic✨ language that lets you do fancy things like "remember my login" and complex animations and movement. Mostly it's notable for allowing an app to take input from the Website or Frontend and pass it back to the backend for more processing and fancy logic.
-## Frameworks
-- **React** - The most popular Javascript framework today. It was originally made by Facebook, and its key feature is that it lets you write HTML inside of Javascript.
+<h2>Languages</h2>
+- **HTML** - "Hypertext Markup Language", the bones of websites. If you see things written in tags `<p>Like This</p>` you're probably looking at HTML
+- **CSS** - "Cascading Style Sheets" is how you style HTML to make text bigger, add colors, do animations...everything! It's pretty cool but a little bit clunky.
+- **Javascript** - Named "Javascript" specifically to benefit from the market share popularity of "Java" (they are otherwise unrelated). It's the ✨browser magic✨ language that lets you do fancy things like "remember my login" and complex animations and movement. Mostly it's notable for allowing an app to take input from the Website or Frontend and pass it back to the backend for more processing and fancy logic.
 </div>
 </Accordion>
 
-# The Quick 'N Dirty
+# In Brief
 Trying to avoid making this feel like a resume, but here's a quick list of the types of things I use/do under the "WebDev" umbrella:
 - **React & Angular** - I started with Angular, learning at work, and then taught myself React doing some side projects
 - **AstroJS** - This is new! It's what this website is made with. I'm instantly a big fan–gives you all that freedom of ReactJS without the bloat of irresistable state logic silliness
 - **HTML, CSS, and TailwindCSS** - I really like classic HTML/CSS development. My previous "professional" site was made with 99% vanilla HTML and CSS just to see if I could. But I included Tailwind (new as of this website) because yeahhhh. With component-driven development it just makes life so much easier
+
+# Is It Fun Though
+Even though it's what I do professionally, I'd still call webdev a hobby. Especially doing frontend design projects like this website. It's a creative exercise with a logical underpinning, and that's cool.\
+I'd say the biggest downside is that it's hard to enjoy with friends. Aside from the finished product, there isn't a lot here to share or \*do\* with friends.
+
+## The Appeal
+The overall appeal of WebDev for me is the combination of Creative + Problem Solving aspects. It's just super cool typing out logical things and having it output into something artistic or at least "cool looking". That feels powerful.\
+I'm very pleased with this website, for example, for automating a lot of my text. This page is a Blog Post template file that translates Markdown into both nicely-formatted text and autogenerates a Table of Contents with links! That's so cool.
+
+As an example, this is the code that takes in headers from my blog post files, processes it, and formats it into the table of contents on the side:
+```jsx title="TableOfContents.astro"
+---
+import type { MarkdownHeading } from "astro";
+import TextDeco from "./TextDeco.astro";
+import ChiStar from "./ChiStar.astro";
+interface Props {
+  headings: MarkdownHeading[];
+}
+const { headings } = Astro.props;
+const filteredHeadings = headings.filter((heading) => heading.text !== "Footnotes");
+---
+<nav class="sticky top-0 pt-4">
+  <h3 class="text-3xl font-medium mb-2">Contents</h3>
+  <ul>
+    {
+      filteredHeadings.map((heading, i) => {
+        if (heading.depth > 1) {
+          return (
+            <li>
+              <TextDeco url={`#${heading.slug}`}>
+                <span class="text-sm">
+                  {[...Array(heading.depth - 1)].map(() => (
+                    <ChiStar />
+                  ))}
+                </span>
+                <span class="text-wrap">{heading.text}</span>
+              </TextDeco>
+            </li>
+          );
+        }
+        return (
+            <div class:list={[" w-[75%]  bg-slate-200/30 p-0.5 mb-1.5", `${i===0 ? 'hidden' :'inline-block'}`]}></div>
+            <li>
+              <TextDeco url={`#${heading.slug}`}>{heading.text}</TextDeco>
+            </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+```
+
+## The Job
+In my 7+ years of professional software dev work I've definitely had good days or even weeks where I've been excited about my work, but I've never been truly passionate about it. Maybe it's just the <TextDeco url="/about/communism">communist</TextDeco> in me but as a wage-worker I've never been fully compensated for the work I've done on products I've never cared for beyond the paycheque.
 
 # 2017 Origins
 Folks are often amused and confused when I tell them that my bachelors are in Biology and Religious Studies. Turns out there isn't a lot of work for those!\

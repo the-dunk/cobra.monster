@@ -153,21 +153,11 @@ body {
   margin: 0;
   height: 100%;
 }
-/* body {
-  display: table;
-  height: 100%;
-  width: 100%;
-} */
 
 html {
-  /* font-family: "Roboto-VariableFont_wdth,wght", sans-serif;
-  font-weight: 300;
-  font-optical-sizing: auto;
-  font-stretch: extra-expanded; */
   background-color: #450a0a;
   scrollbar-color: #eab308 #000;
   font-family: "Roboto-VariableFont_wdth,wght", sans-serif;
-  /* font-family: "Snake Chan", sans-serif; */
 }
 
 .stripedBg {

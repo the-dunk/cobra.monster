@@ -7,20 +7,30 @@ import rehypePrettyCode from "rehype-pretty-code";
 import tailwindcss from "@tailwindcss/vite";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 
-
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
-  integrations: [mdx({
-    syntaxHighlight: false,
-    rehypePlugins: [rehypeSlug, [rehypePrettyCode, {
-      theme: "synthwave-84",
-      transformers: [transformerCopyButton({
-        visibility: "always",
-        feedbackDuration: 3_000
-      })]
-    }]]
-  }), react()]
+  integrations: [
+    mdx({
+      syntaxHighlight: false,
+      rehypePlugins: [
+        rehypeSlug,
+        [
+          rehypePrettyCode,
+          {
+            theme: "catppuccin-macchiato",
+            transformers: [
+              transformerCopyButton({
+                visibility: "always",
+                feedbackDuration: 3_000,
+              }),
+            ],
+          },
+        ],
+      ],
+    }),
+    react(),
+  ],
 });

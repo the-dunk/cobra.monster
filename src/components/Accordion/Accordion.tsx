@@ -25,7 +25,7 @@ const Accordion = ({ title, content }: Props) => {
   }
 
   return (
-    <div className="@container/accordion accordion flex flex-col my-2 border-l-8 border-yellow">
+    <div className="@container/accordion accordion flex flex-col my-5 border-l-8 border-yellow">
       {
         <div className="bg-redDark/40 p-4 ">
           <h3 className="font-bold not-prose">

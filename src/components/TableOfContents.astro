@@ -1,14 +1,13 @@
 ---
 import type { MarkdownHeading } from "astro";
-import TextDeco from "./TextDeco.astro";
-import ChiStar from "./ChiStar.astro";
+import TextDeco from "@components/TextDeco.astro";
+import ChiStar from "@components/ChiStar.astro";
 
 interface Props {
   headings: MarkdownHeading[];
 }
 const { headings } = Astro.props;
 const filteredHeadings = headings.filter((heading) => heading.text !== "Footnotes");
-console.log(headings);
 
 // const filteredHeadings = headings.filter((heading) => heading.depth <= 2);
 ---
@@ -27,7 +26,7 @@ console.log(headings);
                     <ChiStar />
                   ))}
                 </span>
-                <span>{heading.text}</span>
+                <span class="text-wrap">{heading.text}</span>
               </TextDeco>
             </li>
           );
